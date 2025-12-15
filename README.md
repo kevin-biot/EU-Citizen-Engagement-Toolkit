@@ -1,13 +1,81 @@
 # EU Citizen Engagement Toolkit
 
-Toolkit for documenting a citizen participation process framework for EU initiatives. This repository will hold guidance, templates, and supporting materials to help teams plan and run engagement activities consistently.
+**Democratic infrastructure for AI-augmented engagement with EU institutions**
 
-## Getting Started
+## What This Is
 
-- Clone the repository: `git clone https://github.com/kevin-biot/EU-Citizen-Engagement-Toolkit`
-- Explore or add documentation in Markdown under the root or structured folders as they emerge.
-- Propose updates via pull requests to keep the framework clear and collaborative.
+This repository provides **templates, guides, and tools** for individuals, small groups, and SMEs to engage effectively with EU regulatory processes—from public consultations to judicial review—without requiring expensive legal representation.
 
-## Purpose
+**Key Innovation:** Combines existing EU engagement mechanisms with AI-assisted capability to reduce costs from €50K-150K to under €550 while maintaining procedural compliance and quality.
 
-This project aims to provide a single reference for citizen engagement best practices, including process steps, roles, communications assets, and evaluation checklists.
+## What You'll Find Here
+
+- **Templates:** Ready-to-use templates for each engagement level (consultations, complaints, court filings)
+- **Guides:** Step-by-step procedures for navigating EU institutions
+- **Data:** MEP contacts, institutional structures, case studies
+- **Scripts:** Deadline calculators, procedural checklists
+- **Examples:** Real-world walkthrough of framework application
+
+## Quick Start
+
+1. **Identify your engagement level** - See [Escalation Ladder](docs/escalation-ladder.md)
+2. **Choose appropriate template** - Navigate to `templates/level-X/`
+3. **Customize with AI assistance** - See [AI Assistance Guide](docs/ai-assistance-guide.md)
+4. **Follow submission procedures** - Each template includes filing instructions
+5. **Document your experience** - Help improve these resources for others
+
+## Current Status
+
+**Version:** 1.0 (Framework + Initial Templates)  
+**Status:** Community development phase  
+**Validated:** Framework reviewed, templates in pilot testing  
+**Languages:** English (translations welcomed as contributions)
+
+## Contributing
+
+This is **community infrastructure**—your contributions make it better:
+
+- **Test templates** and share what worked/didn't work
+- **Submit improvements** via pull requests
+- **Share case studies** (anonymized if needed)
+- **Translate templates** to other EU languages
+- **Report issues** when you find gaps or errors
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+## Important Disclaimers
+
+⚠️ **This is not legal advice.** These are informational templates and guides.
+
+⚠️ **You use these at your own risk.** Always verify against official institutional guidance.
+
+⚠️ **Success not guaranteed.** Institutions have legitimate defenses and procedural requirements.
+
+⚠️ **Time investment required.** Budget 100-300 hours spread over 2-4 years for full engagement.
+
+## License
+
+This work is licensed under [Creative Commons Attribution-ShareAlike 4.0 International](LICENSE).
+
+**You are free to:**
+- Use these templates for any purpose
+- Adapt them to your needs
+- Share them with others
+
+**Under these terms:**
+- Attribute this project
+- Share improvements under same license
+
+## Acknowledgments
+
+Built on decades of EU institutional experience and AI-augmented development methodologies.
+
+Community contributions welcomed and credited in [CONTRIBUTORS.md](CONTRIBUTORS.md).
+
+## Contact & Support
+
+- **Issues:** Use GitHub Issues for bugs, questions, template improvements
+- **Discussions:** Use GitHub Discussions for strategy, case coordination, peer support
+- **Updates:** Watch this repo for new templates and framework improvements
+
+**This is infrastructure for democratic participation. Use it. Improve it. Share it.**
