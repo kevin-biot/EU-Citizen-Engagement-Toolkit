@@ -1,4 +1,4 @@
-mep_name,jurisdiction,political_group,email,staff_contact_name,staff_contact_email,staff_contact_phone,policy_briefs,committee_memberships,last_verified
-Monika HOHLMEIER,Germany,EPP,monika.hohlmeier@europarl.europa.eu,N/A,N/A,N/A,Budgetary control; counter-terrorism; security; AI in law enforcement,CONT (Chair); LIBE (Substitute),2024-12-15
-Jeroen LENAERS,Netherlands,EPP,jeroen.lenaers@europarl.europa.eu,N/A,N/A,N/A,Cybersecurity; AI in law enforcement; data protection; migration - EPP Vice-Chair; Former LIBE Chair,LIBE (Member); EMPL,2024-12-15
-Matthieu VALET,France,PfE,matthieu.valet@europarl.europa.eu,N/A,N/A,N/A,"National sovereignty, security, law enforcement",LIBE,2024-12-15
+mep_name,jurisdiction,political_group,email,staff_contact_name,staff_contact_email,staff_contact_phone,policy_briefs,committee_memberships,last_verified,role_tags
+Monika HOHLMEIER,Germany,EPP,monika.hohlmeier@europarl.europa.eu,N/A,N/A,N/A,Budgetary control; counter-terrorism; security; AI in law enforcement,CONT (Chair); LIBE (Substitute),2024-12-15,cont_chair
+Jeroen LENAERS,Netherlands,EPP,jeroen.lenaers@europarl.europa.eu,N/A,N/A,N/A,Cybersecurity; AI in law enforcement; data protection; migration - EPP Vice-Chair; Former LIBE Chair,LIBE (Member); EMPL,2024-12-15,
+Matthieu VALET,France,PfE,matthieu.valet@europarl.europa.eu,N/A,N/A,N/A,"National sovereignty, security, law enforcement",LIBE,2024-12-15,

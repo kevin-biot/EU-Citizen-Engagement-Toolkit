@@ -23,6 +23,9 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data" / "mep-contacts"
 INPUT = DATA_DIR / "complete_mep_database.csv"
 OUT_BASE = DATA_DIR / "extracts"
+COMMITTEES = ["IMCO", "ITRE", "LIBE", "JURI", "ECON"]
+TOP_COUNTRIES = ["Germany", "France", "Italy", "Spain", "Poland", "Romania", "Netherlands", "Belgium", "Greece", "Czechia"]
+GATEKEEPER_COMMITTEES = ["IMCO", "ITRE", "LIBE", "JURI", "ECON"]
 
 
 def load_rows() -> List[Dict[str, str]]:
@@ -130,8 +133,7 @@ def main() -> None:
         write_csv(OUT_BASE / "policy" / name, header, filter(predicate, rows))
 
     # Phase 3: Committees
-    committee_targets = ["IMCO", "ITRE", "LIBE", "JURI", "ECON"]
-    for c in committee_targets:
+    for c in COMMITTEES:
         write_csv(
             OUT_BASE / "committees" / f"{c}_members.csv",
             header,
@@ -176,8 +178,7 @@ def main() -> None:
     )
 
     # Phase 5: Countries (top 10 by count)
-    top_countries = ["Germany", "France", "Italy", "Spain", "Poland", "Romania", "Netherlands", "Belgium", "Greece", "Czechia"]
-    for country in top_countries:
+    for country in TOP_COUNTRIES:
         write_csv(
             OUT_BASE / "countries" / f"{country}_meps.csv",
             header,
@@ -265,6 +266,22 @@ def main() -> None:
         header,
         filter(single_market_pred, rows),
     )
+
+    # Gatekeepers: role_tags present and committee matches
+    role_regex = re.compile(r"(chair|vice)", re.IGNORECASE)
+    gatekeepers = [
+        r
+        for r in rows
+        if (r.get("role_tags") or "") and role_regex.search(r.get("role_tags", ""))
+        and filter_committees(GATEKEEPER_COMMITTEES)(r)
+    ]
+    write_csv(OUT_BASE / "gatekeepers" / "all_gatekeepers.csv", header, gatekeepers)
+    for c in GATEKEEPER_COMMITTEES:
+        write_csv(
+            OUT_BASE / "gatekeepers" / f"{c}_gatekeepers.csv",
+            header,
+            filter(lambda r, c=c: filter_committees([c])(r) and (r.get("role_tags") or ""), gatekeepers),
+        )
 
 
 if __name__ == "__main__":

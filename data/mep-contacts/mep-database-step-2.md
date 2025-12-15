@@ -170,7 +170,7 @@ mep_name,jurisdiction,political_group,email,staff_contact_name,staff_contact_ema
 "Thierry MARIANI",France,PfE,thierry.mariani@europarl.europa.eu,N/A,N/A,N/A,"Foreign affairs; transport","AFET; TRAN",2024-12-15
 "Ignazio Roberto MARINO",Italy,Greens/EFA,ignazioroberto.marino@europarl.europa.eu,N/A,N/A,N/A,"Health; environment","ENVI; SANT",2024-12-15
 "Erik MARQUARDT",Germany,Greens/EFA,erik.marquardt@europarl.europa.eu,N/A,N/A,N/A,"Civil liberties; migration; asylum","LIBE (Member)",2024-12-15
-"Jorge MARTÍN FRÍAS",Spain,PfE,jorge.martinfrías@europarl.europa.eu,N/A,N/A,N/A,"Internal market; consumer protection","IMCO (Member)",2024-12-15
+"Jorge MARTÍN FRÍAS",Spain,PfE,jorge.martinfrias@europarl.europa.eu,N/A,N/A,N/A,"Internal market; consumer protection","IMCO (Member)",2024-12-15
 "Catarina MARTINS",Portugal,The Left,catarina.martins@europarl.europa.eu,N/A,N/A,N/A,"Industry; women's rights","ITRE (Substitute); FEMM",2024-12-15
 "Fulvio MARTUSCIELLO",Italy,EPP,fulvio.martusciello@europarl.europa.eu,N/A,N/A,N/A,"Industry; energy","ITRE (Member)",2024-12-15
 "Vicent MARZÀ IBÁÑEZ",Spain,Greens/EFA,vicent.marza@europarl.europa.eu,N/A,N/A,N/A,"Culture; education; regional languages","CULT",2024-12-15

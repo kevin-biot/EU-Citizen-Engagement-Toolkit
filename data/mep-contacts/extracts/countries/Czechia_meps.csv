@@ -1,22 +1,22 @@
-mep_name,jurisdiction,political_group,email,staff_contact_name,staff_contact_email,staff_contact_phone,policy_briefs,committee_memberships,last_verified
-Nikola BARTŮŠEK,Czechia,PfE,nikola.bartusek@europarl.europa.eu,N/A,N/A,N/A,General affairs,N/A,2024-12-15
-Jaroslav BŽOCH,Czechia,PfE,jaroslav.bzoch@europarl.europa.eu,N/A,N/A,N/A,General affairs,N/A,2024-12-15
-Ivan DAVID,Czechia,ESN,ivan.david@europarl.europa.eu,N/A,N/A,N/A,Agriculture,AGRI,2024-12-15
-Klara DOSTALOVA,Czechia,PfE,klara.dostalova@europarl.europa.eu,N/A,N/A,N/A,Regional development,REGI,2024-12-15
-Ondřej DOSTÁL,Czechia,NI,ondrej.dostal@europarl.europa.eu,N/A,N/A,N/A,General affairs,N/A,2024-12-15
-Jan FARSKÝ,Czechia,EPP,jan.farsky@europarl.europa.eu,N/A,N/A,N/A,Regional development,REGI,2024-12-15
-Markéta GREGOROVÁ,Czechia,Greens/EFA,marketa.gregorova@europarl.europa.eu,N/A,N/A,N/A,Digital rights; disinformation; foreign interference; cybersecurity,ITRE (Substitute); LIBE (Substitute),2024-12-15
-Ondřej KNOTEK,Czechia,PfE,ondrej.knotek@europarl.europa.eu,N/A,N/A,N/A,Industry; research; energy,ITRE (Member),2024-12-15
-Jaroslav KNOT,Czechia,PfE,jaroslav.knot@europarl.europa.eu,N/A,N/A,N/A,Agriculture; environment,AGRI; ENVI,2024-12-15
-Ondřej KOLÁŘ,Czechia,EPP,ondrej.kolar@europarl.europa.eu,N/A,N/A,N/A,Foreign affairs; security,AFET; SEDE,2024-12-15
-Kateřina KONEČNÁ,Czechia,NI,katerina.konecna@europarl.europa.eu,N/A,N/A,N/A,Internal market; environment,IMCO (Member); ENVI,2024-12-15
-Ondřej KRUTÍLEK,Czechia,ECR,ondrej.krutilek@europarl.europa.eu,N/A,N/A,N/A,Industry; research; energy; environment,ITRE (Member); ENVI,2024-12-15
-Tomáš KUBÍN,Czechia,PfE,tomas.kubin@europarl.europa.eu,N/A,N/A,N/A,Transport; regional development,TRAN; REGI,2024-12-15
-Jana NAGYOVÁ,Czechia,PfE,jana.nagyova@europarl.europa.eu,N/A,N/A,N/A,"EU affairs, national interests",ITRE,2024-12-15
-Danuše NERUDOVÁ,Czechia,EPP,danuse.nerudova@europarl.europa.eu,N/A,N/A,N/A,"Employment, social affairs, education",EMPL,2024-12-15
-Luděk NIEDERMAYER,Czechia,EPP,ludek.niedermayer@europarl.europa.eu,N/A,N/A,N/A,"Economic/monetary affairs, anti-money laundering (lead rapporteur AMLD), tax policy, financial regulation, bank resolution",ECON (Vice-Chair); FISC; TRAN,2024-12-15
-Jaroslava POKORNÁ JERMANOVÁ,Czechia,PfE,jaroslava.pokornajermanova@europarl.europa.eu,N/A,N/A,N/A,Czech national interests,EMPL,2024-12-15
-Michaela ŠOJDROVÁ,Czechia,EPP,michaela.sojdrova@europarl.europa.eu,N/A,N/A,N/A,"Education, culture, youth policy, Christian democratic values",CULT (Member); EMPL (Substitute),2024-12-15
-Alexandr VONDRA,Czechia,ECR,alexandr.vondra@europarl.europa.eu,N/A,N/A,N/A,"Foreign affairs, defence, security, transatlantic relations",AFET; SEDE,2024-12-15
-Veronika VRECIONOVÁ,Czechia,ECR,veronika.vrecionova@europarl.europa.eu,N/A,N/A,N/A,"Agricultural policy, rural affairs, food security",AGRI (Chair); ENVI,2024-12-15
-Tomáš ZDECHOVSKÝ,Czechia,EPP,tomas.zdechovsky@europarl.europa.eu,N/A,N/A,N/A,"Rule of law, migration, security, media, internal market, consumer protection, data protection",CONT; LIBE; EUDS; IMCO (Substitute),2024-12-15
+mep_name,jurisdiction,political_group,email,staff_contact_name,staff_contact_email,staff_contact_phone,policy_briefs,committee_memberships,last_verified,role_tags
+Nikola BARTŮŠEK,Czechia,PfE,nikola.bartusek@europarl.europa.eu,N/A,N/A,N/A,General affairs,N/A,2024-12-15,
+Jaroslav BŽOCH,Czechia,PfE,jaroslav.bzoch@europarl.europa.eu,N/A,N/A,N/A,General affairs,N/A,2024-12-15,
+Ivan DAVID,Czechia,ESN,ivan.david@europarl.europa.eu,N/A,N/A,N/A,Agriculture,AGRI,2024-12-15,
+Klara DOSTALOVA,Czechia,PfE,klara.dostalova@europarl.europa.eu,N/A,N/A,N/A,Regional development,REGI,2024-12-15,
+Ondřej DOSTÁL,Czechia,NI,ondrej.dostal@europarl.europa.eu,N/A,N/A,N/A,General affairs,N/A,2024-12-15,
+Jan FARSKÝ,Czechia,EPP,jan.farsky@europarl.europa.eu,N/A,N/A,N/A,Regional development,REGI,2024-12-15,
+Markéta GREGOROVÁ,Czechia,Greens/EFA,marketa.gregorova@europarl.europa.eu,N/A,N/A,N/A,Digital rights; disinformation; foreign interference; cybersecurity,ITRE (Substitute); LIBE (Substitute),2024-12-15,
+Ondřej KNOTEK,Czechia,PfE,ondrej.knotek@europarl.europa.eu,N/A,N/A,N/A,Industry; research; energy,ITRE (Member),2024-12-15,
+Jaroslav KNOT,Czechia,PfE,jaroslav.knot@europarl.europa.eu,N/A,N/A,N/A,Agriculture; environment,AGRI; ENVI,2024-12-15,
+Ondřej KOLÁŘ,Czechia,EPP,ondrej.kolar@europarl.europa.eu,N/A,N/A,N/A,Foreign affairs; security,AFET; SEDE,2024-12-15,
+Kateřina KONEČNÁ,Czechia,NI,katerina.konecna@europarl.europa.eu,N/A,N/A,N/A,Internal market; environment,IMCO (Member); ENVI,2024-12-15,
+Ondřej KRUTÍLEK,Czechia,ECR,ondrej.krutilek@europarl.europa.eu,N/A,N/A,N/A,Industry; research; energy; environment,ITRE (Member); ENVI,2024-12-15,
+Tomáš KUBÍN,Czechia,PfE,tomas.kubin@europarl.europa.eu,N/A,N/A,N/A,Transport; regional development,TRAN; REGI,2024-12-15,
+Jana NAGYOVÁ,Czechia,PfE,jana.nagyova@europarl.europa.eu,N/A,N/A,N/A,"EU affairs, national interests",ITRE,2024-12-15,
+Danuše NERUDOVÁ,Czechia,EPP,danuse.nerudova@europarl.europa.eu,N/A,N/A,N/A,"Employment, social affairs, education",EMPL,2024-12-15,
+Luděk NIEDERMAYER,Czechia,EPP,ludek.niedermayer@europarl.europa.eu,N/A,N/A,N/A,"Economic/monetary affairs, anti-money laundering (lead rapporteur AMLD), tax policy, financial regulation, bank resolution",ECON (Vice-Chair); FISC; TRAN,2024-12-15,
+Jaroslava POKORNÁ JERMANOVÁ,Czechia,PfE,jaroslava.pokornajermanova@europarl.europa.eu,N/A,N/A,N/A,Czech national interests,EMPL,2024-12-15,
+Michaela ŠOJDROVÁ,Czechia,EPP,michaela.sojdrova@europarl.europa.eu,N/A,N/A,N/A,"Education, culture, youth policy, Christian democratic values",CULT (Member); EMPL (Substitute),2024-12-15,
+Alexandr VONDRA,Czechia,ECR,alexandr.vondra@europarl.europa.eu,N/A,N/A,N/A,"Foreign affairs, defence, security, transatlantic relations",AFET; SEDE,2024-12-15,
+Veronika VRECIONOVÁ,Czechia,ECR,veronika.vrecionova@europarl.europa.eu,N/A,N/A,N/A,"Agricultural policy, rural affairs, food security",AGRI (Chair); ENVI,2024-12-15,agri_chair
+Tomáš ZDECHOVSKÝ,Czechia,EPP,tomas.zdechovsky@europarl.europa.eu,N/A,N/A,N/A,"Rule of law, migration, security, media, internal market, consumer protection, data protection",CONT; LIBE; EUDS; IMCO (Substitute),2024-12-15,

@@ -1,27 +1,27 @@
-mep_name,jurisdiction,political_group,email,staff_contact_name,staff_contact_email,staff_contact_phone,policy_briefs,committee_memberships,last_verified
-Nikolaos ANADIOTIS,Greece,NI,nikolaos.anadiotis@europarl.europa.eu,N/A,N/A,N/A,General affairs,N/A,2024-12-15
-Monika BEŇOVÁ,Slovakia,NI,monika.benova@europarl.europa.eu,N/A,N/A,N/A,Women's rights,FEMM,2024-12-15
-Sibylle BERG,Germany,NI,sibylle.berg@europarl.europa.eu,N/A,N/A,N/A,Culture,CULT,2024-12-15
-Ľuboš BLAHA,Slovakia,NI,lubos.blaha@europarl.europa.eu,N/A,N/A,N/A,General affairs,N/A,2024-12-15
-Grzegorz BRAUN,Poland,NI,grzegorz.braun@europarl.europa.eu,N/A,N/A,N/A,General affairs,N/A,2024-12-15
-Fabio DE MASI,Germany,NI,fabio.demasi@europarl.europa.eu,N/A,N/A,N/A,Economic affairs; Financial crimes; Digital finance,ECON,2024-12-15
-Ondřej DOSTÁL,Czechia,NI,ondrej.dostal@europarl.europa.eu,N/A,N/A,N/A,General affairs,N/A,2024-12-15
-Ruth FIRMENICH,Germany,NI,ruth.firmenich@europarl.europa.eu,N/A,N/A,N/A,General affairs,N/A,2024-12-15
-Thomas GEISEL,Germany,NI,thomas.geisel@europarl.europa.eu,N/A,N/A,N/A,Economic affairs,ECON,2024-12-15
-Diana IOVANOVICI ŞOŞOACĂ,Romania,NI,diana.iovanovici@europarl.europa.eu,N/A,N/A,N/A,Industry; women's rights,ITRE (Member); FEMM (Member),2024-12-15
-Taner KABILOV,Bulgaria,NI,taner.kabilov@europarl.europa.eu,N/A,N/A,N/A,Regional development; agriculture,REGI; AGRI,2024-12-15
-Erik KALIŇÁK,Slovakia,NI,erik.kalinak@europarl.europa.eu,N/A,N/A,N/A,Civil liberties; justice,LIBE (Member),2024-12-15
-Fernand KARTHEISER,Luxembourg,NI,fernand.kartheiser@europarl.europa.eu,N/A,N/A,N/A,Foreign affairs; constitutional affairs,AFET; AFCO,2024-12-15
-Kateřina KONEČNÁ,Czechia,NI,katerina.konecna@europarl.europa.eu,N/A,N/A,N/A,Internal market; environment,IMCO (Member); ENVI,2024-12-15
-Judita LAŠŠÁKOVÁ,Slovakia,NI,judita.lassakova@europarl.europa.eu,N/A,N/A,N/A,Internal market; budget,IMCO (Substitute); BUDG,2024-12-15
-Luis-Vicențiu LAZARUS,Romania,NI,luisvicentiu.lazarus@europarl.europa.eu,N/A,N/A,N/A,Legal affairs; constitutional affairs,JURI; AFCO,2024-12-15
-Lefteris NIKOLAOU-ALAVANOS,Greece,NI,lefteris.nikolaoualavanos@europarl.europa.eu,N/A,N/A,N/A,"Workers' rights, social policy",EMPL,2024-12-15
-Branislav ONDRUŠ,Slovakia,NI,branislav.ondrus@europarl.europa.eu,N/A,N/A,N/A,"Employment, social affairs, citizens' petitions",EMPL; PETI,2024-12-15
-Fidias PANAYIOTOU,Cyprus,NI,fidias.panayiotou@europarl.europa.eu,N/A,N/A,N/A,"Digital engagement, independent policy",CULT,2024-12-15
-Kostas PAPADAKIS,Greece,NI,kostas.papadakis@europarl.europa.eu,N/A,N/A,N/A,"Workers' rights, anti-EU policies",EMPL,2024-12-15
-Alvise PÉREZ,Spain,NI,alvise.perez@europarl.europa.eu,N/A,N/A,N/A,Anti-establishment politics,LIBE (substitute),2024-12-15
-Friedrich PÜRNER,Germany,NI,friedrich.puerner@europarl.europa.eu,N/A,N/A,N/A,Health policy,ENVI,2024-12-15
-Katarína ROTH NEVEĎALOVÁ,Slovakia,NI,katarina.rothnevedalova@europarl.europa.eu,N/A,N/A,N/A,General policy,EMPL,2024-12-15
-Martin SONNEBORN,Germany,NI,martin.sonneborn@europarl.europa.eu,N/A,N/A,N/A,"Political satire, transparency, media freedom",CONT,2024-12-15
-Diana ȘOȘOACĂ,Romania,NI,diana.sosoaca@europarl.europa.eu,N/A,N/A,N/A,"National sovereignty, conservative values, civil liberties",LIBE,2024-12-15
-Michael VON DER SCHULENBURG,Germany,NI,michael.vonderschulenburg@europarl.europa.eu,N/A,N/A,N/A,"Peace policy, foreign affairs, diplomacy",AFET; SEDE,2024-12-15
+mep_name,jurisdiction,political_group,email,staff_contact_name,staff_contact_email,staff_contact_phone,policy_briefs,committee_memberships,last_verified,role_tags
+Nikolaos ANADIOTIS,Greece,NI,nikolaos.anadiotis@europarl.europa.eu,N/A,N/A,N/A,General affairs,N/A,2024-12-15,
+Monika BEŇOVÁ,Slovakia,NI,monika.benova@europarl.europa.eu,N/A,N/A,N/A,Women's rights,FEMM,2024-12-15,
+Sibylle BERG,Germany,NI,sibylle.berg@europarl.europa.eu,N/A,N/A,N/A,Culture,CULT,2024-12-15,
+Ľuboš BLAHA,Slovakia,NI,lubos.blaha@europarl.europa.eu,N/A,N/A,N/A,General affairs,N/A,2024-12-15,
+Grzegorz BRAUN,Poland,NI,grzegorz.braun@europarl.europa.eu,N/A,N/A,N/A,General affairs,N/A,2024-12-15,
+Fabio DE MASI,Germany,NI,fabio.demasi@europarl.europa.eu,N/A,N/A,N/A,Economic affairs; Financial crimes; Digital finance,ECON,2024-12-15,
+Ondřej DOSTÁL,Czechia,NI,ondrej.dostal@europarl.europa.eu,N/A,N/A,N/A,General affairs,N/A,2024-12-15,
+Ruth FIRMENICH,Germany,NI,ruth.firmenich@europarl.europa.eu,N/A,N/A,N/A,General affairs,N/A,2024-12-15,
+Thomas GEISEL,Germany,NI,thomas.geisel@europarl.europa.eu,N/A,N/A,N/A,Economic affairs,ECON,2024-12-15,
+Diana IOVANOVICI ŞOŞOACĂ,Romania,NI,diana.iovanovici@europarl.europa.eu,N/A,N/A,N/A,Industry; women's rights,ITRE (Member); FEMM (Member),2024-12-15,
+Taner KABILOV,Bulgaria,NI,taner.kabilov@europarl.europa.eu,N/A,N/A,N/A,Regional development; agriculture,REGI; AGRI,2024-12-15,
+Erik KALIŇÁK,Slovakia,NI,erik.kalinak@europarl.europa.eu,N/A,N/A,N/A,Civil liberties; justice,LIBE (Member),2024-12-15,
+Fernand KARTHEISER,Luxembourg,NI,fernand.kartheiser@europarl.europa.eu,N/A,N/A,N/A,Foreign affairs; constitutional affairs,AFET; AFCO,2024-12-15,
+Kateřina KONEČNÁ,Czechia,NI,katerina.konecna@europarl.europa.eu,N/A,N/A,N/A,Internal market; environment,IMCO (Member); ENVI,2024-12-15,
+Judita LAŠŠÁKOVÁ,Slovakia,NI,judita.lassakova@europarl.europa.eu,N/A,N/A,N/A,Internal market; budget,IMCO (Substitute); BUDG,2024-12-15,
+Luis-Vicențiu LAZARUS,Romania,NI,luisvicentiu.lazarus@europarl.europa.eu,N/A,N/A,N/A,Legal affairs; constitutional affairs,JURI; AFCO,2024-12-15,
+Lefteris NIKOLAOU-ALAVANOS,Greece,NI,lefteris.nikolaoualavanos@europarl.europa.eu,N/A,N/A,N/A,"Workers' rights, social policy",EMPL,2024-12-15,
+Branislav ONDRUŠ,Slovakia,NI,branislav.ondrus@europarl.europa.eu,N/A,N/A,N/A,"Employment, social affairs, citizens' petitions",EMPL; PETI,2024-12-15,
+Fidias PANAYIOTOU,Cyprus,NI,fidias.panayiotou@europarl.europa.eu,N/A,N/A,N/A,"Digital engagement, independent policy",CULT,2024-12-15,
+Kostas PAPADAKIS,Greece,NI,kostas.papadakis@europarl.europa.eu,N/A,N/A,N/A,"Workers' rights, anti-EU policies",EMPL,2024-12-15,
+Alvise PÉREZ,Spain,NI,alvise.perez@europarl.europa.eu,N/A,N/A,N/A,Anti-establishment politics,LIBE (substitute),2024-12-15,
+Friedrich PÜRNER,Germany,NI,friedrich.puerner@europarl.europa.eu,N/A,N/A,N/A,Health policy,ENVI,2024-12-15,
+Katarína ROTH NEVEĎALOVÁ,Slovakia,NI,katarina.rothnevedalova@europarl.europa.eu,N/A,N/A,N/A,General policy,EMPL,2024-12-15,
+Martin SONNEBORN,Germany,NI,martin.sonneborn@europarl.europa.eu,N/A,N/A,N/A,"Political satire, transparency, media freedom",CONT,2024-12-15,
+Diana ȘOȘOACĂ,Romania,NI,diana.sosoaca@europarl.europa.eu,N/A,N/A,N/A,"National sovereignty, conservative values, civil liberties",LIBE,2024-12-15,
+Michael VON DER SCHULENBURG,Germany,NI,michael.vonderschulenburg@europarl.europa.eu,N/A,N/A,N/A,"Peace policy, foreign affairs, diplomacy",AFET; SEDE,2024-12-15,

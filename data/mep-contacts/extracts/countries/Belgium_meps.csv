@@ -1,23 +1,23 @@
-mep_name,jurisdiction,political_group,email,staff_contact_name,staff_contact_email,staff_contact_phone,policy_briefs,committee_memberships,last_verified
-Gerolf ANNEMANS,Belgium,PfE,gerolf.annemans@europarl.europa.eu,N/A,N/A,N/A,Constitutional affairs,AFCO,2024-12-15
-Pascal ARIMONT,Belgium,EPP,pascal.arimont@europarl.europa.eu,N/A,N/A,N/A,Regional development,REGI,2024-12-15
-Wouter BEKE,Belgium,EPP,wouter.beke@europarl.europa.eu,N/A,N/A,N/A,Industry; Research; Energy,ITRE,2024-12-15
-Barbara BONTE,Belgium,PfE,barbara.bonte@europarl.europa.eu,N/A,N/A,N/A,General affairs,N/A,2024-12-15
-Marc BOTENGA,Belgium,The Left,marc.botenga@europarl.europa.eu,N/A,N/A,N/A,Foreign affairs; Digital taxation,AFET; ECON,2024-12-15
-Saskia BRICMONT,Belgium,Greens/EFA,saskia.bricmont@europarl.europa.eu,N/A,N/A,N/A,Civil liberties; Trade; Digital rights,LIBE; INTA,2024-12-15
-Benoit CASSART,Belgium,Renew,benoit.cassart@europarl.europa.eu,N/A,N/A,N/A,Agriculture,AGRI,2024-12-15
-Estelle CEULEMANS,Belgium,S&D,estelle.ceulemans@europarl.europa.eu,N/A,N/A,N/A,Employment,EMPL,2024-12-15
-Olivier CHASTEL,Belgium,Renew,olivier.chastel@europarl.europa.eu,N/A,N/A,N/A,Budgets; Budget control,BUDG; CONT,2024-12-15
-Elio DI RUPO,Belgium,S&D,elio.dirupo@europarl.europa.eu,N/A,N/A,N/A,Economic affairs,ECON,2024-12-15
-Assita KANKO,Belgium,ECR,assita.kanko@europarl.europa.eu,N/A,N/A,N/A,Migration; security; civil liberties,LIBE (Member),2024-12-15
-Rudi KENNES,Belgium,The Left,rudi.kennes@europarl.europa.eu,N/A,N/A,N/A,Industry; research; energy,ITRE (Member),2024-12-15
-Sara MATTHIEU,Belgium,Greens/EFA,sara.matthieu@europarl.europa.eu,N/A,N/A,N/A,Industry; employment,ITRE (Member); EMPL,2024-12-15
-Liesbet SOMMEN,Belgium,EPP,liesbet.sommen@europarl.europa.eu,N/A,N/A,N/A,"Employment, social affairs, Christian democratic values",EMPL,2024-12-15
-Bruno TOBBACK,Belgium,S&D,bruno.tobback@europarl.europa.eu,N/A,N/A,N/A,"Social democratic policies, environment, energy",ENVI,2024-12-15
-Kathleen VAN BREMPT,Belgium,S&D,kathleen.vanbrempt@europarl.europa.eu,N/A,N/A,N/A,"Social democratic policies, industry, environment, climate",ITRE; ENVI,2024-12-15
-Tom VANDENDRIESSCHE,Belgium,PfE,tom.vandendriessche@europarl.europa.eu,N/A,N/A,N/A,"Flemish nationalism, sovereignty, internal market",IMCO (Substitute); AFET,2024-12-15
-Kris VAN DIJCK,Belgium,ECR,kris.vandijck@europarl.europa.eu,N/A,N/A,N/A,"Conservative policies, Flemish interests",BUDG; CONT,2024-12-15
-Johan VAN OVERTVELDT,Belgium,ECR,johan.vanovertveldt@europarl.europa.eu,N/A,N/A,N/A,"Budget policy, fiscal affairs, economic governance, research funding",BUDG (Chair); ECON,2024-12-15
-Hilde VAUTMANS,Belgium,Renew Europe,hilde.vautmans@europarl.europa.eu,N/A,N/A,N/A,"Liberal policies, foreign affairs, agriculture",AFET; AGRI,2024-12-15
-Yvan VEROUGSTRAETE,Belgium,Renew Europe,yvan.verougstraete@europarl.europa.eu,N/A,N/A,N/A,"Christian democratic/centrist policies, industry, research",ITRE (4th Vice-Chair); IMCO (Substitute),2024-12-15
-Sophie WILMÈS,Belgium,Renew Europe,sophie.wilmes@europarl.europa.eu,N/A,N/A,N/A,"Human rights, democracy, rule of law, digital policy, transatlantic relations",EP Vice-President; LIBE (Member); ITRE (Substitute); EUDS,2024-12-15
+mep_name,jurisdiction,political_group,email,staff_contact_name,staff_contact_email,staff_contact_phone,policy_briefs,committee_memberships,last_verified,role_tags
+Gerolf ANNEMANS,Belgium,PfE,gerolf.annemans@europarl.europa.eu,N/A,N/A,N/A,Constitutional affairs,AFCO,2024-12-15,
+Pascal ARIMONT,Belgium,EPP,pascal.arimont@europarl.europa.eu,N/A,N/A,N/A,Regional development,REGI,2024-12-15,
+Wouter BEKE,Belgium,EPP,wouter.beke@europarl.europa.eu,N/A,N/A,N/A,Industry; Research; Energy,ITRE,2024-12-15,
+Barbara BONTE,Belgium,PfE,barbara.bonte@europarl.europa.eu,N/A,N/A,N/A,General affairs,N/A,2024-12-15,
+Marc BOTENGA,Belgium,The Left,marc.botenga@europarl.europa.eu,N/A,N/A,N/A,Foreign affairs; Digital taxation,AFET; ECON,2024-12-15,
+Saskia BRICMONT,Belgium,Greens/EFA,saskia.bricmont@europarl.europa.eu,N/A,N/A,N/A,Civil liberties; Trade; Digital rights,LIBE; INTA,2024-12-15,
+Benoit CASSART,Belgium,Renew,benoit.cassart@europarl.europa.eu,N/A,N/A,N/A,Agriculture,AGRI,2024-12-15,
+Estelle CEULEMANS,Belgium,S&D,estelle.ceulemans@europarl.europa.eu,N/A,N/A,N/A,Employment,EMPL,2024-12-15,
+Olivier CHASTEL,Belgium,Renew,olivier.chastel@europarl.europa.eu,N/A,N/A,N/A,Budgets; Budget control,BUDG; CONT,2024-12-15,
+Elio DI RUPO,Belgium,S&D,elio.dirupo@europarl.europa.eu,N/A,N/A,N/A,Economic affairs,ECON,2024-12-15,
+Assita KANKO,Belgium,ECR,assita.kanko@europarl.europa.eu,N/A,N/A,N/A,Migration; security; civil liberties,LIBE (Member),2024-12-15,
+Rudi KENNES,Belgium,The Left,rudi.kennes@europarl.europa.eu,N/A,N/A,N/A,Industry; research; energy,ITRE (Member),2024-12-15,
+Sara MATTHIEU,Belgium,Greens/EFA,sara.matthieu@europarl.europa.eu,N/A,N/A,N/A,Industry; employment,ITRE (Member); EMPL,2024-12-15,
+Liesbet SOMMEN,Belgium,EPP,liesbet.sommen@europarl.europa.eu,N/A,N/A,N/A,"Employment, social affairs, Christian democratic values",EMPL,2024-12-15,
+Bruno TOBBACK,Belgium,S&D,bruno.tobback@europarl.europa.eu,N/A,N/A,N/A,"Social democratic policies, environment, energy",ENVI,2024-12-15,
+Kathleen VAN BREMPT,Belgium,S&D,kathleen.vanbrempt@europarl.europa.eu,N/A,N/A,N/A,"Social democratic policies, industry, environment, climate",ITRE; ENVI,2024-12-15,
+Tom VANDENDRIESSCHE,Belgium,PfE,tom.vandendriessche@europarl.europa.eu,N/A,N/A,N/A,"Flemish nationalism, sovereignty, internal market",IMCO (Substitute); AFET,2024-12-15,
+Kris VAN DIJCK,Belgium,ECR,kris.vandijck@europarl.europa.eu,N/A,N/A,N/A,"Conservative policies, Flemish interests",BUDG; CONT,2024-12-15,
+Johan VAN OVERTVELDT,Belgium,ECR,johan.vanovertveldt@europarl.europa.eu,N/A,N/A,N/A,"Budget policy, fiscal affairs, economic governance, research funding",BUDG (Chair); ECON,2024-12-15,budg_chair
+Hilde VAUTMANS,Belgium,Renew Europe,hilde.vautmans@europarl.europa.eu,N/A,N/A,N/A,"Liberal policies, foreign affairs, agriculture",AFET; AGRI,2024-12-15,
+Yvan VEROUGSTRAETE,Belgium,Renew Europe,yvan.verougstraete@europarl.europa.eu,N/A,N/A,N/A,"Christian democratic/centrist policies, industry, research",ITRE (4th Vice-Chair); IMCO (Substitute),2024-12-15,
+Sophie WILMÈS,Belgium,Renew Europe,sophie.wilmes@europarl.europa.eu,N/A,N/A,N/A,"Human rights, democracy, rule of law, digital policy, transatlantic relations",EP Vice-President; LIBE (Member); ITRE (Substitute); EUDS,2024-12-15,ep_vice_president

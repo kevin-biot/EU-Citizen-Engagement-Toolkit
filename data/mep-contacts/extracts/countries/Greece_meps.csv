@@ -1,23 +1,23 @@
-mep_name,jurisdiction,political_group,email,staff_contact_name,staff_contact_email,staff_contact_phone,policy_briefs,committee_memberships,last_verified
-Georgios AFTIAS,Greece,EPP,georgios.aftias@europarl.europa.eu,N/A,N/A,N/A,Internal market,IMCO,2024-12-15
-Galato ALEXANDRAKI,Greece,ECR,galato.alexandraki@europarl.europa.eu,N/A,N/A,N/A,Agriculture,AGRI,2024-12-15
-Nikolaos ANADIOTIS,Greece,NI,nikolaos.anadiotis@europarl.europa.eu,N/A,N/A,N/A,General affairs,N/A,2024-12-15
-Sakis ARNAOUTOGLOU,Greece,S&D,sakis.arnaoutoglou@europarl.europa.eu,N/A,N/A,N/A,Transport,TRAN,2024-12-15
-Konstantinos ARVANITIS,Greece,The Left,konstantinos.arvanitis@europarl.europa.eu,N/A,N/A,N/A,Civil liberties; Human rights,LIBE,2024-12-15
-Fredis BELERIS,Greece,EPP,fredis.beleris@europarl.europa.eu,N/A,N/A,N/A,Foreign affairs,AFET,2024-12-15
-Nikolas FARANTOURIS,Greece,The Left,nikolas.farantouris@europarl.europa.eu,N/A,N/A,N/A,Economic affairs,ECON,2024-12-15
-Emmanouil FRAGKOS,Greece,ECR,emmanouil.fragkos@europarl.europa.eu,N/A,N/A,N/A,Foreign affairs,AFET,2024-12-15
-Emmanouil KEFALOGIANNIS,Greece,EPP,emmanouil.kefalogiannis@europarl.europa.eu,N/A,N/A,N/A,Agriculture; fisheries,AGRI; PECH,2024-12-15
-Elena KOUNTOURA,Greece,The Left,elena.kountoura@europarl.europa.eu,N/A,N/A,N/A,Tourism; transport; women's rights,TRAN; FEMM,2024-12-15
-Afroditi LATINOPOULOU,Greece,PfE,afroditi.latinopoulou@europarl.europa.eu,N/A,N/A,N/A,Civil liberties; migration,LIBE (Substitute),2024-12-15
-Yannis MANIATIS,Greece,S&D,yannis.maniatis@europarl.europa.eu,N/A,N/A,N/A,Industry; energy,ITRE (Member),2024-12-15
-Vangelis MEIMARAKIS,Greece,EPP,vangelis.meimarakis@europarl.europa.eu,N/A,N/A,N/A,Foreign affairs; defense - Former Parliament Speaker,AFET; SEDE,2024-12-15
-Eleonora MELETI,Greece,EPP,eleonora.meleti@europarl.europa.eu,N/A,N/A,N/A,Environment; health,ENVI,2024-12-15
-Lefteris NIKOLAOU-ALAVANOS,Greece,NI,lefteris.nikolaoualavanos@europarl.europa.eu,N/A,N/A,N/A,"Workers' rights, social policy",EMPL,2024-12-15
-Kostas PAPADAKIS,Greece,NI,kostas.papadakis@europarl.europa.eu,N/A,N/A,N/A,"Workers' rights, anti-EU policies",EMPL,2024-12-15
-Nikos PAPANDREOU,Greece,S&D,nikos.papandreou@europarl.europa.eu,N/A,N/A,N/A,"Social policy, Greek affairs",EMPL; CULT,2024-12-15
-Nikos PAPPAS,Greece,The Left,nikos.pappas@europarl.europa.eu,N/A,N/A,N/A,"Digital policy, energy transition, research policy, industrial policy, AI Act implementation, digital sovereignty",ITRE,2024-12-15
-Theodoros SKYLAKAKIS,Greece,Renew,theodoros.skylakakis@europarl.europa.eu,N/A,N/A,N/A,"Economic policy, budgets",ECON; BUDG,2024-12-15
-Maria SPYRAKI,Greece,EPP,maria.spyraki@europarl.europa.eu,N/A,N/A,N/A,"Energy storage, hydrogen technology, ecodesign, chemicals regulation, AI and digital innovation",ITRE (Member); ENVI (Member); REGI (Substitute),2024-12-15
-Dimitris TSIODRAS,Greece,EPP,dimitris.tsiodras@europarl.europa.eu,N/A,N/A,N/A,"Greek center-right policies, public health",SANT; ENVI,2024-12-15
-Elissavet VOZEMBERG-VRIONIDI,Greece,EPP,elissavet.vozemberg@europarl.europa.eu,N/A,N/A,N/A,"Conservative policies, women's rights, justice",FEMM; LIBE,2024-12-15
+mep_name,jurisdiction,political_group,email,staff_contact_name,staff_contact_email,staff_contact_phone,policy_briefs,committee_memberships,last_verified,role_tags
+Georgios AFTIAS,Greece,EPP,georgios.aftias@europarl.europa.eu,N/A,N/A,N/A,Internal market,IMCO,2024-12-15,
+Galato ALEXANDRAKI,Greece,ECR,galato.alexandraki@europarl.europa.eu,N/A,N/A,N/A,Agriculture,AGRI,2024-12-15,
+Nikolaos ANADIOTIS,Greece,NI,nikolaos.anadiotis@europarl.europa.eu,N/A,N/A,N/A,General affairs,N/A,2024-12-15,
+Sakis ARNAOUTOGLOU,Greece,S&D,sakis.arnaoutoglou@europarl.europa.eu,N/A,N/A,N/A,Transport,TRAN,2024-12-15,
+Konstantinos ARVANITIS,Greece,The Left,konstantinos.arvanitis@europarl.europa.eu,N/A,N/A,N/A,Civil liberties; Human rights,LIBE,2024-12-15,
+Fredis BELERIS,Greece,EPP,fredis.beleris@europarl.europa.eu,N/A,N/A,N/A,Foreign affairs,AFET,2024-12-15,
+Nikolas FARANTOURIS,Greece,The Left,nikolas.farantouris@europarl.europa.eu,N/A,N/A,N/A,Economic affairs,ECON,2024-12-15,
+Emmanouil FRAGKOS,Greece,ECR,emmanouil.fragkos@europarl.europa.eu,N/A,N/A,N/A,Foreign affairs,AFET,2024-12-15,
+Emmanouil KEFALOGIANNIS,Greece,EPP,emmanouil.kefalogiannis@europarl.europa.eu,N/A,N/A,N/A,Agriculture; fisheries,AGRI; PECH,2024-12-15,
+Elena KOUNTOURA,Greece,The Left,elena.kountoura@europarl.europa.eu,N/A,N/A,N/A,Tourism; transport; women's rights,TRAN; FEMM,2024-12-15,
+Afroditi LATINOPOULOU,Greece,PfE,afroditi.latinopoulou@europarl.europa.eu,N/A,N/A,N/A,Civil liberties; migration,LIBE (Substitute),2024-12-15,
+Yannis MANIATIS,Greece,S&D,yannis.maniatis@europarl.europa.eu,N/A,N/A,N/A,Industry; energy,ITRE (Member),2024-12-15,
+Vangelis MEIMARAKIS,Greece,EPP,vangelis.meimarakis@europarl.europa.eu,N/A,N/A,N/A,Foreign affairs; defense - Former Parliament Speaker,AFET; SEDE,2024-12-15,
+Eleonora MELETI,Greece,EPP,eleonora.meleti@europarl.europa.eu,N/A,N/A,N/A,Environment; health,ENVI,2024-12-15,
+Lefteris NIKOLAOU-ALAVANOS,Greece,NI,lefteris.nikolaoualavanos@europarl.europa.eu,N/A,N/A,N/A,"Workers' rights, social policy",EMPL,2024-12-15,
+Kostas PAPADAKIS,Greece,NI,kostas.papadakis@europarl.europa.eu,N/A,N/A,N/A,"Workers' rights, anti-EU policies",EMPL,2024-12-15,
+Nikos PAPANDREOU,Greece,S&D,nikos.papandreou@europarl.europa.eu,N/A,N/A,N/A,"Social policy, Greek affairs",EMPL; CULT,2024-12-15,
+Nikos PAPPAS,Greece,The Left,nikos.pappas@europarl.europa.eu,N/A,N/A,N/A,"Digital policy, energy transition, research policy, industrial policy, AI Act implementation, digital sovereignty",ITRE,2024-12-15,
+Theodoros SKYLAKAKIS,Greece,Renew,theodoros.skylakakis@europarl.europa.eu,N/A,N/A,N/A,"Economic policy, budgets",ECON; BUDG,2024-12-15,
+Maria SPYRAKI,Greece,EPP,maria.spyraki@europarl.europa.eu,N/A,N/A,N/A,"Energy storage, hydrogen technology, ecodesign, chemicals regulation, AI and digital innovation",ITRE (Member); ENVI (Member); REGI (Substitute),2024-12-15,
+Dimitris TSIODRAS,Greece,EPP,dimitris.tsiodras@europarl.europa.eu,N/A,N/A,N/A,"Greek center-right policies, public health",SANT; ENVI,2024-12-15,
+Elissavet VOZEMBERG-VRIONIDI,Greece,EPP,elissavet.vozemberg@europarl.europa.eu,N/A,N/A,N/A,"Conservative policies, women's rights, justice",FEMM; LIBE,2024-12-15,

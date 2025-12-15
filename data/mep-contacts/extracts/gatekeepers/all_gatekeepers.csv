@@ -1,18 +1,16 @@
 mep_name,jurisdiction,political_group,email,staff_contact_name,staff_contact_email,staff_contact_phone,policy_briefs,committee_memberships,last_verified,role_tags
-Giorgio GORI,Italy,S&D,giorgio.gori@europarl.europa.eu,N/A,N/A,N/A,Digital policy; industry; research; energy,ITRE (Vice-Chair),2024-12-15,
-Maria GRAPINI,Romania,S&D,maria.grapini@europarl.europa.eu,N/A,N/A,N/A,Internal market; consumer protection; SMEs; Digital Services Act,IMCO (Vice-Chair),2024-12-15,
+Borys BUDKA,Poland,EPP,borys.budka@europarl.europa.eu,N/A,N/A,N/A,Industry; Research; Energy - Committee Chair,ITRE,2024-12-15,itre_chair
+Anna CAVAZZINI,Germany,Greens/EFA,anna.cavazzini@europarl.europa.eu,N/A,N/A,N/A,Internal market; Consumer protection - IMCO Chair; Digital services; AI governance,IMCO,2024-12-15,imco_chair
+Elena DONAZZAN,Italy,ECR,elena.donazzan@europarl.europa.eu,N/A,N/A,N/A,Industry; Research; Energy - ITRE Vice-Chair,ITRE,2024-12-15,itre_vice_chair
 Monika HOHLMEIER,Germany,EPP,monika.hohlmeier@europarl.europa.eu,N/A,N/A,N/A,Budgetary control; counter-terrorism; security; AI in law enforcement,CONT (Chair); LIBE (Substitute),2024-12-15,cont_chair
 Adam JARUBAS,Poland,EPP,adam.jarubas@europarl.europa.eu,N/A,N/A,N/A,Public health; digital health; green transformation - SANT Committee Chair,SANT (Chair); ITRE; ENVI,2024-12-15,sant_chair
-Marina KALJURAND,Estonia,S&D,marina.kaljurand@europarl.europa.eu,N/A,N/A,N/A,Cybersecurity; digital identity; data protection; foreign affairs - Former Foreign Minister,LIBE (Vice-Chair); IMCO (Substitute),2024-12-15,
 Ilhan KYUCHYUK,Bulgaria,Renew Europe,ilhan.kyuchyuk@europarl.europa.eu,N/A,N/A,N/A,Legal affairs; intellectual property; digital contracts - JURI Committee Chair,JURI (Chair); AFET (Substitute),2024-12-15,juri_chair
 Bernd LANGE,Germany,S&D,bernd.lange@europarl.europa.eu,N/A,N/A,N/A,Trade policy; digital trade; transatlantic relations; anti-coercion - INTA Committee Chair,INTA (Chair); ITRE (Substitute),2024-12-15,inta_chair
-Lukas MANDL,Austria,EPP,lukas.mandl@europarl.europa.eu,N/A,N/A,N/A,Civil liberties; legal affairs; security,LIBE (Member); JURI (Member); SEDE (Vice-Chair),2024-12-15,
-Mario MANTOVANI,Italy,ECR,mario.mantovani@europarl.europa.eu,N/A,N/A,N/A,Legal affairs - JURI Vice-Chair,JURI (Vice-Chair),2024-12-15,
-Nikola MINCHEV,Bulgaria,Renew Europe,nikola.minchev@europarl.europa.eu,N/A,N/A,N/A,Internal market; civil liberties - IMCO Vice-Chair; Former Parliament Speaker,IMCO (Vice-Chair); LIBE (Substitute),2024-12-15,
 Dolors MONTSERRAT,Spain,EPP,dolors.montserrat@europarl.europa.eu,N/A,N/A,N/A,Petitions; civil liberties - PETI Chair,PETI (Chair); LIBE (Substitute),2024-12-15,peti_chair
+Victor NEGRESCU,Romania,S&D,victor.negrescu@europarl.europa.eu,N/A,N/A,N/A,"Digital agenda (MEP of the Year 2015), education, budgets, digitalization, innovation",BUDG; JURI; Parliament Bureau (Vice-President),2024-12-15,ep_vice_president
 Tsvetelina PENKOVA,Bulgaria,S&D,tsvetelina.penkova@europarl.europa.eu,N/A,N/A,N/A,"Digital policy, AI Act, cybersecurity, energy, research, industry, telecommunications, data governance, consumer protection",ITRE (1st Vice-Chair); IMCO (substitute),2024-12-15,itre_vice_chair
 Emil RADEV,Bulgaria,EPP,emil.radev@europarl.europa.eu,N/A,N/A,N/A,"Legal affairs, civil liberties, judicial cooperation, data protection, rule of law, e-CODEX digital judicial cooperation, AI Act implementation",JURI (Vice-Chair); LIBE; PETI,2024-12-15,juri_vice_chair
-Diana RIBA I GINER,Spain,Greens/EFA,diana.ribaiginer@europarl.europa.eu,N/A,N/A,N/A,"Women's rights, human rights, civil liberties, EU-Central America relations",FEMM; LIBE (substitute); DCAM (Chair),2024-12-15,
-Irene TINAGLI,Italy,S&D,irene.tinagli@europarl.europa.eu,N/A,N/A,N/A,"Economic policy, digital euro, banking regulation, financial services, housing policy, AI in finance",HOUS (Chair); ECON; ITRE (Substitute); ENVI (Substitute),2024-12-15,
 Tomas TOBÉ,Sweden,EPP,tomas.tobe@europarl.europa.eu,N/A,N/A,N/A,"Development aid, migration, asylum policy, civil liberties, digital policy",DEVE (Chair); LIBE (Member); ITRE (Substitute); EUDS,2024-12-15,deve_chair
-Yvan VEROUGSTRAETE,Belgium,Renew Europe,yvan.verougstraete@europarl.europa.eu,N/A,N/A,N/A,"Christian democratic/centrist policies, industry, research",ITRE (4th Vice-Chair); IMCO (Substitute),2024-12-15,
+Johan VAN OVERTVELDT,Belgium,ECR,johan.vanovertveldt@europarl.europa.eu,N/A,N/A,N/A,"Budget policy, fiscal affairs, economic governance, research funding",BUDG (Chair); ECON,2024-12-15,budg_chair
+Sophie WILMÈS,Belgium,Renew Europe,sophie.wilmes@europarl.europa.eu,N/A,N/A,N/A,"Human rights, democracy, rule of law, digital policy, transatlantic relations",EP Vice-President; LIBE (Member); ITRE (Substitute); EUDS,2024-12-15,ep_vice_president
+Roberts ZĪLE,Latvia,ECR,roberts.zile@europarl.europa.eu,N/A,N/A,N/A,"Transport, economics, monetary affairs, Baltic relations, digital infrastructure",EP Vice-President; TRAN (Coordinator); ECON (Substitute),2024-12-15,ep_vice_president

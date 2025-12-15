@@ -1,4 +1,4 @@
-mep_name,jurisdiction,political_group,email,staff_contact_name,staff_contact_email,staff_contact_phone,policy_briefs,committee_memberships,last_verified
-Pablo ARIAS ECHEVERRÍA,Spain,EPP,pablo.ariasecheverria@europarl.europa.eu,N/A,N/A,N/A,Internal market; Digital single market,IMCO,2024-12-15
-Sandro GOZI,France,Renew Europe,sandro.gozi@europarl.europa.eu,N/A,N/A,N/A,Constitutional affairs; EU reform; digital single market,IMCO (Member); AFCO (Member),2024-12-15
-Inese VAIDERE,Latvia,EPP,inese.vaidere@europarl.europa.eu,N/A,N/A,N/A,"Internal market, consumer protection, digital single market, data governance",IMCO (Member); ECON,2024-12-15
+mep_name,jurisdiction,political_group,email,staff_contact_name,staff_contact_email,staff_contact_phone,policy_briefs,committee_memberships,last_verified,role_tags
+Pablo ARIAS ECHEVERRÍA,Spain,EPP,pablo.ariasecheverria@europarl.europa.eu,N/A,N/A,N/A,Internal market; Digital single market,IMCO,2024-12-15,
+Sandro GOZI,France,Renew Europe,sandro.gozi@europarl.europa.eu,N/A,N/A,N/A,Constitutional affairs; EU reform; digital single market,IMCO (Member); AFCO (Member),2024-12-15,
+Inese VAIDERE,Latvia,EPP,inese.vaidere@europarl.europa.eu,N/A,N/A,N/A,"Internal market, consumer protection, digital single market, data governance",IMCO (Member); ECON,2024-12-15,

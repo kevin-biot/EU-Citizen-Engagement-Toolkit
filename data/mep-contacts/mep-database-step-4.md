@@ -21,9 +21,9 @@ mep_name,jurisdiction,political_group,email,staff_contact_name,staff_contact_ema
 "Tineke STRIK",Netherlands,Greens/EFA,tineke.strik@europarl.europa.eu,N/A,N/A,N/A,"Migration, human rights, rule of law, Frontex accountability, data protection","AFET (Member); DROI (Member); LIBE (Substitute)",2024-12-15
 "Ramona STRUGARIU",Romania,Renew Europe,ramona.strugariu@europarl.europa.eu,N/A,N/A,N/A,"Anti-corruption, rule of law, digital rights, civil liberties, AI governance","LIBE (Member); AFET (Substitute)",2024-12-15
 "Dubravka ŠUICA",Croatia,EPP,dubravka.suica@europarl.europa.eu,N/A,N/A,N/A,"Democracy, demography, European integration","AFCO; EMPL",2024-12-15
-"Virginijus SINKEVIČIUS",Lithuania,Greens/EFA,virginijus.sinkevicius@europarl.europa.eu,N/A,N/A,N/A,"Environment, biodiversity, oceans, fisheries, climate policy","ENVI (Member); PECH (Substitute)",2024-12-15
-"Sara SKYTTEDAL",Sweden,EPP,sara.skyttedal@europarl.europa.eu,N/A,N/A,N/A,"Christian democratic values, energy policy, conservative social policy","ITRE; AFET",2024-12-15
-"Marjan ŠAREC",Slovenia,Renew Europe,marjan.sarec@europarl.europa.eu,N/A,N/A,N/A,"European integration, Slovenian interests, liberal reforms","AFET; SEDE",2024-12-15
+"Virginijus SINKEVIČIUS",Lithuania,Greens/EFA,virginijus.sinkevicius@europarl.europa.eu,N/A,N/A,N/A,"Environment; biodiversity; oceans; fisheries; climate policy; former EU Environment Commissioner","ENVI (Member); PECH (Substitute); ITRE (Substitute)",2024-12-15
+"Sara SKYTTEDAL",Sweden,EPP,sara.skyttedal@europarl.europa.eu,N/A,N/A,N/A,"Industry; research; energy; digital policy; Christian democratic values; energy policy; conservative social policy","ITRE; AFET",2024-12-15
+"Marjan ŠAREC",Slovenia,Renew Europe,marjan.sarec@europarl.europa.eu,N/A,N/A,N/A,"Foreign affairs; security (former Slovenian PM); European integration; Slovenian interests; liberal reforms","AFET; SEDE",2024-12-15
 "Michaela ŠOJDROVÁ",Czechia,EPP,michaela.sojdrova@europarl.europa.eu,N/A,N/A,N/A,"Education, culture, youth policy, Christian democratic values","CULT (Member); EMPL (Substitute)",2024-12-15
 "Beata SZYDŁO",Poland,ECR,beata.szydlo@europarl.europa.eu,N/A,N/A,N/A,"Industry, research, energy, transport, European Democracy Shield, AI and digital policy","ITRE (Member); EUDS (Member); BUDG (Substitute); TRAN (Substitute)",2024-12-15
 "Dario TAMBURRANO",Italy,The Left,dario.tamburrano@europarl.europa.eu,N/A,N/A,N/A,"Energy transition, transport, digital innovation, climate policy","ITRE; TRAN (Substitute)",2024-12-15

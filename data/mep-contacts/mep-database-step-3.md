@@ -122,7 +122,6 @@ mep_name,jurisdiction,political_group,email,staff_contact_name,staff_contact_ema
 "Teófilo SANTOS",Portugal,S&D,teofilo.santos@europarl.europa.eu,N/A,N/A,N/A,"Social policy","EMPL",2024-12-15
 "Jussi SARAMO",Finland,The Left,jussi.saramo@europarl.europa.eu,N/A,N/A,N/A,"Economic policy, industry","ECON; ITRE",2024-12-15
 "Silvia SARDONE",Italy,PfE,silvia.sardone@europarl.europa.eu,N/A,N/A,N/A,"Environment, women's rights, industry","ENVI; FEMM; ITRE (substitute)",2024-12-15
-"Marjan ŠAREC",Slovenia,Renew,marjan.sarec@europarl.europa.eu,N/A,N/A,N/A,"Foreign affairs, security (former Slovenian PM)","AFET",2024-12-15
 "Eric SARGIACOMO",France,S&D,eric.sargiacomo@europarl.europa.eu,N/A,N/A,N/A,"Social policy, legal affairs","EMPL; JURI (substitute)",2024-12-15
 "Petri SARVAMAA",Finland,EPP,petri.sarvamaa@europarl.europa.eu,N/A,N/A,N/A,"EU budget, budgetary control","BUDG; CONT",2024-12-15
 "Jacek SARYUSZ-WOLSKI",Poland,ECR,jacek.saryuszwolski@europarl.europa.eu,N/A,N/A,N/A,"Foreign affairs, constitutional affairs, industry","AFET; AFCO; ITRE",2024-12-15
@@ -159,10 +158,8 @@ mep_name,jurisdiction,political_group,email,staff_contact_name,staff_contact_ema
 "Pedro SILVA PEREIRA",Portugal,S&D,pedro.silvapereira@europarl.europa.eu,N/A,N/A,N/A,"Constitutional affairs, institutional reform","AFCO",2024-12-15
 "Sven SIMON",Germany,EPP,sven.simon@europarl.europa.eu,N/A,N/A,N/A,"Foreign affairs, security","AFET",2024-12-15
 "Christine SINGER",Germany,ESN,christine.singer@europarl.europa.eu,N/A,N/A,N/A,"National sovereignty","AGRI",2024-12-15
-"Virginijus SINKEVIČIUS",Lithuania,Greens/EFA,virginijus.sinkevicius@europarl.europa.eu,N/A,N/A,N/A,"Environment, fisheries (former EU Environment Commissioner)","ENVI; PECH; ITRE (substitute)",2024-12-15
 "Birgit SIPPEL",Germany,S&D,birgit.sippel@europarl.europa.eu,N/A,N/A,N/A,"Civil liberties, data protection, privacy, digital rights, justice and home affairs - Key LIBE expert","LIBE",2024-12-15
 "Theodoros SKYLAKAKIS",Greece,Renew,theodoros.skylakakis@europarl.europa.eu,N/A,N/A,N/A,"Economic policy, budgets","ECON; BUDG",2024-12-15
-"Sara SKYTTEDAL",Sweden,EPP,sara.skyttedal@europarl.europa.eu,N/A,N/A,N/A,"Industry, research, energy, digital policy","ITRE",2024-12-15
 "Krzysztof ŚMISZEK",Poland,S&D,krzysztof.smiszek@europarl.europa.eu,N/A,N/A,N/A,"Civil liberties, human rights, legal affairs, LGBTI rights, data protection","LIBE; JURI",2024-12-15
 "Sander SMIT",Netherlands,EPP,sander.smit@europarl.europa.eu,N/A,N/A,N/A,"Civil liberties, data protection, security","LIBE (substitute)",2024-12-15
 ```

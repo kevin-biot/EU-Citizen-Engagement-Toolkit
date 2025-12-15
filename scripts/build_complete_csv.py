@@ -33,6 +33,35 @@ SOURCE_FILES = [
     DATA_DIR / "mep-database-step-4.md",
 ]
 
+ROLE_TAGS = {
+    "roberta.metsola@europarl.europa.eu": ["ep_president"],
+    "sophie.wilmes@europarl.europa.eu": ["ep_vice_president"],
+    "victor.negrescu@europarl.europa.eu": ["ep_vice_president"],
+    "jan-christoph.oetjen@europarl.europa.eu": ["ep_vice_president"],
+    "younous.omarjee@europarl.europa.eu": ["ep_vice_president"],
+    "roberts.zile@europarl.europa.eu": ["ep_vice_president"],
+    "david.mcallister@europarl.europa.eu": ["afet_chair"],
+    "bernd.lange@europarl.europa.eu": ["inta_chair"],
+    "ilhan.kyuchyuk@europarl.europa.eu": ["juri_chair"],
+    "monika.hohlmeier@europarl.europa.eu": ["cont_chair"],
+    "adam.jarubas@europarl.europa.eu": ["sant_chair"],
+    "dolors.montserrat@europarl.europa.eu": ["peti_chair"],
+    "borys.budka@europarl.europa.eu": ["itre_chair"],
+    "anna.cavazzini@europarl.europa.eu": ["imco_chair"],
+    "tomas.tobe@europarl.europa.eu": ["deve_chair"],
+    "johan.vanovertveldt@europarl.europa.eu": ["budg_chair"],
+    "veronika.vrecionova@europarl.europa.eu": ["agri_chair"],
+    "tsvetelina.penkova@europarl.europa.eu": ["itre_vice_chair"],
+    "elena.donazzan@europarl.europa.eu": ["itre_vice_chair"],
+    "emil.radev@europarl.europa.eu": ["juri_vice_chair"],
+    "riho.terras@europarl.europa.eu": ["sede_vice_chair"],
+    # Rapporteurs / key files (digital)
+    "andreas.schwab@europarl.europa.eu": ["dma_rapporteur"],
+    "christel.schaldemose@europarl.europa.eu": ["dsa_rapporteur"],
+    "brando.benifei@europarl.europa.eu": ["ai_act_co_rapporteur"],
+    "axel.voss@europarl.europa.eu": ["ai_act_architect"],
+}
+
 
 def extract_blocks(md_text: str) -> Iterable[List[str]]:
     """Yield each CSV code block as a list of lines (including header row)."""
@@ -83,11 +112,19 @@ def main() -> None:
     if not master_header:
         raise SystemExit("No data extracted; check source files.")
 
+    # Ensure role_tags column exists
+    if "role_tags" not in master_header:
+        master_header.append("role_tags")
+
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     with OUTPUT.open("w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=master_header)
         writer.writeheader()
-        writer.writerows(all_rows.values())
+        for row in all_rows.values():
+            email_key = (row.get("email") or "").lower().strip()
+            tags = ROLE_TAGS.get(email_key, [])
+            row["role_tags"] = "; ".join(tags)
+            writer.writerow(row)
 
     print(f"Wrote {len(all_rows)} rows to {OUTPUT}")
 

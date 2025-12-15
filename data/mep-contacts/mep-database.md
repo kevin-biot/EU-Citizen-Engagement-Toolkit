@@ -56,7 +56,6 @@ mep_name,jurisdiction,political_group,email,staff_contact_name,staff_contact_ema
 "Sakis ARNAOUTOGLOU",Greece,S&D,sakis.arnaoutoglou@europarl.europa.eu,N/A,N/A,N/A,"Transport",TRAN,2024-12-15
 "Anja ARNDT",Germany,ESN,anja.arndt@europarl.europa.eu,N/A,N/A,N/A,"General affairs",N/A,2024-12-15
 "Konstantinos ARVANITIS",Greece,The Left,konstantinos.arvanitis@europarl.europa.eu,N/A,N/A,N/A,"Civil liberties; Human rights",LIBE,2024-12-15
-"Jaume ASENS LLODRÀ",Spain,Greens/EFA,jaume.asensllodrà@europarl.europa.eu,N/A,N/A,N/A,"Civil liberties; Justice",LIBE,2024-12-15
 "Francisco ASSIS",Portugal,S&D,francisco.assis@europarl.europa.eu,N/A,N/A,N/A,"Foreign affairs",AFET,2024-12-15
 "Daniel ATTARD",Malta,S&D,daniel.attard@europarl.europa.eu,N/A,N/A,N/A,"Economic affairs",ECON,2024-12-15
 "Manon AUBRY",France,The Left,manon.aubry@europarl.europa.eu,N/A,N/A,N/A,"Economic justice; Taxation; Digital taxation",ECON,2024-12-15
@@ -102,7 +101,7 @@ mep_name,jurisdiction,political_group,email,staff_contact_name,staff_contact_ema
 "Stefano BONACCINI",Italy,S&D,stefano.bonaccini@europarl.europa.eu,N/A,N/A,N/A,"Regional development",REGI,2024-12-15
 "Barbara BONTE",Belgium,PfE,barbara.bonte@europarl.europa.eu,N/A,N/A,N/A,"General affairs",N/A,2024-12-15
 "Paolo BORCHIA",Italy,PfE,paolo.borchia@europarl.europa.eu,N/A,N/A,N/A,"Industry; Research; Energy",ITRE,2024-12-15
-"Mireia BORRÁS PABÓN",Spain,PfE,mireia.borraspabón@europarl.europa.eu,N/A,N/A,N/A,"General affairs",N/A,2024-12-15
+"Jaume ASENS LLODRÀ",Spain,Greens/EFA,jaume.asensllodra@europarl.europa.eu,N/A,N/A,N/A,"Civil liberties; Justice",LIBE,2024-12-15
 "Zsuzsanna BORVENDÉG",Hungary,ESN,zsuzsanna.borvendeg@europarl.europa.eu,N/A,N/A,N/A,"General affairs",N/A,2024-12-15
 "Biljana BORZAN",Croatia,S&D,biljana.borzan@europarl.europa.eu,N/A,N/A,N/A,"Internal market; Consumer protection; Health",IMCO; ENVI,2024-12-15
 "Gordan BOSANAC",Croatia,Greens/EFA,gordan.bosanac@europarl.europa.eu,N/A,N/A,N/A,"Civil liberties; Human rights",LIBE,2024-12-15
@@ -307,3 +306,4 @@ For citizens specifically interested in AI Act implementation, Digital Services 
 ---
 
 *This database is provided for citizen engagement purposes. The European Parliament is the directly elected legislative body of the European Union representing 450 million citizens. Citizens have the right to contact their MEPs and petition Parliament on matters of EU concern.*
+"Mireia BORRÁS PABÓN",Spain,PfE,mireia.borraspabon@europarl.europa.eu,N/A,N/A,N/A,"General affairs",N/A,2024-12-15
