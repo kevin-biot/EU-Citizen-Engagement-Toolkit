@@ -1,0 +1,4 @@
+mep_name,jurisdiction,political_group,email,staff_contact_name,staff_contact_email,staff_contact_phone,policy_briefs,committee_memberships,last_verified
+"Alex Dupont","France","Renew Europe","alex.dupont@example.europarl.europa.eu","Marie Leblanc","marie.leblanc@example.europarl.europa.eu","+32 2 283 0000","AI Act implementation; Digital Services oversight","IMCO; LIBE","2024-12-01"
+"Sofia Richter","Germany","EPP","sofia.richter@example.europarl.europa.eu","Jonas Weber","jonas.weber@example.europarl.europa.eu","+32 2 284 0000","Cybersecurity strategy; Data governance","ITRE; AFET","2024-12-01"
+"Elena Rossi","Italy","S&D","elena.rossi@example.europarl.europa.eu","Paolo Conti","paolo.conti@example.europarl.europa.eu","+32 2 285 0000","Consumer protection in AI; Transparency register","IMCO; JURI","2024-12-01"
