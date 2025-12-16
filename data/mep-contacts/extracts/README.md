@@ -29,3 +29,4 @@ python3 scripts/validate_extractions.py  # sanity checks (counts/dupes/email for
 - Counts in extracts are deduped by email (fallback: name).
 - `role_tags` currently covers EP President/Vice-Presidents and select chairs/vice-chairs (IMCO, ITRE, LIBE, JURI, ECON, plus some others). Expand as you learn more: edit `ROLE_TAGS` in `scripts/build_complete_csv.py` and rebuild.
 - If you need a 720-row master (without merging duplicate entries), we can reintroduce the split records; current master is deduped to 716 unique entries.
+- Committee codes and scopes: see `data/mep-contacts/committees.md` for human descriptions.
