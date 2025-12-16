@@ -4,7 +4,7 @@ Source: data/institutional-contacts/institutional-contacts.csv
 
 | institution | unit | role | contact_email | contact_phone | scope | notes | last_verified |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| European Commission | Secretariat-General (SG) | Document access (Reg. 1049/2001) | sg-acc-doc@ec.europa.eu |  | Access to Commission documents (general) | Use for FOI/Reg.1049 requests when DG-specific contact is unknown; prefer DG-specific when available | 2024-12-15 |
+| European Commission | Secretariat-General (SG) | Document access (Reg. 1049/2001) | sg-acc-doc@ec.europa.eu |  | Access to Commission documents (general) | Use for FOI/Reg.1049 requests when DG-specific contact is unknown; prefer DG-specific when available. Reg. 1049/2001: 15 working days (extendable) and reasoned refusals required. | 2024-12-15 |
 | European Commission | Directorate-General (DG) - generic pattern | Document access (Reg. 1049/2001) | <DG>-access-documents@ec.europa.eu |  | Access to documents at a specific DG | Replace <DG> with the DG code (e.g., cnect-access-documents@ec.europa.eu) | 2024-12-15 |
 | European Commission | DG CONNECT (CNECT) | Document access (Reg. 1049/2001) | cnect-access-documents@ec.europa.eu |  | Digital/AI/telecom files | Pattern/published functional mailbox | 2024-12-15 |
 | European Commission | DG COMP (COMP) | Document access (Reg. 1049/2001) | comp-access-documents@ec.europa.eu |  | Competition/antitrust/state aid files | Pattern/published functional mailbox | 2024-12-15 |

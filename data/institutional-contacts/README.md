@@ -11,7 +11,7 @@ Contact references for EU institutions and agencies involved in citizen engageme
 - Note web portals where relevant (e.g., petitions, Ombudsman).
 
 ## What these contacts are for
-- **Document access (Reg. 1049/2001)**: Functional inboxes to request documents from the Commission (SG or DG-specific), Council, EP, and ECB.
+- **Document access (Reg. 1049/2001)**: EU citizens and residents can request access to EU institution documents. The Regulation sets deadlines (15 working days, extendable) and requires reasoned refusals. Use these functional mailboxes to submit requests to the Commission (SG or DG-specific), Council, EP, and ECB.
 - **DG-specific mailboxes**: Use when your request clearly falls in that policy domain. Examples:
   - Digital/AI/telecom: CNECT
   - Competition/antitrust/state aid: COMP
