@@ -82,5 +82,5 @@ Community contributions welcomed and credited in [CONTRIBUTORS.md](CONTRIBUTORS.
 
 ## Key Artifacts
 
-- Citizen authorship: `docs/manifesto-human-authorship.md`
+- Citizen authorship: `manifesto-human-authorship.md` (root)
 - Ombudsman form guide: `docs/ombudsman-form-guide.md`
