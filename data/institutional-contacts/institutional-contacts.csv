@@ -1,6 +1,15 @@
 institution,unit,role,contact_email,contact_phone,scope,notes,last_verified
 European Commission,Secretariat-General (SG),Document access (Reg. 1049/2001),"sg-acc-doc@ec.europa.eu",,Access to Commission documents (general),"Use for FOI/Reg.1049 requests when DG-specific contact is unknown; prefer DG-specific when available",2024-12-15
 European Commission,Directorate-General (DG) - generic pattern,Document access (Reg. 1049/2001),"<DG>-access-documents@ec.europa.eu",,Access to documents at a specific DG,"Replace <DG> with the DG code (e.g., cnect-access-documents@ec.europa.eu)",2024-12-15
+European Commission,DG CONNECT (CNECT),Document access (Reg. 1049/2001),"cnect-access-documents@ec.europa.eu",,Digital/AI/telecom files,"Pattern/published functional mailbox",2024-12-15
+European Commission,DG COMP (COMP),Document access (Reg. 1049/2001),"comp-access-documents@ec.europa.eu",,Competition/antitrust/state aid files,"Pattern/published functional mailbox",2024-12-15
+European Commission,DG JUST (JUST),Document access (Reg. 1049/2001),"just-access-documents@ec.europa.eu",,Justice/consumer/civil law files,"Pattern/published functional mailbox",2024-12-15
+European Commission,DG HOME (HOME),Document access (Reg. 1049/2001),"home-access-documents@ec.europa.eu",,Home affairs/migration files,"Pattern/published functional mailbox",2024-12-15
+European Commission,DG ENER (ENER),Document access (Reg. 1049/2001),"ener-access-documents@ec.europa.eu",,Energy policy files,"Pattern/published functional mailbox",2024-12-15
+European Commission,DG SANTE (SANTE),Document access (Reg. 1049/2001),"sante-access-documents@ec.europa.eu",,Health policy files,"Pattern/published functional mailbox",2024-12-15
+European Commission,DG MOVE (MOVE),Document access (Reg. 1049/2001),"move-access-documents@ec.europa.eu",,Transport files,"Pattern/published functional mailbox",2024-12-15
+European Commission,DG ENV (ENV),Document access (Reg. 1049/2001),"env-access-documents@ec.europa.eu",,Environment files,"Pattern/published functional mailbox",2024-12-15
+European Commission,DG RTD (RTD),Document access (Reg. 1049/2001),"rtd-access-documents@ec.europa.eu",,Research/Horizon files,"Pattern/published functional mailbox",2024-12-15
 European Parliament,Petitions Committee (PETI),Petitions,"peti-secretariat@ep.europa.eu",,Submit petitions to Parliament,"Online portal: https://petiport.secure.europarl.europa.eu",2024-12-15
 European Parliament,Petitions Committee (PETI),General info,"peti-secretariat@ep.europa.eu",,Petition process guidance,"",2024-12-15
 European Parliament,Document access,Access to EP documents,"AccesDocs@europarl.europa.eu",,Reg. 1049/2001 document access,"",2024-12-15
@@ -9,3 +18,9 @@ European Ombudsman,Complaints,Maladministration complaints,"EO@ombudsman.europa.
 Council of the EU,Public register,Document access,"public.access@consilium.europa.eu",,Reg. 1049/2001 access to Council documents,"",2024-12-15
 European Central Bank,Info desk,Document access/queries,"info@ecb.europa.eu",,ECB documents and info,"",2024-12-15
 asktheeu.org,FOI platform,FOI relay platform,"contact@asktheeu.org",,Unofficial portal that submits/hosts Reg.1049 requests,"Public by default; good for finding similar requests",2024-12-15
+European Parliament,IMCO Secretariat,Committee secretariat,"imco-secretariat@europarl.europa.eu",,Internal Market & Consumer Protection,"Functional mailbox; confirm on EP IMCO page",2024-12-15
+European Parliament,ITRE Secretariat,Committee secretariat,"itre-secretariat@ep.europa.eu",,Industry/Research/Energy,"Functional mailbox; confirm on EP ITRE page",2024-12-15
+European Parliament,LIBE Secretariat,Committee secretariat,"libe-secretariat@ep.europa.eu",,Civil Liberties/Justice/Home Affairs,"Functional mailbox; confirm on EP LIBE page",2024-12-15
+European Parliament,JURI Secretariat,Committee secretariat,"juri-secretariat@ep.europa.eu",,Legal Affairs,"Functional mailbox; confirm on EP JURI page",2024-12-15
+European Parliament,ECON Secretariat,Committee secretariat,"econ-secretariat@ep.europa.eu",,Economic & Monetary Affairs,"Functional mailbox; confirm on EP ECON page",2024-12-15
+ENISA,EU Agency for Cybersecurity,General info/press,"press@enisa.europa.eu",,Cybersecurity agency contact,"For coordination/briefings; confirm channel for formal requests",2024-12-15
