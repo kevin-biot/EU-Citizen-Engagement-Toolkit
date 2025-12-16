@@ -79,3 +79,8 @@ Community contributions welcomed and credited in [CONTRIBUTORS.md](CONTRIBUTORS.
 - **Updates:** Watch this repo for new templates and framework improvements
 
 **This is infrastructure for democratic participation. Use it. Improve it. Share it.**
+
+## Key Artifacts
+
+- Citizen authorship: `docs/manifesto-human-authorship.md`
+- Ombudsman form guide: `docs/ombudsman-form-guide.md`
