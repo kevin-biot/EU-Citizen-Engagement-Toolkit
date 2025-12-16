@@ -1,0 +1,11 @@
+institution,unit,role,contact_email,contact_phone,scope,notes,last_verified
+European Commission,Secretariat-General (SG),Document access (Reg. 1049/2001),"sg-acc-doc@ec.europa.eu",,Access to Commission documents (general),"Use for FOI/Reg.1049 requests when DG-specific contact is unknown; prefer DG-specific when available",2024-12-15
+European Commission,Directorate-General (DG) - generic pattern,Document access (Reg. 1049/2001),"<DG>-access-documents@ec.europa.eu",,Access to documents at a specific DG,"Replace <DG> with the DG code (e.g., cnect-access-documents@ec.europa.eu)",2024-12-15
+European Parliament,Petitions Committee (PETI),Petitions,"peti-secretariat@ep.europa.eu",,Submit petitions to Parliament,"Online portal: https://petiport.secure.europarl.europa.eu",2024-12-15
+European Parliament,Petitions Committee (PETI),General info,"peti-secretariat@ep.europa.eu",,Petition process guidance,"",2024-12-15
+European Parliament,Document access,Access to EP documents,"AccesDocs@europarl.europa.eu",,Reg. 1049/2001 document access,"",2024-12-15
+European Parliament,Petitions portal (web),Petitions (web submission),"",,Submit and track petitions,"Portal: https://petiport.secure.europarl.europa.eu",2024-12-15
+European Ombudsman,Complaints,Maladministration complaints,"EO@ombudsman.europa.eu",+32 2 284 32 33,Ombudsman complaint intake,"Online form: https://secure.ombudsman.europa.eu/en/complaint-form",2024-12-15
+Council of the EU,Public register,Document access,"public.access@consilium.europa.eu",,Reg. 1049/2001 access to Council documents,"",2024-12-15
+European Central Bank,Info desk,Document access/queries,"info@ecb.europa.eu",,ECB documents and info,"",2024-12-15
+asktheeu.org,FOI platform,FOI relay platform,"contact@asktheeu.org",,Unofficial portal that submits/hosts Reg.1049 requests,"Public by default; good for finding similar requests",2024-12-15
