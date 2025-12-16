@@ -12,7 +12,34 @@ Contact references for EU institutions and agencies involved in citizen engageme
 
 ## What these contacts are for
 - **Document access (Reg. 1049/2001)**: Functional inboxes to request documents from the Commission (SG or DG-specific), Council, EP, and ECB.
-- **DG-specific mailboxes (CNECT, COMP, JUST, HOME, ENER, SANTE, MOVE, ENV, RTD, FISMA, TAXUD, GROW, DIGIT, CLIMA)**: Use when your request clearly falls in that policy domain (e.g., digital/AI; competition; justice/consumer; home affairs; energy; health; transport; environment; research; financial services; taxation/customs; internal market/industry/standards; internal IT; climate).
+- **DG-specific mailboxes**: Use when your request clearly falls in that policy domain. Examples:
+  - Digital/AI/telecom: CNECT
+  - Competition/antitrust/state aid: COMP
+  - Justice/consumer/civil law: JUST
+  - Home affairs/migration/security: HOME
+  - Energy: ENER
+  - Health: SANTE (and HERA for health emergencies)
+  - Transport: MOVE
+  - Environment: ENV
+  - Research/Horizon: RTD
+  - Financial services/markets: FISMA
+  - Taxation/customs/digital tax: TAXUD
+  - Internal market/industry/SME/standards: GROW
+  - Internal IT/digital services: DIGIT
+  - Climate/ETS: CLIMA
+  - Education/culture/youth: EAC
+  - Employment/social affairs: EMPL
+  - Eurostat/statistics: ESTAT
+  - Humanitarian aid/civil protection: ECHO
+  - Foreign policy instruments: FPI
+  - HR/internal admin: HR
+  - Maritime/fisheries: MARE
+  - Neighbourhood/enlargement: NEAR
+  - Structural reform/support: REFORM
+  - Trade: TRADE
+  - Defence/space: DEFIS
+  - SME/innovation agency: EISMEA
+- **EP committee secretariats (IMCO, ITRE, LIBE, JURI, ECON)**: For committee process questions, hearing info, and to file submissions relevant to their remit (internal market/consumer, industry/research/energy, civil liberties/data protection, legal affairs, economic/financial).
 - **EP committee secretariats (IMCO, ITRE, LIBE, JURI, ECON)**: For committee process questions, hearing info, and to file submissions relevant to their remit (internal market/consumer, industry/research/energy, civil liberties/data protection, legal affairs, economic/financial).
 - **PETI / petitions**: Submit and track petitions to Parliament (web portal + functional mailbox).
 - **Ombudsman**: Maladministration complaints and follow-up.
