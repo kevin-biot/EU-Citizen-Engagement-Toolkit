@@ -1,4 +1,6 @@
 mep_name,jurisdiction,political_group,email,staff_contact_name,staff_contact_email,staff_contact_phone,policy_briefs,committee_memberships,last_verified,role_tags
-Ilhan KYUCHYUK,Bulgaria,Renew Europe,ilhan.kyuchyuk@europarl.europa.eu,N/A,N/A,N/A,Legal affairs; intellectual property; digital contracts - JURI Committee Chair,JURI (Chair); AFET (Substitute),2024-12-15,juri_chair
+Ilhan KYUCHYUK,Bulgaria,Renew Europe,ilhan.kyuchyuk@europarl.europa.eu,N/A,N/A,N/A,Legal affairs; intellectual property; digital contracts - JURI Committee Chair,JURI; AFET,2024-12-15,chair; juri_chair
+Lukas MANDL,Austria,EPP,lukas.mandl@europarl.europa.eu,N/A,N/A,N/A,Civil liberties; legal affairs; security,LIBE; JURI; SEDE,2024-12-15,vice_chair
+Mario MANTOVANI,Italy,ECR,mario.mantovani@europarl.europa.eu,N/A,N/A,N/A,Legal affairs - JURI Vice-Chair,JURI,2024-12-15,vice_chair
 Victor NEGRESCU,Romania,S&D,victor.negrescu@europarl.europa.eu,N/A,N/A,N/A,"Digital agenda (MEP of the Year 2015), education, budgets, digitalization, innovation",BUDG; JURI; Parliament Bureau (Vice-President),2024-12-15,ep_vice_president
-Emil RADEV,Bulgaria,EPP,emil.radev@europarl.europa.eu,N/A,N/A,N/A,"Legal affairs, civil liberties, judicial cooperation, data protection, rule of law, e-CODEX digital judicial cooperation, AI Act implementation",JURI (Vice-Chair); LIBE; PETI,2024-12-15,juri_vice_chair
+Emil RADEV,Bulgaria,EPP,emil.radev@europarl.europa.eu,N/A,N/A,N/A,"Legal affairs, civil liberties, judicial cooperation, data protection, rule of law, e-CODEX digital judicial cooperation, AI Act implementation",JURI; LIBE; PETI,2024-12-15,juri_vice_chair; vice_chair

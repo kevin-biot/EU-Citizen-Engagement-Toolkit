@@ -19,6 +19,7 @@ Deduplication:
 from __future__ import annotations
 
 import csv
+import re
 from pathlib import Path
 from typing import Iterable, List, Dict
 
@@ -62,6 +63,46 @@ ROLE_TAGS = {
     "axel.voss@europarl.europa.eu": ["ai_act_architect"],
 }
 
+KNOWN_COMMITTEES = {
+    "AFET",
+    "AFCO",
+    "AGRI",
+    "ANIT",
+    "AIDA",
+    "BUDG",
+    "CONT",
+    "CULT",
+    "DEVE",
+    "DROI",
+    "DMER",
+    "EUDS",
+    "ECON",
+    "EMPL",
+    "ENVI",
+    "FEMM",
+    "FISC",
+    "HOUS",
+    "IMCO",
+    "INTA",
+    "ITRE",
+    "JURI",
+    "LIBE",
+    "PECH",
+    "PETI",
+    "REGI",
+    "SANT",
+    "SEDE",
+    "TRAN",
+    "AFET-INT",  # special delegations if present
+    "D-KS",      # delegation Kosovo
+    "Conference of Presidents",
+    "EP Presidency",
+    "EP Vice-President",
+    "EPP Group Leader",
+    "EPP Group Vice-President",
+    "Special Committees",
+}
+
 
 def extract_blocks(md_text: str) -> Iterable[List[str]]:
     """Yield each CSV code block as a list of lines (including header row)."""
@@ -87,6 +128,39 @@ def parse_csv_block(lines: List[str]) -> Iterable[Dict[str, str]]:
     reader = csv.DictReader(lines[1:], fieldnames=header)
     for row in reader:
         yield header, row
+
+
+def normalize_committees(raw: str) -> tuple[str, set[str]]:
+    """Return normalized committee codes (semicolon-separated) and derived role tags."""
+    tokens = []
+    roles = set()
+    for part in re.split(r"[;,]", raw or ""):
+        part = part.strip()
+        if not part or part.lower() == "n/a":
+            continue
+        lower = part.lower()
+        if "chair" in lower:
+            roles.add("chair" if "vice" not in lower else "vice_chair")
+        if "vice-chair" in lower or "vice chair" in lower:
+            roles.add("vice_chair")
+        if "coordinator" in lower:
+            roles.add("coordinator")
+        base = re.split(r"[\\s\\(-]", part, maxsplit=1)[0].strip()
+        base_up = base.upper()
+        if base_up in KNOWN_COMMITTEES:
+            tokens.append(base_up)
+        else:
+            # keep original if unknown
+            tokens.append(part)
+    # de-duplicate while preserving order
+    seen = set()
+    norm_tokens = []
+    for t in tokens:
+        if t in seen:
+            continue
+        seen.add(t)
+        norm_tokens.append(t)
+    return "; ".join(norm_tokens), roles
 
 
 def main() -> None:
@@ -124,14 +198,17 @@ def main() -> None:
             email_key = (row.get("email") or "").lower().strip()
             tags = set(ROLE_TAGS.get(email_key, []))
             pb = (row.get("policy_briefs") or "").lower()
-            cm = (row.get("committee_memberships") or "").lower()
-            if "coordinator" in pb or "coordinator" in cm:
+            cm_norm, cm_roles = normalize_committees(row.get("committee_memberships"))
+            # overwrite committees with normalized tokens
+            row["committee_memberships"] = cm_norm
+            tags.update(cm_roles)
+            if "coordinator" in pb:
                 tags.add("coordinator")
             if "rapporteur" in pb:
                 tags.add("rapporteur")
             if "shadow" in pb:
                 tags.add("shadow_rapporteur")
-            row["role_tags"] = "; ".join(tags)
+            row["role_tags"] = "; ".join(sorted(tags))
             writer.writerow(row)
 
     print(f"Wrote {len(all_rows)} rows to {OUTPUT}")

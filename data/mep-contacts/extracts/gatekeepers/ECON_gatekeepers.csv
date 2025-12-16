@@ -1,3 +1,7 @@
 mep_name,jurisdiction,political_group,email,staff_contact_name,staff_contact_email,staff_contact_phone,policy_briefs,committee_memberships,last_verified,role_tags
-Johan VAN OVERTVELDT,Belgium,ECR,johan.vanovertveldt@europarl.europa.eu,N/A,N/A,N/A,"Budget policy, fiscal affairs, economic governance, research funding",BUDG (Chair); ECON,2024-12-15,budg_chair
-Roberts ZĪLE,Latvia,ECR,roberts.zile@europarl.europa.eu,N/A,N/A,N/A,"Transport, economics, monetary affairs, Baltic relations, digital infrastructure",EP Vice-President; TRAN (Coordinator); ECON (Substitute),2024-12-15,coordinator; ep_vice_president
+Luděk NIEDERMAYER,Czechia,EPP,ludek.niedermayer@europarl.europa.eu,N/A,N/A,N/A,"Economic/monetary affairs, anti-money laundering (lead rapporteur AMLD), tax policy, financial regulation, bank resolution",ECON; FISC; TRAN,2024-12-15,rapporteur; vice_chair
+Ľudovít ÓDOR,Slovakia,Renew,ludovit.odor@europarl.europa.eu,N/A,N/A,N/A,"Economic policy, taxation, financial regulation, internal market, digital economy, fintech",ECON; FISC,2024-12-15,vice_chair
+Evelyn REGNER,Austria,S&D,evelyn.regner@europarl.europa.eu,N/A,N/A,N/A,"Tax justice, corporate taxation, social policy, gender equality, workers' rights, corporate sustainability reporting",ECON; EMPL; FISC; DMER,2024-12-15,chair
+Irene TINAGLI,Italy,S&D,irene.tinagli@europarl.europa.eu,N/A,N/A,N/A,"Economic policy, digital euro, banking regulation, financial services, housing policy, AI in finance",HOUS; ECON; ITRE; ENVI,2024-12-15,chair
+Johan VAN OVERTVELDT,Belgium,ECR,johan.vanovertveldt@europarl.europa.eu,N/A,N/A,N/A,"Budget policy, fiscal affairs, economic governance, research funding",BUDG; ECON,2024-12-15,budg_chair; chair
+Roberts ZĪLE,Latvia,ECR,roberts.zile@europarl.europa.eu,N/A,N/A,N/A,"Transport, economics, monetary affairs, Baltic relations, digital infrastructure",EP Vice-President; TRAN; ECON,2024-12-15,coordinator; ep_vice_president

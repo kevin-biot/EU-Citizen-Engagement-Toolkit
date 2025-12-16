@@ -1,6 +1,10 @@
 mep_name,jurisdiction,political_group,email,staff_contact_name,staff_contact_email,staff_contact_phone,policy_briefs,committee_memberships,last_verified,role_tags
-Monika HOHLMEIER,Germany,EPP,monika.hohlmeier@europarl.europa.eu,N/A,N/A,N/A,Budgetary control; counter-terrorism; security; AI in law enforcement,CONT (Chair); LIBE (Substitute),2024-12-15,cont_chair
-Dolors MONTSERRAT,Spain,EPP,dolors.montserrat@europarl.europa.eu,N/A,N/A,N/A,Petitions; civil liberties - PETI Chair,PETI (Chair); LIBE (Substitute),2024-12-15,peti_chair
-Emil RADEV,Bulgaria,EPP,emil.radev@europarl.europa.eu,N/A,N/A,N/A,"Legal affairs, civil liberties, judicial cooperation, data protection, rule of law, e-CODEX digital judicial cooperation, AI Act implementation",JURI (Vice-Chair); LIBE; PETI,2024-12-15,juri_vice_chair
-Tomas TOBÉ,Sweden,EPP,tomas.tobe@europarl.europa.eu,N/A,N/A,N/A,"Development aid, migration, asylum policy, civil liberties, digital policy",DEVE (Chair); LIBE (Member); ITRE (Substitute); EUDS,2024-12-15,deve_chair
-Sophie WILMÈS,Belgium,Renew Europe,sophie.wilmes@europarl.europa.eu,N/A,N/A,N/A,"Human rights, democracy, rule of law, digital policy, transatlantic relations",EP Vice-President; LIBE (Member); ITRE (Substitute); EUDS,2024-12-15,ep_vice_president
+Monika HOHLMEIER,Germany,EPP,monika.hohlmeier@europarl.europa.eu,N/A,N/A,N/A,Budgetary control; counter-terrorism; security; AI in law enforcement,CONT; LIBE,2024-12-15,chair; cont_chair
+Marina KALJURAND,Estonia,S&D,marina.kaljurand@europarl.europa.eu,N/A,N/A,N/A,Cybersecurity; digital identity; data protection; foreign affairs - Former Foreign Minister,LIBE; IMCO,2024-12-15,vice_chair
+Lukas MANDL,Austria,EPP,lukas.mandl@europarl.europa.eu,N/A,N/A,N/A,Civil liberties; legal affairs; security,LIBE; JURI; SEDE,2024-12-15,vice_chair
+Nikola MINCHEV,Bulgaria,Renew Europe,nikola.minchev@europarl.europa.eu,N/A,N/A,N/A,Internal market; civil liberties - IMCO Vice-Chair; Former Parliament Speaker,IMCO; LIBE,2024-12-15,vice_chair
+Dolors MONTSERRAT,Spain,EPP,dolors.montserrat@europarl.europa.eu,N/A,N/A,N/A,Petitions; civil liberties - PETI Chair,PETI; LIBE,2024-12-15,chair; peti_chair
+Emil RADEV,Bulgaria,EPP,emil.radev@europarl.europa.eu,N/A,N/A,N/A,"Legal affairs, civil liberties, judicial cooperation, data protection, rule of law, e-CODEX digital judicial cooperation, AI Act implementation",JURI; LIBE; PETI,2024-12-15,juri_vice_chair; vice_chair
+Diana RIBA I GINER,Spain,Greens/EFA,diana.ribaiginer@europarl.europa.eu,N/A,N/A,N/A,"Women's rights, human rights, civil liberties, EU-Central America relations",FEMM; LIBE; DCAM (Chair),2024-12-15,chair
+Tomas TOBÉ,Sweden,EPP,tomas.tobe@europarl.europa.eu,N/A,N/A,N/A,"Development aid, migration, asylum policy, civil liberties, digital policy",DEVE; LIBE; ITRE; EUDS,2024-12-15,chair; deve_chair
+Sophie WILMÈS,Belgium,Renew Europe,sophie.wilmes@europarl.europa.eu,N/A,N/A,N/A,"Human rights, democracy, rule of law, digital policy, transatlantic relations",EP Vice-President; LIBE; ITRE; EUDS,2024-12-15,ep_vice_president

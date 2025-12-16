@@ -1,3 +1,7 @@
 mep_name,jurisdiction,political_group,email,staff_contact_name,staff_contact_email,staff_contact_phone,policy_briefs,committee_memberships,last_verified,role_tags
 Anna CAVAZZINI,Germany,Greens/EFA,anna.cavazzini@europarl.europa.eu,N/A,N/A,N/A,Internal market; Consumer protection - IMCO Chair; Digital services; AI governance,IMCO,2024-12-15,imco_chair
-Tsvetelina PENKOVA,Bulgaria,S&D,tsvetelina.penkova@europarl.europa.eu,N/A,N/A,N/A,"Digital policy, AI Act, cybersecurity, energy, research, industry, telecommunications, data governance, consumer protection",ITRE (1st Vice-Chair); IMCO (substitute),2024-12-15,itre_vice_chair
+Maria GRAPINI,Romania,S&D,maria.grapini@europarl.europa.eu,N/A,N/A,N/A,Internal market; consumer protection; SMEs; Digital Services Act,IMCO,2024-12-15,vice_chair
+Marina KALJURAND,Estonia,S&D,marina.kaljurand@europarl.europa.eu,N/A,N/A,N/A,Cybersecurity; digital identity; data protection; foreign affairs - Former Foreign Minister,LIBE; IMCO,2024-12-15,vice_chair
+Nikola MINCHEV,Bulgaria,Renew Europe,nikola.minchev@europarl.europa.eu,N/A,N/A,N/A,Internal market; civil liberties - IMCO Vice-Chair; Former Parliament Speaker,IMCO; LIBE,2024-12-15,vice_chair
+Tsvetelina PENKOVA,Bulgaria,S&D,tsvetelina.penkova@europarl.europa.eu,N/A,N/A,N/A,"Digital policy, AI Act, cybersecurity, energy, research, industry, telecommunications, data governance, consumer protection",ITRE; IMCO,2024-12-15,itre_vice_chair; vice_chair
+Yvan VEROUGSTRAETE,Belgium,Renew Europe,yvan.verougstraete@europarl.europa.eu,N/A,N/A,N/A,"Christian democratic/centrist policies, industry, research",ITRE; IMCO,2024-12-15,vice_chair

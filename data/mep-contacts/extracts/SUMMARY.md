@@ -16,145 +16,49 @@
 - NI: 26
 
 ## Committee mentions (counts of committee strings)
-- AFET: 95
-- ENVI: 84
-- EMPL: 70
-- LIBE: 58
-- AGRI: 57
-- ECON: 56
-- ITRE: 44
-- REGI: 43
-- N/A: 38
-- FEMM: 36
-- BUDG: 35
-- CULT: 34
-- TRAN: 32
-- ITRE (Substitute): 27
-- ITRE (Member): 27
-- LIBE (Member): 26
-- SEDE: 25
-- IMCO: 23
-- IMCO (Substitute): 22
-- LIBE (substitute): 22
-- JURI: 18
-- AFCO: 18
-- CONT: 18
-- IMCO (Member): 17
-- LIBE (Substitute): 14
-- ITRE (substitute): 13
-- INTA: 12
-- PECH: 12
-- IMCO (substitute): 10
-- DROI: 7
-- JURI (substitute): 7
-- DEVE: 6
-- AFET (Substitute): 6
-- EUDS: 6
-- PETI: 6
-- AFET (Member): 5
-- SANT: 5
+- LIBE: 122
+- ITRE: 118
+- AFET: 115
+- ENVI: 98
+- EMPL: 75
+- IMCO: 74
+- AGRI: 62
+- ECON: 60
+- REGI: 46
+- FEMM: 39
+- CULT: 38
+- TRAN: 38
+- JURI: 37
+- BUDG: 37
+- SEDE: 32
+- AFCO: 23
+- CONT: 20
+- INTA: 18
+- PECH: 15
+- DROI: 14
+- SANT: 10
+- EUDS: 9
+- PETI: 9
+- DEVE: 8
 - FISC: 5
-- ENVI (substitute): 5
-- ENVI (Member): 4
-- JURI (Member): 4
-- AFET (substitute): 4
-- ENVI (Substitute): 4
-- DROI (Substitute): 3
-- INTA (Substitute): 3
-- JURI (Substitute): 3
-- TRAN (Substitute): 3
-- SANT (Substitute): 2
-- INTA (Member): 2
-- AGRI (Substitute): 2
-- SANT (Member): 2
-- IMCO (Vice-Chair): 2
+- HOUS: 4
 - Conference of Presidents: 2
-- REGI (Substitute): 2
-- ECON (Substitute): 2
-- HOUS: 2
-- CULT (Substitute): 2
-- JURI (Vice-Chair): 2
 - ANIT: 2
-- PETI (Chair): 2
-- ECON (Vice-Chair): 2
-- AGRI (substitute): 2
-- EMPL (Substitute): 2
-- FEMM (Substitute): 2
 - EP Vice-President: 2
-- SEDE (Member): 1
-- EUDS (Substitute): 1
-- AFCO (Vice-Chair): 1
-- DEVE (Coordinator/Member): 1
-- PECH (Member): 1
-- AFCO (Member) - EP Vice-President: 1
-- ITRE (Vice-Chair): 1
-- AFCO (Member): 1
-- ITRE (Coordinator - Renew): 1
-- CONT (Chair): 1
-- FEMM (Member): 1
-- AFET (First Vice-Chair): 1
-- SANT (Chair): 1
-- LIBE (Vice-Chair): 1
-- EUDS (Vice-Chair): 1
-- JURI (Chair): 1
-- JURI (Member - Coordinator): 1
-- INTA (Chair): 1
-- SEDE (Coordinator): 1
-- AFET (Chair): 1
-- SEDE (Vice-Chair): 1
 - EP Presidency: 1
 - Parliament Bureau (Vice-President): 1
-- AFET (Coordinator): 1
-- ITRE (S&D Coordinator): 1
-- ITRE (Greens/EFA Coordinator): 1
-- DROI (substitute): 1
-- ITRE (ECR Coordinator): 1
-- TRAN (Renew Coordinator): 1
-- AFCO (substitute): 1
-- AFET (2nd Vice-Chair): 1
-- SEDE (substitute): 1
-- ITRE (1st Vice-Chair): 1
-- EMPL (EPP Coordinator): 1
-- DMER (Chair): 1
+- DMER: 1
 - DCAM (Chair): 1
-- TRAN (Vice-Chair): 1
-- REGI (S&D Coordinator): 1
-- PECH (substitute): 1
-- DROI (Chair): 1
-- AFET - Foreign Affairs: 1
-- AFCO (Substitute): 1
-- EMPL (Member): 1
-- SEDE (Substitute): 1
 - D-KS (Chair): 1
-- DROI (Member): 1
-- PECH (Substitute): 1
-- CULT (Member): 1
-- EUDS (Member): 1
-- BUDG (Substitute): 1
-- CULT (Coordinator): 1
-- DROI (1st Vice-Chair): 1
-- CONT (Vice-Chair): 1
-- SEDE (4th Vice-Chair): 1
-- HOUS (Chair): 1
-- DEVE (Chair): 1
-- PETI (Substitute): 1
-- EMPL (Coordinator): 1
-- HOUS (Coordinator): 1
-- ENVI (Coordinator): 1
-- SEDE (2nd Vice-Chair): 1
-- BUDG (Chair): 1
-- ITRE (4th Vice-Chair): 1
-- LIBE (Coordinator for PfE): 1
-- JURI (Coordinator): 1
-- AGRI (Chair): 1
 - EPP Group Leader: 1
 - Special Committees: 1
-- TRAN (Coordinator): 1
-- AIDA (historically): 1
+- AIDA: 1
 - EPP Group Vice-President: 1
 
 ## Role tags
+- vice_chair: 20
 - coordinator: 17
+- chair: 15
 - rapporteur: 8
 - ep_vice_president: 4
 - itre_vice_chair: 2
@@ -198,12 +102,12 @@
 - Spain_meps.csv: 57 rows
 
 ### gatekeepers
-- ECON_gatekeepers.csv: 2 rows
-- IMCO_gatekeepers.csv: 2 rows
-- ITRE_gatekeepers.csv: 7 rows
-- JURI_gatekeepers.csv: 3 rows
-- LIBE_gatekeepers.csv: 5 rows
-- all_gatekeepers.csv: 15 rows
+- ECON_gatekeepers.csv: 6 rows
+- IMCO_gatekeepers.csv: 6 rows
+- ITRE_gatekeepers.csv: 10 rows
+- JURI_gatekeepers.csv: 5 rows
+- LIBE_gatekeepers.csv: 9 rows
+- all_gatekeepers.csv: 27 rows
 
 ### groups
 - ECR_meps.csv: 78 rows
@@ -224,7 +128,7 @@
 
 ### leadership
 - Digital_Committee_Coordinators.csv: 1 rows
-- Digital_Committee_Leadership.csv: 17 rows
+- Digital_Committee_Leadership.csv: 1 rows
 - Digital_Rapporteurs.csv: 5 rows
 - EP_Leadership.csv: 34 rows
 
@@ -241,6 +145,6 @@
 ### strategic
 - AI_Act_Coalition.csv: 280 rows
 - Digital_Rights_Champions.csv: 34 rows
-- EU_AI_Governance_Taskforce.csv: 54 rows
+- EU_AI_Governance_Taskforce.csv: 41 rows
 - Tech_Industry_Contacts.csv: 15 rows
 
