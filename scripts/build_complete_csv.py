@@ -122,7 +122,15 @@ def main() -> None:
         writer.writeheader()
         for row in all_rows.values():
             email_key = (row.get("email") or "").lower().strip()
-            tags = ROLE_TAGS.get(email_key, [])
+            tags = set(ROLE_TAGS.get(email_key, []))
+            pb = (row.get("policy_briefs") or "").lower()
+            cm = (row.get("committee_memberships") or "").lower()
+            if "coordinator" in pb or "coordinator" in cm:
+                tags.add("coordinator")
+            if "rapporteur" in pb:
+                tags.add("rapporteur")
+            if "shadow" in pb:
+                tags.add("shadow_rapporteur")
             row["role_tags"] = "; ".join(tags)
             writer.writerow(row)
 
