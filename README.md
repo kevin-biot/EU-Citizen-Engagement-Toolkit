@@ -84,3 +84,12 @@ Community contributions welcomed and credited in [CONTRIBUTORS.md](CONTRIBUTORS.
 
 - Citizen authorship: `manifesto-human-authorship.md` (root)
 - Ombudsman form guide: `docs/ombudsman-form-guide.md`
+
+## Positioning vs. Other Participation Tools
+
+- **Citizens' Engagement Platform (European Commission)** — Official front door for public debates/consultations/Citizens' Panels. Complementary: this toolkit helps citizens use it effectively and escalate beyond it.
+- **Citizen-Led Action Toolkit (CitiObs, EU-funded)** — Practical guides for community-led environmental monitoring. Parallel: shows demand for actionable toolkits; here the focus is regulatory/legal process navigation.
+- **Your Priorities / Active Citizen (CitizensFoundation)** — Open-source platforms for debate/prioritization. Different domain: provides the tech forum; this toolkit provides the strategic “how” for engagement.
+- **NetZeroCities Engagement Tools (EU Mission)** — Frameworks for cities to engage stakeholders on climate. Different audience: aimed at city admins designing processes; this toolkit empowers individuals to navigate them.
+
+**Unique value:** Self-advocacy and execution-layer know-how for regulatory/legal engagement (DMA/PSD/FOI/Ombudsman/courts), not just structured participation via official portals.
