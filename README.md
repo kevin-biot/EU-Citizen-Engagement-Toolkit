@@ -84,6 +84,7 @@ Community contributions welcomed and credited in [CONTRIBUTORS.md](CONTRIBUTORS.
 
 - Citizen authorship: `manifesto-human-authorship.md` (root)
 - Ombudsman form guide: `docs/ombudsman-form-guide.md`
+- Verticalization guide (fork-and-layer by topic): `docs/topic-verticalization.md`
 
 ## Positioning vs. Other Participation Tools
 

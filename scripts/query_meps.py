@@ -18,11 +18,13 @@ from typing import Dict, Iterable, List
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data" / "mep-contacts"
-INPUT = DATA_DIR / "complete_mep_database.csv"
+INPUT_PRIMARY = DATA_DIR / "complete_mep_database.csv"
+INPUT_TOPICS = DATA_DIR / "complete_mep_database_topics.csv"
 
 
 def load_rows() -> List[Dict[str, str]]:
-    with INPUT.open(newline="", encoding="utf-8") as f:
+    source = INPUT_TOPICS if INPUT_TOPICS.exists() else INPUT_PRIMARY
+    with source.open(newline="", encoding="utf-8") as f:
         return list(csv.DictReader(f))
 
 
@@ -63,6 +65,7 @@ def main() -> None:
     parser.add_argument("--role", help="Role tag or substring (chair, vice, president, coordinator)")
     parser.add_argument("--country", help="Jurisdiction/country")
     parser.add_argument("--policy", help="Substring/regex to match in policy_briefs")
+    parser.add_argument("--topic", help="Topic tag to match in topic_tags (e.g., women-rights)")
     parser.add_argument("--limit", type=int, default=0, help="Limit results")
     args = parser.parse_args()
 
@@ -79,12 +82,23 @@ def main() -> None:
             continue
         if args.policy and not re.search(args.policy, r.get("policy_briefs", ""), re.IGNORECASE):
             continue
+        if args.topic and not re.search(args.topic, r.get("topic_tags", ""), re.IGNORECASE):
+            continue
         results.append(r)
 
     if args.limit:
         results = results[: args.limit]
 
-    cols = ["mep_name", "jurisdiction", "political_group", "email", "committee_memberships", "role_tags", "policy_briefs"]
+    cols = [
+        "mep_name",
+        "jurisdiction",
+        "political_group",
+        "email",
+        "committee_memberships",
+        "role_tags",
+        "policy_briefs",
+        "topic_tags",
+    ]
     for r in results:
         print(" | ".join(r.get(c, "") for c in cols))
     print(f"\nTotal: {len(results)}")
