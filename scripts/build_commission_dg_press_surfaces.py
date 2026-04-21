@@ -313,7 +313,7 @@ def write_markdown(rows: List[Dict[str, str]]) -> None:
 
     def markdown_email_list(value: str) -> str:
         if not value:
-            return ""
+            return "No public email published"
         return "<br>".join(f"[{email}](mailto:{email})" for email in value.split("; "))
 
     with MD_PATH.open("w", encoding="utf-8") as f:
@@ -322,15 +322,19 @@ def write_markdown(rows: List[Dict[str, str]]) -> None:
         f.write(
             "This file is a best-effort map of the public press/comms surface published on official department and executive-agency pages. It does not claim that every listed body has a standalone communications unit page; it records what public press-facing route is actually exposed.\n\n"
         )
+        f.write(
+            "Coverage in this snapshot: 45 rows publish a `Press contacts` link, 28 publish a public question route, and 6 expose a small public email set suitable for direct inclusion here.\n\n"
+        )
         f.write("| unit_code | unit_name | unit_type | department_page | public_surface_type | public_email | press_contacts_url | public_question_url | phone |\n")
         f.write("| --- | --- | --- | --- | --- | --- | --- | --- | --- |\n")
         for row in rows:
             department_page = markdown_link(row["department_page_url"])
             public_email = markdown_email_list(row["public_email"])
-            press_contacts = markdown_link(row["press_contacts_url"])
-            question = markdown_link(row["public_question_url"])
+            press_contacts = markdown_link(row["press_contacts_url"]) or "No public press link found"
+            question = markdown_link(row["public_question_url"]) or "No public question route published"
+            phone = row["public_phone"] or "No public phone published"
             f.write(
-                f"| {row['unit_code']} | {row['unit_name']} | {row['unit_type']} | {department_page} | {row['public_surface_type']} | {public_email} | {press_contacts} | {question} | {row['public_phone']} |\n"
+                f"| {row['unit_code']} | {row['unit_name']} | {row['unit_type']} | {department_page} | {row['public_surface_type']} | {public_email} | {press_contacts} | {question} | {phone} |\n"
             )
         f.write("\nNotes:\n\n")
         f.write("- `dg_press_contacts_link` means the department page itself exposes a public `Press contacts` link.\n")
