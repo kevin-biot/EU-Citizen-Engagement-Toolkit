@@ -12,7 +12,7 @@ This repository provides **templates, guides, and tools** for individuals, small
 
 - **Templates:** Ready-to-use templates for each engagement level (consultations, complaints, court filings)
 - **Guides:** Step-by-step procedures for navigating EU institutions
-- **Data:** MEP contacts, institutional structures, case studies
+- **Data:** MEP contacts, Commission leadership reference, institutional structures, case studies
 - **Scripts:** Deadline calculators, procedural checklists
 - **Examples:** Real-world walkthrough of framework application
 
