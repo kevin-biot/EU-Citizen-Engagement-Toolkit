@@ -10,6 +10,8 @@ This section complements [data/institutional-contacts/institutional-contacts.csv
 - `commission-college.md`: Markdown table view of the College dataset.
 - `commission-cabinet-contacts.csv`: one row per member of the current College, focused on public cabinet inboxes, heads of cabinet, and principal assistant contacts where published.
 - `commission-cabinet-contacts.md`: Markdown table view of the cabinet-contact dataset.
+- `commission-media-surfaces.csv`: journalist- and citizen-rep-facing map of the Commission's main public communication surfaces.
+- `commission-media-surfaces.md`: Markdown table view of the media-surface dataset.
 - `commission-project-groups.csv`: one row per current Commissioners' Project Group membership.
 - `commission-project-groups.md`: Markdown table view of the project-group dataset.
 
@@ -17,6 +19,7 @@ This section complements [data/institutional-contacts/institutional-contacts.csv
 
 - Identify which Commissioner politically owns a topic.
 - Find the most public-facing office-side contact route around a Commissioner where the Commission publishes one.
+- Distinguish between spokesperson, accreditation, audiovisual, country-representation, and non-media public contact routes.
 - See which portfolios are grouped together on cross-cutting files.
 - Map a policy issue from political responsibility to the relevant DG or service.
 - Give citizens a plain-language reference before they move to formal outreach, advocacy, or access-to-documents work.
@@ -25,6 +28,7 @@ This section complements [data/institutional-contacts/institutional-contacts.csv
 
 - Commissioners' Project Groups are internal Commission coordination structures, not European Parliament committees.
 - Not every team page publishes the same contact pattern. Some pages show a generic cabinet inbox; some only expose named staff or a contact page.
+- Commission media surfaces are layered. A spokesperson contact, an accreditation office, a press room, and a country representation are different routes with different functions.
 - For formal outreach or document requests, prefer the functional mailboxes in `data/institutional-contacts/`.
 - Portfolios, service allocations, and project-group memberships can change after reshuffles or new Commission decisions.
 - This is a reference aid, not an authoritative legal source. Check the official Commission pages before filing or campaigning.
