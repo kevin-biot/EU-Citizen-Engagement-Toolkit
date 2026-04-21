@@ -33,15 +33,19 @@ LIST_BASE = "https://commission.europa.eu/about/departments-and-executive-agenci
 BASE_URL = "https://commission.europa.eu"
 LAST_VERIFIED = date.today().isoformat()
 USER_AGENT = "Mozilla/5.0 (compatible; EUCitizenEngagementToolkit/1.0; +https://github.com/kevin-biot/EU-Citizen-Engagement-Toolkit)"
+FETCH_CACHE: Dict[str, str] = {}
 
 
 def fetch(url: str) -> str:
+    if url in FETCH_CACHE:
+        return FETCH_CACHE[url]
     request = Request(url, headers={"User-Agent": USER_AGENT})
     for attempt in range(5):
         try:
             with urlopen(request, timeout=30) as response:
                 body = response.read().decode("utf-8", "ignore")
             time.sleep(1.0)
+            FETCH_CACHE[url] = body
             return body
         except HTTPError as exc:
             if exc.code == 429 and attempt < 4:
@@ -72,22 +76,22 @@ def list_page_urls() -> List[str]:
 
 def parse_directory_entries(page_html: str) -> List[Dict[str, str]]:
     entries: List[Dict[str, str]] = []
+    card_pattern = re.compile(r"<article\s+class=\"ecl-card\".*?</article>", re.S)
+    meta_pattern = re.compile(r'<li class="ecl-content-block__primary-meta-item">(.*?)</li>', re.S)
     title_pattern = re.compile(
         r'<div class="ecl-content-block__title"><a\s+href="([^"]+)"[^>]*>(.*?)</a></div>',
         re.S,
     )
-    meta_pattern = re.compile(r'<li class="ecl-content-block__primary-meta-item">(.*?)</li>', re.S)
 
-    for match in title_pattern.finditer(page_html):
-        context_start = max(0, match.start() - 1200)
-        context = page_html[context_start : match.start()]
-        meta_items = meta_pattern.findall(context)
-        if len(meta_items) < 2:
+    for card in card_pattern.findall(page_html):
+        match = title_pattern.search(card)
+        if not match:
             continue
+        meta_items = [clean_text(item) for item in meta_pattern.findall(card)]
         entries.append(
             {
-                "unit_type": clean_text(meta_items[-2]),
-                "unit_code": normalize_unit_code(clean_text(meta_items[-1])),
+                "unit_type": meta_items[0] if meta_items else "",
+                "unit_code": normalize_unit_code(meta_items[1]) if len(meta_items) > 1 else "",
                 "unit_name": clean_text(match.group(2)),
                 "department_page_url": urljoin(BASE_URL, html.unescape(match.group(1))),
             }
@@ -139,6 +143,64 @@ def extract_phone(page_html: str) -> str:
     return ""
 
 
+def normalize_email(value: str) -> str:
+    value = html.unescape(value)
+    value = re.sub(r"\s+", "", value)
+    value = re.sub(r"(?i)\[(?:at)\]|\((?:at)\)|\{(?:at)\}", "@", value)
+    value = re.sub(r"(?i)\[(?:dot)\]|\((?:dot)\)|\{(?:dot)\}", ".", value)
+    value = value.strip(".,;:()[]<>")
+    return value.lower()
+
+
+def extract_emails(page_html: str) -> List[str]:
+    emails: List[str] = []
+    seen = set()
+    patterns = [
+        r'mailto:([^"?&#\']+)',
+        r"[A-Za-z0-9._%+-]+\s*(?:\[at\]|\(at\)|\{at\}|@)\s*[A-Za-z0-9-]+(?:\s*(?:\[dot\]|\(dot\)|\{dot\}|\.)\s*[A-Za-z0-9-]+)+",
+    ]
+    for pattern in patterns:
+        for match in re.finditer(pattern, page_html, re.I):
+            raw = match.group(1) if match.lastindex else match.group(0)
+            email = normalize_email(raw)
+            if "@" not in email or "." not in email:
+                continue
+            if email in seen:
+                continue
+            seen.add(email)
+            emails.append(email)
+    return emails
+
+
+def extract_public_email(contact_html: str, press_contacts_url: str, question_url: str) -> str:
+    emails: List[str] = []
+    seen = set()
+
+    def add_candidates(candidates: List[str]) -> None:
+        for candidate in candidates:
+            if candidate in seen:
+                continue
+            seen.add(candidate)
+            emails.append(candidate)
+
+    add_candidates(extract_emails(contact_html))
+
+    for url in [press_contacts_url, question_url]:
+        if not url:
+            continue
+        try:
+            linked_html = fetch(url)
+        except Exception:
+            continue
+        linked_emails = extract_emails(linked_html)
+        # Skip very broad central listings that expose many unrelated addresses.
+        if len(linked_emails) > 5:
+            continue
+        add_candidates(linked_emails)
+
+    return "; ".join(emails[:5])
+
+
 def classify_surface(press_contacts_url: str, question_url: str) -> str:
     if press_contacts_url:
         return "dg_press_contacts_link"
@@ -188,14 +250,15 @@ def build_rows() -> List[Dict[str, str]]:
                     "unit_name": entry["unit_name"],
                     "unit_type": entry["unit_type"],
                     "department_page_url": entry["department_page_url"],
-                    "public_surface_type": "external_directory_entry",
-                    "press_contacts_url": "",
-                    "public_question_url": "",
-                    "public_phone": "",
-                    "last_verified": LAST_VERIFIED,
-                    "notes": f"{entry['unit_type']} entry in the official directory, but it points to an external site so no department-page press parsing was attempted.",
-                }
-            )
+                "public_surface_type": "external_directory_entry",
+                "press_contacts_url": "",
+                "public_question_url": "",
+                "public_email": "",
+                "public_phone": "",
+                "last_verified": LAST_VERIFIED,
+                "notes": f"{entry['unit_type']} entry in the official directory, but it points to an external site so no department-page press parsing was attempted.",
+            }
+        )
             continue
 
         page_html = fetch(entry["department_page_url"])
@@ -212,6 +275,7 @@ def build_rows() -> List[Dict[str, str]]:
                 "public_surface_type": classify_surface(press_contacts_url, question_url),
                 "press_contacts_url": press_contacts_url,
                 "public_question_url": question_url,
+                "public_email": extract_public_email(contact_html, press_contacts_url, question_url),
                 "public_phone": phone,
                 "last_verified": LAST_VERIFIED,
                 "notes": note_for_entry(entry["unit_type"], press_contacts_url, question_url),
@@ -233,6 +297,7 @@ def write_csv(rows: List[Dict[str, str]]) -> None:
                 "public_surface_type",
                 "press_contacts_url",
                 "public_question_url",
+                "public_email",
                 "public_phone",
                 "last_verified",
                 "notes",
@@ -243,23 +308,34 @@ def write_csv(rows: List[Dict[str, str]]) -> None:
 
 
 def write_markdown(rows: List[Dict[str, str]]) -> None:
+    def markdown_link(url: str) -> str:
+        return f"[{url}]({url})" if url else ""
+
+    def markdown_email_list(value: str) -> str:
+        if not value:
+            return ""
+        return "<br>".join(f"[{email}](mailto:{email})" for email in value.split("; "))
+
     with MD_PATH.open("w", encoding="utf-8") as f:
         f.write("# Commission Department Press Surfaces (Markdown view)\n\n")
         f.write("Source: data/commission-reference/commission-dg-press-surfaces.csv\n\n")
         f.write(
             "This file is a best-effort map of the public press/comms surface published on official department and executive-agency pages. It does not claim that every listed body has a standalone communications unit page; it records what public press-facing route is actually exposed.\n\n"
         )
-        f.write("| unit_code | unit_name | unit_type | public_surface_type | press_contacts | public_question | phone |\n")
-        f.write("| --- | --- | --- | --- | --- | --- | --- |\n")
+        f.write("| unit_code | unit_name | unit_type | department_page | public_surface_type | public_email | press_contacts_url | public_question_url | phone |\n")
+        f.write("| --- | --- | --- | --- | --- | --- | --- | --- | --- |\n")
         for row in rows:
-            press_contacts = f"[press contacts]({row['press_contacts_url']})" if row["press_contacts_url"] else ""
-            question = f"[public route]({row['public_question_url']})" if row["public_question_url"] else ""
+            department_page = markdown_link(row["department_page_url"])
+            public_email = markdown_email_list(row["public_email"])
+            press_contacts = markdown_link(row["press_contacts_url"])
+            question = markdown_link(row["public_question_url"])
             f.write(
-                f"| {row['unit_code']} | {row['unit_name']} | {row['unit_type']} | {row['public_surface_type']} | {press_contacts} | {question} | {row['public_phone']} |\n"
+                f"| {row['unit_code']} | {row['unit_name']} | {row['unit_type']} | {department_page} | {row['public_surface_type']} | {public_email} | {press_contacts} | {question} | {row['public_phone']} |\n"
             )
         f.write("\nNotes:\n\n")
         f.write("- `dg_press_contacts_link` means the department page itself exposes a public `Press contacts` link.\n")
         f.write("- Many of those links point to the central Commission press-contact system with department-specific filtering, rather than to a standalone DG communications site.\n")
+        f.write("- `public_email` is best-effort: it includes emails published directly on the department page, or on a linked press/public-contact page when that linked page exposes only a small set of clearly relevant addresses.\n")
         f.write("- `public_question_route_only` means a public contact route is exposed, but no dedicated press-contacts link was found on the department page.\n")
         f.write("- `external_directory_entry` means the official directory points outside the main Commission department-page system, so no like-for-like press parsing was attempted.\n")
         f.write("- Executive agencies and service departments are included because they appear in the official departments-and-executive-agencies directory.\n")
