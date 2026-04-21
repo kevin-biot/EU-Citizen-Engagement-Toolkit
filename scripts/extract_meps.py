@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import csv
 import re
+import unicodedata
 from collections import defaultdict
 from pathlib import Path
 from typing import Callable, Dict, Iterable, List
@@ -23,7 +24,8 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data" / "mep-contacts"
 INPUT = DATA_DIR / "complete_mep_database.csv"
 OUT_BASE = DATA_DIR / "extracts"
-COMMITTEES = ["IMCO", "ITRE", "LIBE", "JURI", "ECON"]
+COMMITTEE_INDEX = OUT_BASE / "committees" / "README.md"
+PRIORITY_COMMITTEES = ["IMCO", "ITRE", "LIBE", "JURI", "ECON"]
 TOP_COUNTRIES = ["Germany", "France", "Italy", "Spain", "Poland", "Romania", "Netherlands", "Belgium", "Greece", "Czechia"]
 GATEKEEPER_COMMITTEES = ["IMCO", "ITRE", "LIBE", "JURI", "ECON"]
 
@@ -91,9 +93,70 @@ def filter_committees(patterns: List[str]) -> Callable[[Dict[str, str]], bool]:
     return lambda row: bool(regex.search(row.get("committee_memberships", "")))
 
 
+def committee_tokens(value: str) -> List[str]:
+    return [token.strip() for token in (value or "").split(";") if token.strip()]
+
+
+def has_committee(row: Dict[str, str], committee: str) -> bool:
+    return committee in committee_tokens(row.get("committee_memberships", ""))
+
+
+def all_committees(rows: Iterable[Dict[str, str]]) -> List[str]:
+    committees = {token for row in rows for token in committee_tokens(row.get("committee_memberships", ""))}
+    return sorted(committees)
+
+
+def slugify_committee(token: str) -> str:
+    normalized = unicodedata.normalize("NFKD", token).encode("ascii", "ignore").decode("ascii")
+    slug = re.sub(r"[^A-Za-z0-9]+", "_", normalized).strip("_")
+    return slug or "UNKNOWN"
+
+
+def committee_filename(token: str) -> str:
+    return f"{slugify_committee(token)}_members.csv"
+
+
+def committee_descriptions() -> Dict[str, str]:
+    path = DATA_DIR / "committees.md"
+    descriptions: Dict[str, str] = {}
+    pattern = re.compile(r"^- \*\*(.+?)\*\* — (.+)$")
+    for line in path.read_text(encoding="utf-8").splitlines():
+        match = pattern.match(line.strip())
+        if match:
+            descriptions[match.group(1)] = match.group(2)
+    return descriptions
+
+
+def write_committee_index(committees: List[str], counts: Dict[str, int], rows_with_committees: int) -> None:
+    descriptions = committee_descriptions()
+    ensure_dir(COMMITTEE_INDEX.parent)
+    with COMMITTEE_INDEX.open("w", encoding="utf-8") as f:
+        f.write("# Committee Extracts\n\n")
+        f.write("These CSVs are generated from normalized `committee_memberships` values in `complete_mep_database.csv`.\n\n")
+        f.write(f"- Normalized committee tokens: {len(committees)}\n")
+        f.write(f"- Rows with at least one committee token: {rows_with_committees}\n")
+        f.write("- `IMCO`, `ITRE`, `LIBE`, `JURI`, and `ECON` remain the priority digital-policy committees.\n\n")
+        f.write("Some normalized tokens are leadership bodies or delegations rather than standing committees; they are included because they appear in the canonical committee field.\n\n")
+        f.write("| Token | Rows | CSV | Notes |\n")
+        f.write("| --- | ---: | --- | --- |\n")
+        for committee in committees:
+            notes = descriptions.get(committee, "No human description yet; check `data/mep-contacts/committees.md` or source rows.")
+            f.write(
+                f"| `{committee}` | {counts[committee]} | [{committee_filename(committee)}](./{committee_filename(committee)}) | {notes} |\n"
+            )
+
+
+def has_role_tag(row: Dict[str, str], *tags: str) -> bool:
+    role_tags = {tag.strip().lower() for tag in (row.get("role_tags") or "").split(";") if tag.strip()}
+    return any(tag.lower() in role_tags for tag in tags)
+
+
 def main() -> None:
     rows = load_rows()
     header = list(rows[0].keys()) if rows else []
+    committees = all_committees(rows)
+    committee_counts = {committee: sum(1 for row in rows if has_committee(row, committee)) for committee in committees}
+    rows_with_committees = sum(1 for row in rows if committee_tokens(row.get("committee_memberships", "")))
 
     # Phase 1: Political groups
     group_targets = ["EPP", "S&D", "RENEW", "GREENS_EFA", "ECR", "PFE", "LEFT", "ESN", "NI"]
@@ -133,20 +196,21 @@ def main() -> None:
         write_csv(OUT_BASE / "policy" / name, header, filter(predicate, rows))
 
     # Phase 3: Committees
-    for c in COMMITTEES:
+    for c in committees:
         write_csv(
-            OUT_BASE / "committees" / f"{c}_members.csv",
+            OUT_BASE / "committees" / committee_filename(c),
             header,
-            filter(filter_committees([rf"\b{re.escape(c)}\b"]), rows),
+            filter(lambda row, c=c: has_committee(row, c), rows),
         )
+    write_committee_index(committees, committee_counts, rows_with_committees)
 
     # Phase 4: Leadership and power
     leadership_pred = filter_contains("policy_briefs", ["president", "vice-president", "chair"])
     write_csv(OUT_BASE / "leadership" / "EP_Leadership.csv", header, filter(leadership_pred, rows))
 
     digital_leadership_pred = lambda row: (
-        filter_committees(["IMCO", "ITRE", "LIBE", "JURI"])(row)
-        and filter_contains("committee_memberships", ["Chair", "Vice-Chair"])(row)
+        any(has_committee(row, committee) for committee in ["IMCO", "ITRE", "LIBE", "JURI"])
+        and has_role_tag(row, "chair", "vice_chair")
     )
     write_csv(
         OUT_BASE / "leadership" / "Digital_Committee_Leadership.csv",
@@ -155,8 +219,8 @@ def main() -> None:
     )
 
     coordinators_pred = lambda row: (
-        filter_contains("policy_briefs", ["coordinator"])(row)
-        and filter_committees(["IMCO", "ITRE", "LIBE", "JURI"])(row)
+        has_role_tag(row, "coordinator")
+        and any(has_committee(row, committee) for committee in ["IMCO", "ITRE", "LIBE", "JURI"])
     )
     write_csv(
         OUT_BASE / "leadership" / "Digital_Committee_Coordinators.csv",

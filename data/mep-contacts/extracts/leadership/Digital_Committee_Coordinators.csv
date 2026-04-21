@@ -1,2 +1,13 @@
 mep_name,jurisdiction,political_group,email,staff_contact_name,staff_contact_email,staff_contact_phone,policy_briefs,committee_memberships,last_verified,role_tags
+Christophe GRUDLER,France,Renew Europe,christophe.grudler@europarl.europa.eu,N/A,N/A,N/A,Digital policy; energy; defense; space policy,ITRE; AFET,2024-12-15,coordinator
 Sergey LAGODINSKY,Germany,Greens/EFA,sergey.lagodinsky@europarl.europa.eu,N/A,N/A,N/A,Digital rights; AI liability; data protection; rule of law - JURI Coordinator (Greens); Greens/EFA Vice-Chair,JURI; ITRE; AFET,2024-12-15,coordinator
+Nathalie LOISEAU,France,Renew Europe,nathalie.loiseau@europarl.europa.eu,N/A,N/A,N/A,European security; defense; foreign interference; disinformation; cybersecurity - Former Minister; EU-UK Assembly Chair,AFET; SEDE; LIBE; EUDS,2024-12-15,coordinator
+Hannah NEUMANN,Germany,Greens/EFA,hannah.neumann@europarl.europa.eu,N/A,N/A,N/A,"Human rights, peace policy, security, surveillance technologies (Pegasus inquiry), Middle East policy",AFET; SEDE; LIBE; DROI,2024-12-15,coordinator
+Dan NICA,Romania,S&D,dan.nica@europarl.europa.eu,N/A,N/A,N/A,"Industry and research, digital technology, Horizon Europe, telecommunications, IT infrastructure, European Competitiveness Fund",ITRE; ENVI,2024-12-15,coordinator
+Ville NIINISTÖ,Finland,Greens/EFA,ville.niinisto@europarl.europa.eu,N/A,N/A,N/A,"Climate policy, industrial policy, energy transition, environmental protection, security policy",ITRE; AFET; SEDE,2024-12-15,coordinator
+Daniel OBAJTEK,Poland,ECR,daniel.obajtek@europarl.europa.eu,N/A,N/A,N/A,"Industrial policy, energy, Clean Industrial Deal, EU competitiveness",ITRE; IMCO,2024-12-15,coordinator
+Jan-Christoph OETJEN,Germany,Renew,janchristoph.oetjen@europarl.europa.eu,N/A,N/A,N/A,"Transport policy, mobility, civil liberties, human rights - EP Vice-President",TRAN; LIBE; DROI,2024-12-15,coordinator
+Jana TOOM,Estonia,Renew Europe,jana.toom@europarl.europa.eu,N/A,N/A,N/A,"EU citizenship rights, digital policy, AI governance, stateless persons, data protection",EMPL; PETI; JURI; FEMM; HOUS,2024-12-15,coordinator
+Marie TOUSSAINT,France,Greens/EFA,marie.toussaint@europarl.europa.eu,N/A,N/A,N/A,"Climate justice, ecocide recognition, environmental law, Green Deal, corporate accountability, renewable energy",ENVI; ECON; ITRE; SANT; FISC; HOUS,2024-12-15,coordinator
+Harald VILIMSKY,Austria,PfE,harald.vilimsky@europarl.europa.eu,N/A,N/A,N/A,"National sovereignty, migration control, security",LIBE; AFET,2024-12-15,coordinator
+Axel VOSS,Germany,EPP,axel.voss@europarl.europa.eu,N/A,N/A,N/A,"AI Act, copyright, data protection, digital policy, cybersecurity, GDPR implementation",JURI; IMCO; LIBE,2024-12-15,ai_act_architect; coordinator

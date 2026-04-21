@@ -4,6 +4,7 @@ This folder contains ready-made CSV subsets derived from `complete_mep_database.
 
 ## Where to start
 - **Digital/AI policy**: look first at `committees/IMCO_members.csv`, `ITRE_members.csv`, `LIBE_members.csv`, `JURI_members.csv`, `ECON_members.csv`.
+- **All normalized committee slices**: see `committees/README.md` for the full generated index across every normalized token in `committee_memberships`.
 - **Gatekeepers**: `gatekeepers/all_gatekeepers.csv` plus committee-specific files (e.g., `gatekeepers/IMCO_gatekeepers.csv`). These rely on `role_tags` (chairs/vice-chairs/leadership).
 - **Group alignment**: `groups/*.csv` for political ideology targeting (EPP, S&D, Renew, Greens/EFA, ECR, PFE, LEFT, ESN, NI).
 - **Country relevance**: `countries/*.csv` for national campaigns.

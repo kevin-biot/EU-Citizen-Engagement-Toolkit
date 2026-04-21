@@ -83,11 +83,44 @@
 
 ## Extract files
 ### committees
+- AFCO_members.csv: 23 rows
+- AFET_members.csv: 115 rows
+- AGRI_members.csv: 62 rows
+- AIDA_members.csv: 1 rows
+- ANIT_members.csv: 2 rows
+- BUDG_members.csv: 37 rows
+- CONT_members.csv: 20 rows
+- CULT_members.csv: 38 rows
+- Conference_of_Presidents_members.csv: 2 rows
+- DCAM_Chair_members.csv: 1 rows
+- DEVE_members.csv: 8 rows
+- DMER_members.csv: 1 rows
+- DROI_members.csv: 14 rows
+- D_KS_Chair_members.csv: 1 rows
 - ECON_members.csv: 60 rows
+- EMPL_members.csv: 75 rows
+- ENVI_members.csv: 98 rows
+- EPP_Group_Leader_members.csv: 1 rows
+- EPP_Group_Vice_President_members.csv: 1 rows
+- EP_Presidency_members.csv: 1 rows
+- EP_Vice_President_members.csv: 2 rows
+- EUDS_members.csv: 9 rows
+- FEMM_members.csv: 39 rows
+- FISC_members.csv: 5 rows
+- HOUS_members.csv: 4 rows
 - IMCO_members.csv: 74 rows
+- INTA_members.csv: 18 rows
 - ITRE_members.csv: 118 rows
 - JURI_members.csv: 37 rows
 - LIBE_members.csv: 122 rows
+- PECH_members.csv: 15 rows
+- PETI_members.csv: 9 rows
+- Parliament_Bureau_Vice_President_members.csv: 1 rows
+- REGI_members.csv: 46 rows
+- SANT_members.csv: 10 rows
+- SEDE_members.csv: 32 rows
+- Special_Committees_members.csv: 1 rows
+- TRAN_members.csv: 38 rows
 
 ### countries
 - Belgium_meps.csv: 22 rows
@@ -127,8 +160,8 @@
 - Telecommunications_Digital_Transformation.csv: 8 rows
 
 ### leadership
-- Digital_Committee_Coordinators.csv: 1 rows
-- Digital_Committee_Leadership.csv: 1 rows
+- Digital_Committee_Coordinators.csv: 12 rows
+- Digital_Committee_Leadership.csv: 17 rows
 - Digital_Rapporteurs.csv: 5 rows
 - EP_Leadership.csv: 34 rows
 
@@ -145,6 +178,6 @@
 ### strategic
 - AI_Act_Coalition.csv: 280 rows
 - Digital_Rights_Champions.csv: 34 rows
-- EU_AI_Governance_Taskforce.csv: 41 rows
+- EU_AI_Governance_Taskforce.csv: 54 rows
 - Tech_Industry_Contacts.csv: 15 rows
 
