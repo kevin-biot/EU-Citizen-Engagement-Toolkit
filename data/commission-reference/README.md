@@ -8,12 +8,15 @@ This section complements [data/institutional-contacts/institutional-contacts.csv
 
 - `commission-college.csv`: one row per member of the current College of Commissioners, with portfolio and lead supporting services.
 - `commission-college.md`: Markdown table view of the College dataset.
+- `commission-cabinet-contacts.csv`: one row per member of the current College, focused on public cabinet inboxes, heads of cabinet, and principal assistant contacts where published.
+- `commission-cabinet-contacts.md`: Markdown table view of the cabinet-contact dataset.
 - `commission-project-groups.csv`: one row per current Commissioners' Project Group membership.
 - `commission-project-groups.md`: Markdown table view of the project-group dataset.
 
 ## What This Helps With
 
 - Identify which Commissioner politically owns a topic.
+- Find the most public-facing office-side contact route around a Commissioner where the Commission publishes one.
 - See which portfolios are grouped together on cross-cutting files.
 - Map a policy issue from political responsibility to the relevant DG or service.
 - Give citizens a plain-language reference before they move to formal outreach, advocacy, or access-to-documents work.
@@ -21,6 +24,7 @@ This section complements [data/institutional-contacts/institutional-contacts.csv
 ## Important Limits
 
 - Commissioners' Project Groups are internal Commission coordination structures, not European Parliament committees.
+- Not every team page publishes the same contact pattern. Some pages show a generic cabinet inbox; some only expose named staff or a contact page.
 - For formal outreach or document requests, prefer the functional mailboxes in `data/institutional-contacts/`.
 - Portfolios, service allocations, and project-group memberships can change after reshuffles or new Commission decisions.
 - This is a reference aid, not an authoritative legal source. Check the official Commission pages before filing or campaigning.

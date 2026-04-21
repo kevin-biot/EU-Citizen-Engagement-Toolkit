@@ -6,5 +6,5 @@ Structured reference data used by the toolkit, including contact lists, politica
 
 - `mep-contacts/`: Parliament-side reference data, extracts, and committee mappings.
 - `institutional-contacts/`: Functional mailboxes, portals, and access-to-documents routes.
-- `commission-reference/`: Current College of Commissioners and current Commissioners' Project Groups.
+- `commission-reference/`: Current College of Commissioners, cabinet contacts, and current Commissioners' Project Groups.
 - `case-studies/`: Example or supporting reference material.
