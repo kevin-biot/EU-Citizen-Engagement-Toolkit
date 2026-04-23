@@ -13,6 +13,7 @@ This repository provides **templates, guides, and tools** for individuals, small
 - **Templates:** Ready-to-use templates for each engagement level (consultations, complaints, court filings)
 - **Guides:** Step-by-step procedures for navigating EU institutions
 - **Data:** MEP contacts, Commission leadership reference, community contact routes, national authority routing, institutional structures, case studies
+- **Local MCP Server:** A repo-native MCP package for Claude/Codex-style local agents to query playbooks, templates, datasets, contacts, and routing guidance
 - **Scripts:** Deadline calculators, procedural checklists
 - **Examples:** Real-world walkthrough of framework application
 
@@ -87,6 +88,7 @@ Community contributions welcomed and credited in [CONTRIBUTORS.md](CONTRIBUTORS.
 - Verticalization guide (fork-and-layer by topic): `docs/topic-verticalization.md`
 - Citizen digital needs roadmap: `docs/citizen-digital-needs-roadmap.md`
 - Digital issue playbooks: `docs/digital-issues/`
+- Local MCP server: `mcp-server/README.md`
 
 ## Positioning vs. Other Participation Tools
 
