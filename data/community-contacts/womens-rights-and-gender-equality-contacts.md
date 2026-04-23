@@ -14,6 +14,7 @@ How to use this file:
 Important:
 - These are public routes, not a promise of individual legal representation.
 - EIGE is an EU agency and evidence source, not a campaigning organisation.
+- For a wider federation layer beyond these core routes, see [ewl-member-network.md](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/data/community-contacts/ewl-member-network.md:1).
 
 | Organization | Scope | Audience | Public Contact | Phone | Notes | Source |
 | --- | --- | --- | --- | --- | --- | --- |
