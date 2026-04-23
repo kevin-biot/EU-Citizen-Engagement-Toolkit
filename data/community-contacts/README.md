@@ -5,6 +5,7 @@ Public-facing contact routes for European digital-rights groups, journalism-supp
 This section is meant to help citizens, community organisers, and journalists find legitimate public contact surfaces when they need:
 - a press contact for a digital-rights issue
 - a civil-society organisation active on EU digital policy
+- a women’s-rights or gender-equality organisation with a public EU-facing route
 - a journalist-support organisation
 - an EU-policy newsroom or secure tip route
 
@@ -16,14 +17,17 @@ This section is meant to help citizens, community organisers, and journalists fi
 - `issue-specific-contact-bundles.md`: human-readable Markdown view of the bundle layer
 - `national-digital-rights-organisations.csv`: starter country-by-country directory of public digital-rights organisations
 - `national-digital-rights-organisations.md`: human-readable Markdown view of the national organisation layer
+- `womens-rights-and-gender-equality-contacts.csv`: starter directory of EU-facing women’s-rights, gender-equality, and anti-violence public routes
+- `womens-rights-and-gender-equality-contacts.md`: human-readable Markdown view of the women’s-rights layer
 
 ## Intended Use
 
 Use this section to:
 - identify a public-interest organisation that may already work on a digital-rights issue
+- identify an EU-facing women’s-rights or gender-equality route before falling back to a general inbox
 - find a public press or editorial route when community action needs media visibility
 - distinguish between general, press, help, support, and secure-tip channels
-- move from an issue type like privacy, AI accountability, platform harms, or journalist safety to a short list of public routes
+- move from an issue type like privacy, AI accountability, platform harms, women’s rights, or journalist safety to a short list of public routes
 - identify a likely national civil-society organisation before escalating to Brussels-only routes
 - start outreach without relying on private or scraped personal contacts
 

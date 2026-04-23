@@ -3,8 +3,8 @@
 Problem-first routing map for citizens, community organisers, and journalists who need a short list of public-interest contacts by issue type.
 
 Coverage in this pass:
-- `5` bundles
-- `24` public routes
+- `6` bundles
+- `30` public routes
 - mix of EU-level organisations, national digital-rights groups, journalism-support organisations, and EU-facing newsrooms
 
 How to use this file:
@@ -15,6 +15,17 @@ How to use this file:
 Important:
 - These organisations are not interchangeable. Some are advocacy networks, some are watchdogs, some are journalist-support bodies, and some are newsrooms.
 - A listed route is not a promise of casework, legal representation, or publication.
+
+## Women's Rights And Gender Equality
+
+| Organisation | Scope | Contact | Why This Route |
+| --- | --- | --- | --- |
+| European Women's Lobby (EWL) | `eu_level / general` | `ewl@womenlobby.org` | Strong Brussels-facing umbrella route for women’s rights and gender-equality advocacy |
+| Women Against Violence Europe (WAVE) | `eu_level / general` | `office@wave-network.org` | Useful for violence-against-women policy, service-network support, and European coordination |
+| WAVE Find Help Database | `europe / find_help` | <https://wave-network.org/find-help/> | Useful when the immediate need is survivor support or country-level specialist service signposting |
+| European Network of Migrant Women (ENOMW) | `eu_level / general` | `info@migrantwomennetwork.org` | Useful where women’s rights issues are intertwined with migration, asylum, racism, or refugee protection |
+| Equality Now | `europe / press` | `press@equalitynow.org` | Useful for legal-equality, sexual-violence, and harmful-practices advocacy with a Europe-facing contact route |
+| European Institute for Gender Equality (EIGE) | `eu_agency / evidence_and_media` | `eige.sec@eige.europa.eu` | Useful when the need is data, indicators, or institutional background on gender equality rather than campaigning outreach |
 
 ## Privacy And Data Protection
 
