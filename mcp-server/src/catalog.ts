@@ -160,6 +160,10 @@ function parseCsv(text: string): Record<string, string>[] {
     });
 }
 
+export function readCsvFile(filePath: string): Record<string, string>[] {
+  return parseCsv(readText(filePath));
+}
+
 function csvTitleFromSlug(slug: string): string {
   return slug
     .split("-")
@@ -182,7 +186,7 @@ function loadDatasets(repoRoot: string): DatasetSummary[] {
 
     for (const csvName of csvNames) {
       const absolutePath = path.join(sectionDir, csvName);
-      const rows = parseCsv(readText(absolutePath));
+      const rows = readCsvFile(absolutePath);
       const columns = rows[0] ? Object.keys(rows[0]) : [];
       output.push({
         slug: slugFromFilename(csvName),
@@ -259,7 +263,7 @@ function loadContactRows(repoRoot: string): ContactRow[] {
   ];
 
   return contactFiles.flatMap((filePath) =>
-    parseCsv(readText(filePath)).map((row) => ({
+    readCsvFile(filePath).map((row) => ({
       ...row,
       __source_path: filePath,
     })),

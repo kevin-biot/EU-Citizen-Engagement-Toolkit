@@ -34,6 +34,7 @@ This MCP server turns the repo into a local assistant surface that can:
 - `get_email_template`
 - `list_datasets`
 - `get_dataset`
+- `query_dataset`
 - `find_contacts`
 - `get_authorities`
 - `route_issue`

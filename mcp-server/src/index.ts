@@ -7,6 +7,7 @@ import {
   buildCatalog,
   getDatasetBySlug,
   getItemBySlug,
+  readCsvFile,
   type DatasetSummary,
   type RepoItem,
 } from "./catalog.js";
@@ -169,6 +170,65 @@ server.tool(
 );
 
 server.tool(
+  "query_dataset",
+  "Query a structured CSV dataset by slug with simple equals or contains filters.",
+  {
+    slug: z
+      .string()
+      .describe("Dataset slug, for example complete_mep_database_topics"),
+    filters: z
+      .array(
+        z.object({
+          column: z.string().describe("Dataset column name"),
+          equals: z.string().optional().describe("Exact case-insensitive match"),
+          contains: z
+            .string()
+            .optional()
+            .describe("Case-insensitive substring match"),
+        }),
+      )
+      .optional()
+      .describe("Optional list of filters combined with AND logic"),
+    limit: z
+      .number()
+      .int()
+      .min(1)
+      .max(200)
+      .optional()
+      .describe("Maximum number of rows to return, default 50"),
+  },
+  async ({ slug, filters = [], limit = 50 }) => {
+    const dataset = getDatasetBySlug(catalog.datasets, slug);
+    if (!dataset) {
+      return notFound("dataset", slug);
+    }
+
+    const rows = readCsvFile(dataset.path);
+    const matchedRows = rows.filter((row) =>
+      filters.every((filter) => {
+        const value = (row[filter.column] ?? "").toLowerCase();
+        if (filter.equals !== undefined) {
+          return value === filter.equals.toLowerCase();
+        }
+        if (filter.contains !== undefined) {
+          return value.includes(filter.contains.toLowerCase());
+        }
+        return true;
+      }),
+    );
+
+    return jsonResult({
+      ok: true,
+      dataset: shortDataset(dataset),
+      filters,
+      matched_rows: matchedRows.length,
+      returned_rows: Math.min(limit, matchedRows.length),
+      rows: matchedRows.slice(0, limit),
+    });
+  },
+);
+
+server.tool(
   "route_issue",
   "Suggest the closest issue-router entries and playbooks for a short problem description.",
   {
@@ -271,7 +331,7 @@ server.tool(
       guidance: [
         "Use the template structure and preserve legal/procedural caveats.",
         "Ground the draft in the user facts and avoid inventing dates, references, or legal claims.",
-        "Quote or cite the local file paths returned in this packet when explaining the draft.",
+        "Use the local file paths in this packet for analysis and provenance only, not in the final outward-facing draft.",
       ],
       packet: {
         template_body: template.body,
