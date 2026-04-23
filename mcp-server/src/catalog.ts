@@ -262,12 +262,50 @@ function loadContactRows(repoRoot: string): ContactRow[] {
     ),
   ];
 
-  return contactFiles.flatMap((filePath) =>
+  const baseRows = contactFiles.flatMap((filePath) =>
     readCsvFile(filePath).map((row) => ({
       ...row,
       __source_path: filePath,
+      __contact_index: "general",
     })),
   );
+
+  const mepPath = path.join(
+    repoRoot,
+    "data",
+    "mep-contacts",
+    "complete_mep_database_topics.csv",
+  );
+  const mepRows = readCsvFile(mepPath).map((row) => ({
+    ...row,
+    organization: row.mep_name,
+    public_contact: row.email,
+    public_phone:
+      row.staff_contact_phone && row.staff_contact_phone !== "N/A"
+        ? row.staff_contact_phone
+        : "",
+    contact_scope: "political_office",
+    audience: "citizens; journalists; civil society",
+    focus: [row.policy_briefs, row.topic_tags, row.committee_memberships]
+      .filter(Boolean)
+      .join("; "),
+    notes: [
+      row.political_group ? `Political group: ${row.political_group}` : "",
+      row.staff_contact_name && row.staff_contact_name !== "N/A"
+        ? `Staff contact: ${row.staff_contact_name}`
+        : "",
+      row.staff_contact_email && row.staff_contact_email !== "N/A"
+        ? `Staff email: ${row.staff_contact_email}`
+        : "",
+      row.role_tags ? `Roles: ${row.role_tags}` : "",
+    ]
+      .filter(Boolean)
+      .join(" | "),
+    __source_path: mepPath,
+    __contact_index: "mep_political",
+  }));
+
+  return [...baseRows, ...mepRows];
 }
 
 export function buildCatalog(repoRoot: string): Catalog {

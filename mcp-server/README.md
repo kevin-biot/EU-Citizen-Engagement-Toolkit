@@ -40,6 +40,11 @@ This MCP server turns the repo into a local assistant surface that can:
 - `route_issue`
 - `build_draft_packet`
 
+`find_contacts` searches across:
+- community contact routes
+- institutional and Commission-facing contacts
+- the topic-tagged MEP contact database
+
 ## Install
 
 ```bash
