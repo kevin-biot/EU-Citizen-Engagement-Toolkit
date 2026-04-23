@@ -44,3 +44,7 @@ Ask for:
 - timing of review
 - internal complaint route
 - whether trusted-flagger or escalation mechanisms exist for this issue type
+
+## Template Email
+
+- [Email template for illegal content or notice-and-action problem](./email-templates/illegal-content-and-dsa-email.md)

@@ -45,3 +45,7 @@ Ask for:
 - whether automation was used
 - whether a human review took place
 - how to challenge the outcome
+
+## Template Email
+
+- [Email template for platform account suspension or removal](./email-templates/platform-account-suspension-email.md)

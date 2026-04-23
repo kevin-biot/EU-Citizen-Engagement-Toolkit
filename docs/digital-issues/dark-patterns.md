@@ -42,3 +42,7 @@ Ask for:
 - confirmation of consent records
 - lawful basis for processing
 - copy of cancellation flow and policy basis
+
+## Template Email
+
+- [Email template for dark patterns and manipulative design](./email-templates/dark-patterns-email.md)

@@ -46,3 +46,7 @@ Ask for:
 - refund basis and deadline
 - governing terms shown at purchase
 - internal decision record if the platform rejected your claim
+
+## Template Email
+
+- [Email template for cross-border online consumer dispute](./email-templates/cross-border-consumer-dispute-email.md)

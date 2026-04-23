@@ -43,3 +43,7 @@ Ask for:
 - retention periods
 - recipients or categories of recipients
 - complaint contact for the competent DPA
+
+## Template Email
+
+- [Email template for data access, deletion, or profiling problem](./email-templates/gdpr-data-rights-email.md)

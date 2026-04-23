@@ -15,6 +15,11 @@ These are not legal opinions. They are action guides that help a person identify
 - [Inaccessible digital service or app](./digital-accessibility-failure.md)
 - [Cross-border online consumer dispute](./cross-border-consumer-dispute.md)
 
+## Email Templates
+
+- [Template email index](./email-templates/README.md)
+- Each playbook now links to a matching starter email for the first direct ask
+
 ## How To Use These
 
 Start with the playbook that matches the problem you actually experienced.

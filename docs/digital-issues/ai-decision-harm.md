@@ -43,3 +43,7 @@ Ask for:
 - review and correction route
 - record of the grounds used
 - contact point for complaints
+
+## Template Email
+
+- [Email template for AI decision harm or opaque automated output](./email-templates/ai-decision-harm-email.md)

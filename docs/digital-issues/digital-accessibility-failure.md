@@ -42,3 +42,7 @@ Ask for:
 - remediation timeline
 - responsible accessibility contact
 - copy of the accessibility statement
+
+## Template Email
+
+- [Email template for inaccessible digital service or app](./email-templates/digital-accessibility-failure-email.md)

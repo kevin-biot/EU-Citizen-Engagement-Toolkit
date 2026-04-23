@@ -42,3 +42,7 @@ Ask for:
 - refund or charge reversal
 - trader identification information if lawfully available
 - copy of the platform's internal decision
+
+## Template Email
+
+- [Email template for online scam, fake seller, or marketplace failure](./email-templates/online-scam-and-marketplace-harm-email.md)
