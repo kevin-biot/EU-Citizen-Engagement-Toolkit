@@ -12,7 +12,7 @@ This repository provides **templates, guides, and tools** for individuals, small
 
 - **Templates:** Ready-to-use templates for each engagement level (consultations, complaints, court filings)
 - **Guides:** Step-by-step procedures for navigating EU institutions
-- **Data:** MEP contacts, Commission leadership reference, institutional structures, case studies
+- **Data:** MEP contacts, Commission leadership reference, national authority routing, institutional structures, case studies
 - **Scripts:** Deadline calculators, procedural checklists
 - **Examples:** Real-world walkthrough of framework application
 
@@ -85,6 +85,8 @@ Community contributions welcomed and credited in [CONTRIBUTORS.md](CONTRIBUTORS.
 - Citizen authorship: `manifesto-human-authorship.md` (root)
 - Ombudsman form guide: `docs/ombudsman-form-guide.md`
 - Verticalization guide (fork-and-layer by topic): `docs/topic-verticalization.md`
+- Citizen digital needs roadmap: `docs/citizen-digital-needs-roadmap.md`
+- Digital issue playbooks: `docs/digital-issues/`
 
 ## Positioning vs. Other Participation Tools
 
