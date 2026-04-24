@@ -75,6 +75,7 @@ Main route:
 - email template: [gdpr-data-rights-email.md](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/docs/digital-issues/email-templates/gdpr-data-rights-email.md:1)
 - issue bundle seed: [issue-specific-contact-bundles.csv](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/data/community-contacts/issue-specific-contact-bundles.csv:1)
 - national authority summary: [national-digital-authorities.csv](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/data/national-authorities/national-digital-authorities.csv:1)
+- DPA complaint-entry pass: [dpa-complaint-routes.md](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/data/national-authorities/dpa-complaint-routes.md:1)
 
 ## Key Files In This Campaign
 

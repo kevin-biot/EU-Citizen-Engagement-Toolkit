@@ -18,6 +18,8 @@ Citizens often need to identify:
 
 - `national-digital-authorities.csv`: first-pass per-country digital enforcement directory
 - `national-digital-authorities.md`: human-readable Markdown view of the same authority directory
+- `dpa-complaint-routes.csv`: first campaign-ready map of official GDPR complaint entry routes for high-use Member States
+- `dpa-complaint-routes.md`: human-readable Markdown view of the DPA complaint-entry layer
 - `national-cpc-authorities.csv`: detailed CPC consumer-protection entries from the official Commission source
 - `national-cpc-authorities.md`: human-readable Markdown view of the CPC layer
 - `national-equality-bodies.csv`: official Commission-listed national equality bodies

@@ -31,6 +31,7 @@ Controller ask:
 DPA ask:
 
 - investigate and progress the complaint
+- use the correct official intake route and channel for the target country: [dpa-complaint-routes.md](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/data/national-authorities/dpa-complaint-routes.md:1)
 
 NGO ask:
 

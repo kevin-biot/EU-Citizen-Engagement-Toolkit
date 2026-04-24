@@ -10,7 +10,7 @@ Use this as the working queue for slow harvest runs.
 Why it matters:
 - campaign execution depends on knowing the real authority intake routes and expected steps
 Status:
-- partially covered through national authority summary, not yet campaign-ready
+- all `27` Member States now mapped in `dpa-complaint-routes.{csv,md}`, but `Belgium`, `Cyprus`, `Finland`, and `Hungary` still need a cleaner or more stable complaint-entry pass
 
 - stronger GDPR-specific journalist and newsroom routes
 Why it matters:
@@ -51,6 +51,18 @@ Status:
 ### Pass 1
 
 Harvest one country family at a time for DPA intake and escalation details.
+
+Current state:
+- first family integrated: `France`, `Germany`, `Ireland`, `Italy`, `Netherlands`, `Spain`, `Poland`
+- second family mostly integrated: `Austria`, `Belgium`, `Denmark`, `Sweden`
+- third family integrated or partially integrated: `Finland`, `Luxembourg`, `Portugal`, `Czechia`, `Slovakia`
+- fourth family integrated: `Croatia`, `Estonia`, `Latvia`, `Lithuania`, `Romania`
+- fifth family integrated: `Bulgaria`, `Cyprus`, `Greece`, `Hungary`, `Malta`, `Slovenia`
+
+Next family:
+- `Belgium` portal re-check after `May 8, 2026`
+- cleanup pass for `Cyprus`, `Finland`, and `Hungary`
+- build a lightweight script or schema note for future DPA-route refreshes
 
 ### Pass 2
 
