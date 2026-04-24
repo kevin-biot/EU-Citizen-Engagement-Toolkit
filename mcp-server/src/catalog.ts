@@ -270,6 +270,48 @@ function loadContactRows(repoRoot: string): ContactRow[] {
     })),
   );
 
+  const ewlPath = path.join(
+    repoRoot,
+    "data",
+    "community-contacts",
+    "ewl-member-network.csv",
+  );
+  const ewlRows = readCsvFile(ewlPath).map((row) => ({
+    ...row,
+    organization: row.member_name,
+    country: row.country_or_label,
+    public_contact_type: "contact_page",
+    public_contact: row.listed_website,
+    public_page: row.listed_website,
+    audience: "citizens; civil society; journalists",
+    focus: "women's rights; gender equality; EWL member network",
+    notes: "Listed on the European Women's Lobby membership directory.",
+    __source_path: ewlPath,
+    __contact_index: "womens_member_network",
+  }));
+
+  const equalityPath = path.join(
+    repoRoot,
+    "data",
+    "national-authorities",
+    "national-equality-bodies.csv",
+  );
+  const equalityRows = readCsvFile(equalityPath).map((row) => ({
+    ...row,
+    organization: row.body_name,
+    country: row.country_name,
+    public_contact_type: "contact_page",
+    public_contact: row.website_urls,
+    public_page: row.website_urls,
+    audience: "citizens; civil society",
+    focus: ["women's rights", "gender equality", row.body_description]
+      .filter(Boolean)
+      .join("; "),
+    notes: row.notes,
+    __source_path: equalityPath,
+    __contact_index: "national_equality_body",
+  }));
+
   const mepPath = path.join(
     repoRoot,
     "data",
@@ -305,7 +347,7 @@ function loadContactRows(repoRoot: string): ContactRow[] {
     __contact_index: "mep_political",
   }));
 
-  return [...baseRows, ...mepRows];
+  return [...baseRows, ...ewlRows, ...equalityRows, ...mepRows];
 }
 
 export function buildCatalog(repoRoot: string): Catalog {

@@ -268,13 +268,16 @@ server.tool(
       .describe("Optional country filter such as France or Poland"),
   },
   async ({ topic, audience, country }) => {
-    const matches = findRelevantContacts(catalog, topic, audience, country);
+    const result = findRelevantContacts(catalog, topic, audience, country);
     return jsonResult({
       ok: true,
       topic,
       audience,
       country,
-      matches: matches.map(({ score, row }) => ({
+      country_filter_mode: country ? "soft_hint_with_diagnostics" : "none",
+      country_matches_found: result.countryMatchesFound,
+      fallback_strategy: result.fallbackStrategy,
+      matches: result.matches.map(({ score, row }) => ({
         score,
         row,
       })),

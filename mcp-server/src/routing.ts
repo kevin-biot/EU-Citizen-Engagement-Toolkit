@@ -8,6 +8,24 @@ function tokenize(value: string): string[] {
     .filter((token) => token.length > 1);
 }
 
+function normalizeCountry(value: string): string {
+  const normalized = value
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  const aliases: Record<string, string> = {
+    "czech republic": "czechia",
+    "republic of north macedonia": "north macedonia",
+    "fyrom": "north macedonia",
+    "united kingdom": "uk",
+    "great britain": "uk",
+  };
+
+  return aliases[normalized] ?? normalized;
+}
+
 function scoreText(haystack: string, needles: string[]): number {
   const lower = haystack.toLowerCase();
   let score = 0;
@@ -86,21 +104,71 @@ export function findRelevantContacts(
   audience?: string,
   country?: string,
 ) {
-  const needles = tokenize([topic, audience ?? "", country ?? ""].join(" "));
-  const countryLower = country?.toLowerCase();
+  const topicNeedles = tokenize(topic);
+  const audienceNeedles = tokenize(audience ?? "");
+  const normalizedCountry = country ? normalizeCountry(country) : undefined;
+  const countryFields = [
+    "country",
+    "country_name",
+    "country_or_label",
+    "jurisdiction",
+  ];
 
-  return catalog.contactRows
+  const ranked = catalog.contactRows
     .map((row) => {
       const searchable = Object.values(row).join(" ").toLowerCase();
-      let score = scoreText(searchable, needles);
+      const countryValues = countryFields
+        .map((field) => row[field] ?? "")
+        .filter(Boolean);
+      const exactCountryMatch = normalizedCountry
+        ? countryValues.some((value) => normalizeCountry(value) === normalizedCountry)
+        : false;
+      const topicScore = scoreText(searchable, topicNeedles);
+      const audienceScore = audienceNeedles.length > 0 ? scoreText(searchable, audienceNeedles) : 0;
+      let score = topicScore + (audienceScore > 0 ? 1 : 0);
 
-      if (countryLower && searchable.includes(countryLower)) {
-        score += 3;
+      if (exactCountryMatch) {
+        score += 5;
+      } else if (normalizedCountry && searchable.includes(normalizedCountry)) {
+        score += 2;
       }
 
-      return { row, score };
+      return {
+        row: {
+          ...row,
+          __country_match: exactCountryMatch ? "exact" : "none",
+          __country_values: countryValues.join(" | "),
+        },
+        score,
+        topicScore,
+        exactCountryMatch,
+      };
     })
-    .filter((item) => item.score > 0)
-    .sort((a, b) => b.score - a.score)
-    .slice(0, 10);
+    .filter((item) => item.topicScore > 0 || item.exactCountryMatch)
+    .sort((a, b) => {
+      const aCountryAndTopic = a.exactCountryMatch && a.topicScore > 0;
+      const bCountryAndTopic = b.exactCountryMatch && b.topicScore > 0;
+      if (aCountryAndTopic !== bCountryAndTopic) {
+        return aCountryAndTopic ? -1 : 1;
+      }
+      if (a.topicScore !== b.topicScore) {
+        return b.topicScore - a.topicScore;
+      }
+      if (a.exactCountryMatch !== b.exactCountryMatch) {
+        return a.exactCountryMatch ? -1 : 1;
+      }
+      return b.score - a.score;
+    });
+
+  const countryMatchesFound = ranked.filter((item) => item.exactCountryMatch).length;
+  const matches = ranked.slice(0, 10);
+
+  return {
+    matches,
+    countryMatchesFound,
+    fallbackStrategy:
+      country && countryMatchesFound === 0
+        ? "No country-specific matches were indexed for this query; broader EU-level or cross-border results were returned."
+        : null,
+  };
 }
