@@ -372,6 +372,26 @@ function loadContactRows(repoRoot: string): ContactRow[] {
     __contact_index: "issue_bundle",
   }));
 
+  const gdprSupportPath = path.join(
+    repoRoot,
+    "data",
+    "community-contacts",
+    "gdpr-privacy-enforcement-support-routes.csv",
+  );
+  const gdprSupportRows = readCsvFile(gdprSupportPath).map((row) => ({
+    ...row,
+    organization: row.organization,
+    country: row.org_scope,
+    public_contact_type: row.contact_scope,
+    public_contact: row.public_contact,
+    public_page: row.public_page,
+    audience: row.audience,
+    focus: [row.focus, row.recommended_use, row.org_scope].filter(Boolean).join("; "),
+    notes: [row.recommended_use, row.notes].filter(Boolean).join(" | "),
+    __source_path: gdprSupportPath,
+    __contact_index: "gdpr_privacy_support",
+  }));
+
   const institutionalPath = path.join(
     repoRoot,
     "data",
@@ -590,6 +610,7 @@ function loadContactRows(repoRoot: string): ContactRow[] {
     ...ewlRows,
     ...equalityRows,
     ...bundleRows,
+    ...gdprSupportRows,
     ...institutionalRows,
     ...collegeRows,
     ...cabinetRows,

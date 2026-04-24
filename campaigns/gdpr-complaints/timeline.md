@@ -24,6 +24,7 @@
 - move to NGO validation or support
 - prepare a public-interest framing note
 - identify whether the problem is company abuse, cross-border stalling, or regulator failure
+- if the case is cross-border, use [one-stop-shop.md](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/campaigns/gdpr-complaints/one-stop-shop.md:1) before assuming which authority should be lead
 
 ## Phase 5: Public Or Political Pressure
 

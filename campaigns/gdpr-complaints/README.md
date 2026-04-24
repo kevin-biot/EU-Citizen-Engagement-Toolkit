@@ -74,8 +74,10 @@ Main route:
 - primary issue playbook: [gdpr-data-rights.md](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/docs/digital-issues/gdpr-data-rights.md:1)
 - email template: [gdpr-data-rights-email.md](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/docs/digital-issues/email-templates/gdpr-data-rights-email.md:1)
 - issue bundle seed: [issue-specific-contact-bundles.csv](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/data/community-contacts/issue-specific-contact-bundles.csv:1)
+- GDPR enforcement support routes: [gdpr-privacy-enforcement-support-routes.md](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/data/community-contacts/gdpr-privacy-enforcement-support-routes.md:1)
 - national authority summary: [national-digital-authorities.csv](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/data/national-authorities/national-digital-authorities.csv:1)
 - DPA complaint-entry pass: [dpa-complaint-routes.md](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/data/national-authorities/dpa-complaint-routes.md:1)
+- cross-border and one-stop-shop reference: [gdpr-cross-border-reference.md](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/data/national-authorities/gdpr-cross-border-reference.md:1)
 
 ## Key Files In This Campaign
 
@@ -83,8 +85,27 @@ Main route:
 - [evidence.md](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/campaigns/gdpr-complaints/evidence.md:1)
 - [messages.md](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/campaigns/gdpr-complaints/messages.md:1)
 - [timeline.md](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/campaigns/gdpr-complaints/timeline.md:1)
+- [one-stop-shop.md](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/campaigns/gdpr-complaints/one-stop-shop.md:1)
 - [escalation.md](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/campaigns/gdpr-complaints/escalation.md:1)
+- [emails/README.md](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/campaigns/gdpr-complaints/emails/README.md:1)
 - [missing-data.md](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/campaigns/gdpr-complaints/missing-data.md:1)
+
+## Support Routes Added In Pass 2
+
+- targeted GDPR escalation routes: [gdpr-privacy-enforcement-support-routes.md](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/data/community-contacts/gdpr-privacy-enforcement-support-routes.md:1)
+- focused bundle for strategic escalation: `GDPR Enforcement Pressure` in [issue-specific-contact-bundles.md](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/data/community-contacts/issue-specific-contact-bundles.md:1)
+
+## Email Templates Added In Pass 3
+
+- DPA follow-up after silence
+- privacy NGO support request
+- journalist pitch for GDPR under-enforcement
+- MEP oversight-pressure email
+
+## Cross-Border Reference Added In Pass 4
+
+- practical campaign guide: [one-stop-shop.md](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/campaigns/gdpr-complaints/one-stop-shop.md:1)
+- official-source reference index: [gdpr-cross-border-reference.md](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/data/national-authorities/gdpr-cross-border-reference.md:1)
 
 ## Success Conditions
 

@@ -3,8 +3,8 @@
 Problem-first routing map for citizens, community organisers, and journalists who need a short list of public-interest contacts by issue type.
 
 Coverage in this pass:
-- `6` bundles
-- `30` public routes
+- `7` bundles
+- `41` public routes
 - mix of EU-level organisations, national digital-rights groups, journalism-support organisations, and EU-facing newsrooms
 
 How to use this file:
@@ -15,6 +15,22 @@ How to use this file:
 Important:
 - These organisations are not interchangeable. Some are advocacy networks, some are watchdogs, some are journalist-support bodies, and some are newsrooms.
 - A listed route is not a promise of casework, legal representation, or publication.
+
+## GDPR Enforcement Pressure
+
+| Organisation | Scope | Contact | Why This Route |
+| --- | --- | --- | --- |
+| noyb | `eu_level / general` | `info@noyb.eu` | Strong route when a GDPR complaint is substantive, cross-border, or likely to expose wider enforcement failure |
+| European Digital Rights (EDRi) | `eu_level / press` | `press@edri.org` | Useful when a GDPR issue needs coalition amplification, Brussels framing, or links to wider digital-rights governance |
+| Access Now | `international / help` | `help@accessnow.org` | Useful when the complainant, journalist, or source faces digital-security risk, retaliation, or sensitive evidence-handling problems |
+| AlgorithmWatch | `eu_level / general` | `info@algorithmwatch.org` | Useful where GDPR enforcement failures overlap with profiling, recommender systems, adtech, or automated decisions |
+| Irish Council for Civil Liberties (ICCL) | `ireland / general` | `info@iccl.ie` | Useful where adtech, real-time bidding, surveillance, or wider civil-liberties implications matter |
+| Bits of Freedom | `netherlands / general` | `info@bitsoffreedom.nl` | Useful for Dutch privacy and platform-power issues and wider policy advocacy |
+| Panoptykon Foundation | `poland / general` | `fundacja@panoptykon.org` | Useful when privacy and surveillance concerns need watchdog attention or public-interest framing in Poland and at EU level |
+| La Quadrature du Net | `france / general` | `contact@laquadrature.net` | Useful for French digital-freedom, privacy, surveillance, or anti-profiling questions with campaign potential |
+| Statewatch | `europe / secure` | `secure@statewatch.org` | Useful when the case overlaps with surveillance, policing, borders, secrecy, or sensitive material that needs encrypted handling |
+| Investigate Europe | `europe / contact` | `mail@investigate-europe.eu` | Useful when the case has cross-border public-interest value rather than only one national complainant |
+| Lighthouse Reports | `europe / secure_tip` | `lighthouse.proton@protonmail.com` | Useful when source protection matters or the evidence may support a deeper cross-border investigation |
 
 ## Women's Rights And Gender Equality
 
@@ -78,4 +94,5 @@ Important:
 
 ## Last Verified
 
-- `2026-04-23`
+- `2026-04-24` for newly added GDPR enforcement routes
+- `2026-04-23` for existing bundles

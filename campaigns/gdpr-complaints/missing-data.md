@@ -16,13 +16,13 @@ Status:
 Why it matters:
 - privacy and enforcement stories need specialist handling
 Status:
-- partial through general community/media routes
+- integrated through `gdpr-privacy-enforcement-support-routes.{csv,md}` and the `GDPR Enforcement Pressure` bundle, but still partial for country-specific specialist privacy desks
 
 - regulator-delay and under-enforcement templates
 Why it matters:
 - current repo is stronger on first complaint than on stalled-case pressure
 Status:
-- gap
+- integrated for core English campaign use through `campaigns/gdpr-complaints/emails/`, but still partial for country-specific or ombudsman-adjacent variants
 
 ### Medium
 
@@ -30,7 +30,7 @@ Status:
 Why it matters:
 - large-platform GDPR campaigns often become cross-border quickly
 Status:
-- partial, not yet assembled into campaign-ready guidance
+- integrated through `campaigns/gdpr-complaints/one-stop-shop.md` and `data/national-authorities/gdpr-cross-border-reference.{csv,md}`, but still partial for controller-specific establishment mapping
 
 - more national privacy-rights organisation coverage beyond current bundle countries
 Why it matters:

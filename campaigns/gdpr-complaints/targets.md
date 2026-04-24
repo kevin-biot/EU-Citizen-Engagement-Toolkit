@@ -29,6 +29,7 @@ Desired output:
 - acknowledgement
 - case reference
 - visible progression
+- where relevant, clarity on whether the matter is being treated as cross-border or one-stop-shop
 
 ## Secondary Targets
 

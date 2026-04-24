@@ -13,6 +13,8 @@ This section is meant to help citizens, community organisers, and journalists fi
 
 - `eu-digital-rights-and-media-contacts.csv`: structured starter directory of public contact routes
 - `eu-digital-rights-and-media-contacts.md`: human-readable Markdown view of the same directory
+- `gdpr-privacy-enforcement-support-routes.csv`: campaign-focused privacy-enforcement, watchdog, and newsroom routes for GDPR escalation
+- `gdpr-privacy-enforcement-support-routes.md`: human-readable Markdown view of the GDPR-enforcement support layer
 - `issue-specific-contact-bundles.csv`: problem-first routing map across rights groups, journalism-support organisations, and newsrooms
 - `issue-specific-contact-bundles.md`: human-readable Markdown view of the bundle layer
 - `national-digital-rights-organisations.csv`: starter country-by-country directory of public digital-rights organisations
@@ -28,6 +30,7 @@ Use this section to:
 - identify a public-interest organisation that may already work on a digital-rights issue
 - identify an EU-facing women’s-rights or gender-equality route before falling back to a general inbox
 - move from a core women’s-rights route to a wider federation of listed women’s organisations
+- identify the right support routes when a GDPR complaint becomes cross-border, stalled, sensitive, or media-relevant
 - find a public press or editorial route when community action needs media visibility
 - distinguish between general, press, help, support, and secure-tip channels
 - move from an issue type like privacy, AI accountability, platform harms, women’s rights, or journalist safety to a short list of public routes
