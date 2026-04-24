@@ -46,15 +46,15 @@ This file keeps one row per project-group membership. `group_role` shows whether
 | Democracy | member | Magnus Brunner | Internal Affairs and Migration | 2025-01-07 | 2026-04-21 |
 | Democracy | member | Ekaterina Zaharieva | Startups, Research and Innovation | 2025-01-07 | 2026-04-21 |
 | Democracy | chair | Michael McGrath | Democracy, Justice, the Rule of Law and Consumer Protection | 2025-01-07 | 2026-04-21 |
-| Skills | Jobs and Social Rights | member | Teresa Ribera, Clean, Just and Competitive Transition | 2025-01-07 | 2026-04-21 |
-| Skills | Jobs and Social Rights | member | Henna Virkkunen, Tech Sovereignty, Security and Democracy | 2025-01-07 | 2026-04-21 |
-| Skills | Jobs and Social Rights | member | Stéphane Séjourné, Prosperity and Industrial Strategy | 2025-01-07 | 2026-04-21 |
-| Skills | Jobs and Social Rights | chair | Roxana Mînzatu, Social Rights and Skills, Quality Jobs and Preparedness | 2025-01-07 | 2026-04-21 |
-| Skills | Jobs and Social Rights | member | Raffaele Fitto, Cohesion and Reforms | 2025-01-07 | 2026-04-21 |
-| Skills | Jobs and Social Rights | member | Valdis Dombrovskis, Economy and Productivity; Implementation and Simplification | 2025-01-07 | 2026-04-21 |
-| Skills | Jobs and Social Rights | member | Hadja Lahbib, Equality; Preparedness and Crisis Management | 2025-01-07 | 2026-04-21 |
-| Skills | Jobs and Social Rights | member | Magnus Brunner, Internal Affairs and Migration | 2025-01-07 | 2026-04-21 |
-| Skills | Jobs and Social Rights | member | Glenn Micallef, Intergenerational Fairness, Youth, Culture and Sport | 2025-01-07 | 2026-04-21 |
+| Skills, Jobs and Social Rights | member | Teresa Ribera | Clean, Just and Competitive Transition | 2025-01-07 | 2026-04-21 |
+| Skills, Jobs and Social Rights | member | Henna Virkkunen | Tech Sovereignty, Security and Democracy | 2025-01-07 | 2026-04-21 |
+| Skills, Jobs and Social Rights | member | Stéphane Séjourné | Prosperity and Industrial Strategy | 2025-01-07 | 2026-04-21 |
+| Skills, Jobs and Social Rights | chair | Roxana Mînzatu | Social Rights and Skills, Quality Jobs and Preparedness | 2025-01-07 | 2026-04-21 |
+| Skills, Jobs and Social Rights | member | Raffaele Fitto | Cohesion and Reforms | 2025-01-07 | 2026-04-21 |
+| Skills, Jobs and Social Rights | member | Valdis Dombrovskis | Economy and Productivity; Implementation and Simplification | 2025-01-07 | 2026-04-21 |
+| Skills, Jobs and Social Rights | member | Hadja Lahbib | Equality; Preparedness and Crisis Management | 2025-01-07 | 2026-04-21 |
+| Skills, Jobs and Social Rights | member | Magnus Brunner | Internal Affairs and Migration | 2025-01-07 | 2026-04-21 |
+| Skills, Jobs and Social Rights | member | Glenn Micallef | Intergenerational Fairness, Youth, Culture and Sport | 2025-01-07 | 2026-04-21 |
 | Preparedness Union | member | Kaja Kallas | Foreign Affairs and Security Policy | 2025-01-07 | 2026-04-21 |
 | Preparedness Union | member | Roxana Mînzatu | Social Rights and Skills, Quality Jobs and Preparedness | 2025-01-07 | 2026-04-21 |
 | Preparedness Union | member | Henna Virkkunen | Tech Sovereignty, Security and Democracy | 2025-01-07 | 2026-04-21 |

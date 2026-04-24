@@ -7,6 +7,7 @@ Source files:
 - data/mep-contacts/mep-database-step-2.md
 - data/mep-contacts/mep-database-step-3.md
 - data/mep-contacts/mep-database-step-4.md
+- data/mep-contacts/mep-database-step-5.md
 
 Output:
 - data/mep-contacts/complete_mep_database.csv
@@ -32,36 +33,24 @@ SOURCE_FILES = [
     DATA_DIR / "mep-database-step-2.md",
     DATA_DIR / "mep-database-step-3.md",
     DATA_DIR / "mep-database-step-4.md",
+    DATA_DIR / "mep-database-step-5.md",
 ]
 
-ROLE_TAGS = {
+STATIC_ROLE_TAGS = {
     "roberta.metsola@europarl.europa.eu": ["ep_president"],
     "sophie.wilmes@europarl.europa.eu": ["ep_vice_president"],
     "victor.negrescu@europarl.europa.eu": ["ep_vice_president"],
     "jan-christoph.oetjen@europarl.europa.eu": ["ep_vice_president"],
     "younous.omarjee@europarl.europa.eu": ["ep_vice_president"],
     "roberts.zile@europarl.europa.eu": ["ep_vice_president"],
-    "david.mcallister@europarl.europa.eu": ["afet_chair"],
-    "bernd.lange@europarl.europa.eu": ["inta_chair"],
-    "ilhan.kyuchyuk@europarl.europa.eu": ["juri_chair"],
-    "monika.hohlmeier@europarl.europa.eu": ["cont_chair"],
-    "adam.jarubas@europarl.europa.eu": ["sant_chair"],
-    "dolors.montserrat@europarl.europa.eu": ["peti_chair"],
-    "borys.budka@europarl.europa.eu": ["itre_chair"],
-    "anna.cavazzini@europarl.europa.eu": ["imco_chair"],
-    "tomas.tobe@europarl.europa.eu": ["deve_chair"],
-    "johan.vanovertveldt@europarl.europa.eu": ["budg_chair"],
-    "veronika.vrecionova@europarl.europa.eu": ["agri_chair"],
-    "tsvetelina.penkova@europarl.europa.eu": ["itre_vice_chair"],
-    "elena.donazzan@europarl.europa.eu": ["itre_vice_chair"],
-    "emil.radev@europarl.europa.eu": ["juri_vice_chair"],
-    "riho.terras@europarl.europa.eu": ["sede_vice_chair"],
     # Rapporteurs / key files (digital)
     "andreas.schwab@europarl.europa.eu": ["dma_rapporteur"],
     "christel.schaldemose@europarl.europa.eu": ["dsa_rapporteur"],
     "brando.benifei@europarl.europa.eu": ["ai_act_co_rapporteur"],
     "axel.voss@europarl.europa.eu": ["ai_act_architect"],
 }
+
+COMMITTEE_LEADERSHIP_TAGS = DATA_DIR / "committee-leadership-tags.csv"
 
 KNOWN_COMMITTEES = {
     "AFET",
@@ -163,9 +152,25 @@ def normalize_committees(raw: str) -> tuple[str, set[str]]:
     return "; ".join(norm_tokens), roles
 
 
+def load_role_tags() -> Dict[str, List[str]]:
+    role_tags = {email: tags[:] for email, tags in STATIC_ROLE_TAGS.items()}
+    if COMMITTEE_LEADERSHIP_TAGS.exists():
+        with COMMITTEE_LEADERSHIP_TAGS.open(newline="", encoding="utf-8") as handle:
+            for row in csv.DictReader(handle):
+                email = (row.get("email") or "").lower().strip()
+                tag = (row.get("role_tag") or "").strip()
+                if not email or not tag:
+                    continue
+                role_tags.setdefault(email, [])
+                if tag not in role_tags[email]:
+                    role_tags[email].append(tag)
+    return role_tags
+
+
 def main() -> None:
     all_rows: Dict[str, Dict[str, str]] = {}
     master_header: List[str] | None = None
+    role_tags_by_email = load_role_tags()
 
     for path in SOURCE_FILES:
         text = path.read_text(encoding="utf-8")
@@ -196,7 +201,7 @@ def main() -> None:
         writer.writeheader()
         for row in all_rows.values():
             email_key = (row.get("email") or "").lower().strip()
-            tags = set(ROLE_TAGS.get(email_key, []))
+            tags = set(role_tags_by_email.get(email_key, []))
             pb = (row.get("policy_briefs") or "").lower()
             cm_norm, cm_roles = normalize_committees(row.get("committee_memberships"))
             # overwrite committees with normalized tokens

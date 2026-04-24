@@ -4,32 +4,76 @@
 
 ## What This Is
 
-This repository provides **templates, guides, and tools** for individuals, small groups, and SMEs to engage effectively with EU regulatory processes—from public consultations to judicial review—without requiring expensive legal representation.
+This repository provides **templates, guides, datasets, and local tooling** for individuals, community groups, journalists, advocates, and SMEs who need to engage effectively with EU institutions and adjacent national enforcement routes.
 
-**Key Innovation:** Combines existing EU engagement mechanisms with AI-assisted capability to reduce costs from €50K-150K to under €550 while maintaining procedural compliance and quality.
+It now covers both:
+
+- **process navigation**: consultations, complaints, access-to-documents, Ombudsman routes, public-interest outreach
+- **contact and routing infrastructure**: MEPs, Commission leadership and media surfaces, national digital authorities, public-interest organisations, and issue-specific escalation bundles
+
+**Key innovation:** combines existing EU engagement mechanisms with AI-assisted capability so people can act with institutional awareness and procedural discipline without needing a large legal or lobbying budget.
 
 ## What You'll Find Here
 
-- **Templates:** Ready-to-use templates for each engagement level (consultations, complaints, court filings)
-- **Guides:** Step-by-step procedures for navigating EU institutions
-- **Data:** MEP contacts, Commission leadership reference, community contact routes, national authority routing, institutional structures, case studies
-- **Local MCP Server:** A repo-native MCP package for Claude/Codex-style local agents to query playbooks, templates, datasets, contacts, and routing guidance
-- **Scripts:** Deadline calculators, procedural checklists
-- **Examples:** Real-world walkthrough of framework application
+- **Templates:** ready-to-use filings, complaint skeletons, and administrative correspondence
+- **Guides:** practical walkthroughs for EU institutional processes
+- **Digital Issue Playbooks:** citizen-facing guides for platform harms, GDPR issues, scams, accessibility failures, AI harms, and cross-border consumer problems
+- **Outreach Templates:** short emails for MEPs, committee coordinators, journalists, NGOs, and Commission process challenges
+- **Reference Data:** Parliament, Commission, national-authority, and community-contact layers
+- **Issue Bundles:** curated contact bundles with `why_this_route` logic
+- **Local MCP Server:** a repo-native MCP package for Claude/Codex-style local agents to query playbooks, templates, datasets, contacts, bundles, and routing guidance
+- **Scripts:** data builders, extractors, and validation utilities
+
+## Repository Map
+
+- `templates/`: formal drafting templates by escalation level
+- `docs/`: narrative guides, digital issue playbooks, and outreach email templates
+- `data/`: structured reference data and contact layers
+- `mcp-server/`: local MCP package exposing the repo as a structured assistant surface
+- `scripts/`: builders, extractors, validators, and maintenance scripts
+
+## Data Coverage
+
+Current data layers include:
+
+- **Parliament-side reference**: MEP contact database, topic tags, committee extracts, committee leadership tags
+- **Commission reference**: College of Commissioners, cabinet contacts, spokesperson roster, DG press surfaces, Commissioners' Project Groups
+- **National authority routing**: Digital Services Coordinators, DPAs, competition authorities, CPC consumer authorities, equality bodies, and web-accessibility bodies
+- **Community escalation routes**: digital-rights groups, journalism-support organisations, women’s-rights and equality routes, EWL member-network references, and issue-specific contact bundles
+- **Institutional routes**: functional mailboxes, secretariats, and access-to-documents surfaces
+
+## Documentation Coverage
+
+Current docs now include:
+
+- getting-started material
+- digital-issue playbooks
+- outreach email templates
+- citizen digital support roadmap
+- MCP install and usage guides
 
 ## Quick Start
 
-1. **Identify your engagement level** - See [Escalation Ladder](docs/escalation-ladder.md)
-2. **Choose appropriate template** - Navigate to `templates/level-X/`
-3. **Customize with AI assistance** - See [AI Assistance Guide](docs/ai-assistance-guide.md)
-4. **Follow submission procedures** - Each template includes filing instructions
-5. **Document your experience** - Help improve these resources for others
+1. **Identify the issue or route you need**
+See `docs/` for playbooks and process guidance.
+
+2. **Choose the right source layer**
+Use `data/` for contacts, authorities, Commission/Parliament references, and escalation bundles.
+
+3. **Choose or assemble the right draft**
+Use `templates/`, `docs/digital-issues/email-templates/`, or `docs/outreach-email-templates/`.
+
+4. **Use the MCP server if you want AI assistance grounded in the repo**
+See `mcp-server/README.md`, `mcp-server/INSTALL.md`, and `mcp-server/USER_GUIDE.md`.
+
+5. **Verify before sending**
+This repo helps with routing and drafting, but you still need to check official requirements and current institutional guidance.
 
 ## Current Status
 
-**Version:** 1.0 (Framework + Initial Templates)  
+**Version:** 1.x (Framework + active data and MCP tooling)  
 **Status:** Community development phase  
-**Validated:** Framework reviewed, templates in pilot testing  
+**Validated:** Framework in use; datasets and MCP server under active iteration  
 **Languages:** English (translations welcomed as contributions)
 
 ## Contributing
@@ -47,6 +91,8 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 ## Important Disclaimers
 
 ⚠️ **This is not legal advice.** These are informational templates and guides.
+
+⚠️ **This is not medical or financial advice.** The MCP server now explicitly marks those queries as out of scope.
 
 ⚠️ **You use these at your own risk.** Always verify against official institutional guidance.
 
@@ -81,14 +127,19 @@ Community contributions welcomed and credited in [CONTRIBUTORS.md](CONTRIBUTORS.
 
 **This is infrastructure for democratic participation. Use it. Improve it. Share it.**
 
-## Key Artifacts
+## Key Entry Points
 
 - Citizen authorship: `manifesto-human-authorship.md` (root)
 - Ombudsman form guide: `docs/ombudsman-form-guide.md`
 - Verticalization guide (fork-and-layer by topic): `docs/topic-verticalization.md`
 - Citizen digital needs roadmap: `docs/citizen-digital-needs-roadmap.md`
 - Digital issue playbooks: `docs/digital-issues/`
+- Outreach email templates: `docs/outreach-email-templates/`
+- Data index: `data/README.md`
+- Docs index: `docs/README.md`
 - Local MCP server: `mcp-server/README.md`
+- MCP install guide: `mcp-server/INSTALL.md`
+- MCP user guide: `mcp-server/USER_GUIDE.md`
 
 ## Positioning vs. Other Participation Tools
 
