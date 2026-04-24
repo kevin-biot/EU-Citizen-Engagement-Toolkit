@@ -191,6 +191,7 @@ Current values include:
 
 Examples:
 
+- `list_start_here`
 - `list_playbooks`
 - `list_templates`
 - `list_templates_by_use_case`
@@ -208,6 +209,7 @@ Pattern:
 
 Examples:
 
+- `get_start_here`
 - `get_playbook`
 - `get_template`
 - `recommend_template`
@@ -227,6 +229,7 @@ Pattern:
 
 Examples:
 
+- `recommend_start_here`
 - `list_templates_by_use_case`
 - `recommend_template`
 

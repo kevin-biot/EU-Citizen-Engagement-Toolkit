@@ -12,3 +12,4 @@ Use ADRs to understand why the current design exists and what constraints future
 - [ADR-0004: Confidence and out-of-scope signaling in search](</Users/kevinbrown/EU-Citizen-Engagement-Toolkit/mcp-server/docs/adr/0004-confidence-and-out-of-scope-signals.md>)
 - [ADR-0005: Metadata-driven template selection](</Users/kevinbrown/EU-Citizen-Engagement-Toolkit/mcp-server/docs/adr/0005-metadata-driven-template-selection.md>)
 - [ADR-0006: Data-driven campaign decision layer](</Users/kevinbrown/EU-Citizen-Engagement-Toolkit/mcp-server/docs/adr/0006-campaign-decision-layer.md>)
+- [ADR-0007: Citizen-first cartography layer](</Users/kevinbrown/EU-Citizen-Engagement-Toolkit/mcp-server/docs/adr/0007-citizen-first-cartography.md>)

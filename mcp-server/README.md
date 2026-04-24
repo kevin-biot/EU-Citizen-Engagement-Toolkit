@@ -17,6 +17,7 @@ The toolkit is useful as a repository, but communities still need help finding t
 
 This MCP server turns the repo into a local assistant surface that can:
 
+- list and recommend citizen-first start-here pages
 - list and retrieve playbooks
 - list and retrieve templates across filing, outreach, and campaign families
 - recommend templates from a metadata-driven selector layer
@@ -37,6 +38,9 @@ This MCP server turns the repo into a local assistant surface that can:
 
 - `list_playbooks`
 - `get_playbook`
+- `list_start_here`
+- `get_start_here`
+- `recommend_start_here`
 - `list_templates`
 - `get_template`
 - `list_templates_by_use_case`
@@ -76,6 +80,8 @@ This MCP server turns the repo into a local assistant surface that can:
 `assess_campaign_stage`, `recommend_next_step`, and `recommend_escalation` expose the first campaign decision layer, using:
 - [gdpr-campaign-stages.csv](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/data/campaign-selector/gdpr-campaign-stages.csv)
 - [gdpr-next-step-rules.csv](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/data/campaign-selector/gdpr-next-step-rules.csv)
+
+`list_start_here`, `get_start_here`, and `recommend_start_here` mirror the citizen-first documentation front door in [docs/start-here](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/docs/start-here).
 
 ## Install
 

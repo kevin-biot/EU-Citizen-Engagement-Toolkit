@@ -44,6 +44,19 @@ function shortDataset(dataset: DatasetSummary) {
   };
 }
 
+function startHereHome() {
+  const homePath = path.join(repoRoot, "docs", "start-here", "README.md");
+  const body = readFileSync(homePath, "utf8");
+  return {
+    slug: "start-here",
+    title: "Start Here",
+    category: "start-here",
+    summary: firstParagraph(body),
+    path: homePath,
+    body,
+  };
+}
+
 type ResolvedTemplate = {
   template_slug: string;
   title: string;
@@ -246,6 +259,30 @@ function selectorEntry(row: TemplateSelectorRow) {
     primary_template: primaryTemplate,
     fallback_template: fallbackTemplate,
   };
+}
+
+function rankStartHerePage(item: RepoItem, query: string) {
+  const normalizedQuery = normalizeSearchText(query);
+  const haystack = normalizeSearchText([item.title, item.summary, item.body].join(" "));
+  let score = 0;
+
+  if (normalizeSelectorValue(item.slug) === normalizeSelectorValue(query)) {
+    score += 10;
+  }
+  if (haystack.includes(normalizedQuery) && normalizedQuery) {
+    score += 8;
+  }
+
+  for (const token of tokenizeText(query)) {
+    if (token.length < 3) {
+      continue;
+    }
+    if (haystack.includes(token)) {
+      score += token.length >= 6 ? 2 : 1;
+    }
+  }
+
+  return score;
 }
 
 type CampaignSignals = {
@@ -679,6 +716,76 @@ const server = new McpServer({
   name: "eu-citizen-engagement-toolkit",
   version: "0.1.0",
 });
+
+server.tool(
+  "list_start_here",
+  "List the citizen-first start-here pages for people who know the harm but not yet the route.",
+  {},
+  async () =>
+    jsonResult({
+      ok: true,
+      home: startHereHome(),
+      pages: catalog.startHere.map(shortItem),
+    }),
+);
+
+server.tool(
+  "get_start_here",
+  "Return one start-here page by slug, or the start-here home page.",
+  {
+    slug: z
+      .string()
+      .describe("Start-here slug such as what-happened-to-you or start-here"),
+  },
+  async ({ slug }) => {
+    if (normalizeSelectorValue(slug) === "start_here") {
+      return jsonResult({ ok: true, item: startHereHome() });
+    }
+
+    const item = getItemBySlug(catalog.startHere, slug);
+    return item
+      ? jsonResult({ ok: true, item })
+      : notFound("start-here page", slug);
+  },
+);
+
+server.tool(
+  "recommend_start_here",
+  "Recommend the most relevant citizen-first start-here page from a short natural-language problem description.",
+  {
+    problem_description: z
+      .string()
+      .describe("Short description such as I do not know who has power here or the regulator is ignoring me"),
+  },
+  async ({ problem_description }) => {
+    const ranked = catalog.startHere
+      .map((item) => ({
+        item,
+        score: rankStartHerePage(item, problem_description),
+      }))
+      .filter((entry) => entry.score > 0)
+      .sort((a, b) => {
+        if (a.score !== b.score) {
+          return b.score - a.score;
+        }
+        return a.item.title.localeCompare(b.item.title);
+      });
+
+    return jsonResult({
+      ok: true,
+      problem_description,
+      home: shortItem(startHereHome()),
+      recommendations: ranked.slice(0, 3).map(({ item, score }) => ({
+        score,
+        ...shortItem(item),
+      })),
+      warning:
+        ranked.length === 0
+          ? "No start-here page matched strongly. Use the start-here home page first."
+          : null,
+    });
+  },
+);
 
 server.tool(
   "list_playbooks",

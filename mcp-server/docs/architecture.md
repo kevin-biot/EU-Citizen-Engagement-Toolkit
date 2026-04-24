@@ -17,6 +17,7 @@ It is intentionally not a generic file browser. The design goal is:
 Responsibilities:
 
 - load repo markdown items and CSV datasets
+- load the citizen-first start-here pages as a first-class documentation surface
 - normalize repo content into a single in-memory `Catalog`
 - expand source-specific CSVs into a shared `ContactRow` search surface
 - load selector datasets for templates and campaign decision support
@@ -49,6 +50,7 @@ Responsibilities:
 - register tool schemas and handlers
 - expose normalized results to MCP clients
 - add packet-scope warnings and response metadata
+- mirror plain-human front-door content such as the start-here layer
 
 Design intent:
 

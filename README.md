@@ -17,6 +17,7 @@ It now covers both:
 
 - **Templates:** ready-to-use filings, complaint skeletons, and administrative correspondence
 - **Guides:** practical walkthroughs for EU institutional processes
+- **Start-Here Cartography:** plain-language orientation from lived harm to the right route, target, and first step
 - **Digital Issue Playbooks:** citizen-facing guides for platform harms, GDPR issues, scams, accessibility failures, AI harms, and cross-border consumer problems
 - **Campaign Packs:** extended issue playbooks for multi-target, evidence-heavy, time-sequenced advocacy
 - **Outreach Templates:** short emails for MEPs, committee coordinators, journalists, NGOs, and Commission process challenges
@@ -52,6 +53,7 @@ Current data layers include:
 
 Current docs now include:
 
+- start-here citizen map pages
 - getting-started material
 - digital-issue playbooks
 - campaign packs
@@ -63,7 +65,7 @@ Current docs now include:
 ## Quick Start
 
 1. **Identify the issue or route you need**
-See `docs/` for playbooks and process guidance.
+If you are overwhelmed or do not know whether this is platform, regulator, EU, or national, start in `docs/start-here/`.
 
 2. **Choose the right source layer**
 Use `data/` for contacts, authorities, Commission/Parliament references, and escalation bundles.
@@ -143,6 +145,7 @@ Community contributions welcomed and credited in [CONTRIBUTORS.md](CONTRIBUTORS.
 ## Key Entry Points
 
 - Citizen authorship: `manifesto-human-authorship.md` (root)
+- Start here: `docs/start-here/README.md`
 - Ombudsman form guide: `docs/ombudsman-form-guide.md`
 - Verticalization guide (fork-and-layer by topic): `docs/topic-verticalization.md`
 - Citizen digital needs roadmap: `docs/citizen-digital-needs-roadmap.md`

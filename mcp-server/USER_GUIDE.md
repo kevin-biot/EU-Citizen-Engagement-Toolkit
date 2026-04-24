@@ -6,6 +6,7 @@ This guide explains what the MCP server is good at, how to ask it useful questio
 
 The server exposes the toolkit as structured local data for AI agents. It is strongest at:
 
+- orienting overwhelmed users before they choose a route
 - finding civic, media, rights, and institutional contact routes
 - routing issues to the right playbook or authority layer
 - returning country-level authority summaries
@@ -20,6 +21,9 @@ It is not a general web-search engine, a medical directory, or a source of perso
 
 Use these when you already know you want a guide or a draft starting point.
 
+- `list_start_here`
+- `get_start_here`
+- `recommend_start_here`
 - `list_playbooks`
 - `get_playbook`
 - `list_templates`
@@ -37,6 +41,7 @@ Use these when you already know you want a guide or a draft starting point.
 Good prompts:
 
 - `List the digital-issue playbooks`
+- `Recommend a start-here page for: I do not know whether this is platform or regulator`
 - `Get the platform-account-suspension playbook`
 - `Get the template foi-request-template`
 - `List templates for gdpr_rights_request`
@@ -101,6 +106,23 @@ Worse:
 - `digital`
 - `committee`
 - `who should I contact`
+
+## Start-Here Workflow
+
+Use the start-here tools when the user knows the harm but does not yet know the right route.
+
+Examples:
+
+- `List the start-here pages`
+- `Get the start-here page who-can-move-this`
+- `Recommend a start-here page for: the regulator is ignoring me`
+
+The intent of this tool family is orientation, not full routing. It should point the user into the right deeper layer:
+
+- playbook
+- dataset
+- campaign
+- bundle
 
 ## How To Read `find_contacts` Results
 

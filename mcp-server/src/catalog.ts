@@ -45,6 +45,7 @@ export type CampaignRuleRow = Record<string, string>;
 
 export type Catalog = {
   repoRoot: string;
+  startHere: RepoItem[];
   playbooks: RepoItem[];
   templates: RepoItem[];
   emailTemplates: RepoItem[];
@@ -687,6 +688,9 @@ function loadContactRows(repoRoot: string): ContactRow[] {
 export function buildCatalog(repoRoot: string): Catalog {
   return {
     repoRoot,
+    startHere: loadMarkdownItems(repoRoot, "docs/start-here", "start-here", {
+      include: (name) => name !== "README.md",
+    }),
     playbooks: loadMarkdownItems(repoRoot, "docs/digital-issues", "playbook", {
       include: (name) => name !== "README.md",
     }),

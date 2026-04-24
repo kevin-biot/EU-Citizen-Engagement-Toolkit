@@ -76,6 +76,10 @@ function getRecommendations(payload: Record<string, unknown>, key = "recommendat
   return asArray(payload[key]);
 }
 
+function getFirstRecommendation(payload: Record<string, unknown>) {
+  return asRecord(getRecommendations(payload)[0]);
+}
+
 function getContacts(payload: Record<string, unknown>) {
   return asArray(payload.contacts);
 }
@@ -90,6 +94,10 @@ function getStages(payload: Record<string, unknown>) {
 
 function getFirstStage(payload: Record<string, unknown>) {
   return asRecord(getStages(payload)[0]);
+}
+
+function getPages(payload: Record<string, unknown>) {
+  return asArray(payload.pages);
 }
 
 function getCurrentStage(payload: Record<string, unknown>) {
@@ -163,10 +171,31 @@ function assertCase(testCase: CorpusCase, payload: Record<string, unknown>) {
         }
         break;
       }
+      case "pages_min": {
+        const count = getPages(payload).length;
+        if (count < Number(value)) {
+          failures.push(`expected pages >= ${value}, got ${count}`);
+        }
+        break;
+      }
+      case "recommendations_min": {
+        const count = getRecommendations(payload).length;
+        if (count < Number(value)) {
+          failures.push(`expected recommendations >= ${value}, got ${count}`);
+        }
+        break;
+      }
       case "first_use_case_key": {
         const actual = getFirstUseCase(payload)?.use_case_key;
         if (actual !== value) {
           failures.push(`expected first use_case_key=${String(value)}, got ${String(actual)}`);
+        }
+        break;
+      }
+      case "home_title": {
+        const actual = asRecord(payload.home)?.title;
+        if (actual !== value) {
+          failures.push(`expected home title=${String(value)}, got ${String(actual)}`);
         }
         break;
       }
@@ -175,6 +204,14 @@ function assertCase(testCase: CorpusCase, payload: Record<string, unknown>) {
         const allowed = value as string[];
         if (!allowed.includes(String(actual))) {
           failures.push(`expected first stage key in [${allowed.join(", ")}], got ${String(actual)}`);
+        }
+        break;
+      }
+      case "first_recommendation_slug_any_of": {
+        const actual = getFirstRecommendation(payload)?.slug;
+        const allowed = value as string[];
+        if (!allowed.includes(String(actual))) {
+          failures.push(`expected first recommendation slug in [${allowed.join(", ")}], got ${String(actual)}`);
         }
         break;
       }

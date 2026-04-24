@@ -3,6 +3,39 @@
   "updated_at": "2026-04-24",
   "cases": [
     {
+      "id": "list-start-here",
+      "family": "start_here",
+      "priority": "high",
+      "risk_level": "correctness",
+      "tool": "list_start_here",
+      "title": "Citizen-first start-here layer should be discoverable as a first-class MCP surface",
+      "input": {},
+      "expected": {
+        "pages_min": 5,
+        "home_title": "Start Here"
+      },
+      "notes": "Coverage test for the new citizen-front-door tool family."
+    },
+    {
+      "id": "recommend-start-here-power",
+      "family": "start_here",
+      "priority": "high",
+      "risk_level": "correctness",
+      "tool": "recommend_start_here",
+      "title": "Power-mapping uncertainty should route to the who-can-move-this page",
+      "input": {
+        "problem_description": "I do not know who actually has power here or whether this is regulator, platform, or MEP"
+      },
+      "expected": {
+        "recommendations_min": 1,
+        "first_recommendation_slug_any_of": [
+          "who-can-move-this",
+          "not-sure-where-to-start"
+        ]
+      },
+      "notes": "Regression guard for the citizen-cartography mirror in MCP."
+    },
+    {
       "id": "find-contacts-commission-climate",
       "family": "commission_search",
       "priority": "high",
