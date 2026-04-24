@@ -28,6 +28,7 @@ This MCP server turns the repo into a local assistant surface that can:
 
 - [Installation Guide](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/mcp-server/INSTALL.md)
 - [User Guide](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/mcp-server/USER_GUIDE.md)
+- [Developer Docs](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/mcp-server/docs/README.md)
 
 ## Current Tools
 
