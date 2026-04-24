@@ -24,6 +24,8 @@ Use these when you already know you want a guide or a draft starting point.
 - `get_playbook`
 - `list_templates`
 - `get_template`
+- `list_templates_by_use_case`
+- `recommend_template`
 - `list_email_templates`
 - `get_email_template`
 - `build_draft_packet`
@@ -33,6 +35,8 @@ Good prompts:
 - `List the digital-issue playbooks`
 - `Get the platform-account-suspension playbook`
 - `Get the template foi-request-template`
+- `List templates for gdpr_rights_request`
+- `Recommend a template for DPA silence after a GDPR complaint`
 - `Build a draft packet for ombudsman-complaint-template using these facts: ...`
 
 ### Contact and Routing Search
@@ -152,6 +156,36 @@ Examples:
 - `Get the surveillance_state_power bundle`
 
 Bundles are often the best first stop because they include `why_this_route`, not just contact details.
+
+## When To Use Template Selection Instead Of Guessing
+
+Use `list_templates_by_use_case` when you know the rough action you need, but want the sanctioned template options.
+
+Examples:
+
+- `List templates for eu_document_request`
+- `List templates for committee process pressure`
+- `List templates for GDPR media story`
+
+Use `recommend_template` when you have a real situation, not just a known use-case key.
+
+Examples:
+
+- `Recommend a template for following up after my DPA ignored a GDPR complaint`
+- `Recommend a template for asking a journalist to look at GDPR under-enforcement in Ireland`
+- `Recommend a template for raising a procedural concern with an MEP about a live EU file`
+
+The selector layer is driven by two repo datasets:
+
+- [template-registry.csv](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/data/template-selector/template-registry.csv)
+- [template-selector.csv](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/data/template-selector/template-selector.csv)
+
+The recommendation response includes:
+
+- the matched use case
+- the primary template
+- any fallback template
+- source paths and metadata such as scope, stage, tone, and `not_for`
 
 ## Drafting Workflow
 

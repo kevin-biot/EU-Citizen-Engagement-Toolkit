@@ -18,7 +18,8 @@ The toolkit is useful as a repository, but communities still need help finding t
 This MCP server turns the repo into a local assistant surface that can:
 
 - list and retrieve playbooks
-- list and retrieve templates
+- list and retrieve templates across filing, outreach, and campaign families
+- recommend templates from a metadata-driven selector layer
 - find relevant contact routes
 - return country-level authority data
 - suggest likely issue routes from a short problem description
@@ -36,6 +37,8 @@ This MCP server turns the repo into a local assistant surface that can:
 - `get_playbook`
 - `list_templates`
 - `get_template`
+- `list_templates_by_use_case`
+- `recommend_template`
 - `list_email_templates`
 - `get_email_template`
 - `list_datasets`
@@ -59,6 +62,10 @@ This MCP server turns the repo into a local assistant surface that can:
 `list_commission_project_groups` exposes the current Commissioners' Project Groups directly, so MCP clients do not have to infer them from dataset samples.
 
 `get_bundle` exposes the curated issue-bundle layer directly, including the `why_this_route` rationale that explains when each contact is the right escalation path.
+
+`recommend_template` and `list_templates_by_use_case` expose the selector layer directly, using:
+- [template-registry.csv](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/data/template-selector/template-registry.csv)
+- [template-selector.csv](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/data/template-selector/template-selector.csv)
 
 ## Install
 

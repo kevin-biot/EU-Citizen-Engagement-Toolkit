@@ -35,6 +35,10 @@ export type ContactRow = Record<string, string>;
 
 export type BundleRow = Record<string, string>;
 
+export type TemplateRegistryRow = Record<string, string>;
+
+export type TemplateSelectorRow = Record<string, string>;
+
 export type Catalog = {
   repoRoot: string;
   playbooks: RepoItem[];
@@ -44,6 +48,8 @@ export type Catalog = {
   issueRoutes: IssueRoute[];
   nationalAuthorities: AuthorityRow[];
   issueBundles: BundleRow[];
+  templateRegistry: TemplateRegistryRow[];
+  templateSelector: TemplateSelectorRow[];
   contactRows: ContactRow[];
 };
 
@@ -273,6 +279,32 @@ function loadIssueBundles(repoRoot: string): BundleRow[] {
         "data",
         "community-contacts",
         "issue-specific-contact-bundles.csv",
+      ),
+    ),
+  );
+}
+
+function loadTemplateRegistry(repoRoot: string): TemplateRegistryRow[] {
+  return parseCsv(
+    readText(
+      path.join(
+        repoRoot,
+        "data",
+        "template-selector",
+        "template-registry.csv",
+      ),
+    ),
+  );
+}
+
+function loadTemplateSelector(repoRoot: string): TemplateSelectorRow[] {
+  return parseCsv(
+    readText(
+      path.join(
+        repoRoot,
+        "data",
+        "template-selector",
+        "template-selector.csv",
       ),
     ),
   );
@@ -644,6 +676,8 @@ export function buildCatalog(repoRoot: string): Catalog {
     issueRoutes: loadIssueRoutes(repoRoot),
     nationalAuthorities: loadNationalAuthorities(repoRoot),
     issueBundles: loadIssueBundles(repoRoot),
+    templateRegistry: loadTemplateRegistry(repoRoot),
+    templateSelector: loadTemplateSelector(repoRoot),
     contactRows: loadContactRows(repoRoot),
   };
 }

@@ -20,6 +20,7 @@ It now covers both:
 - **Digital Issue Playbooks:** citizen-facing guides for platform harms, GDPR issues, scams, accessibility failures, AI harms, and cross-border consumer problems
 - **Campaign Packs:** extended issue playbooks for multi-target, evidence-heavy, time-sequenced advocacy
 - **Outreach Templates:** short emails for MEPs, committee coordinators, journalists, NGOs, and Commission process challenges
+- **Template Selector Layer:** registry and use-case selector data for choosing the right template family and fallback
 - **Reference Data:** Parliament, Commission, national-authority, and community-contact layers
 - **Issue Bundles:** curated contact bundles with `why_this_route` logic
 - **Local MCP Server:** a repo-native MCP package for Claude/Codex-style local agents to query playbooks, templates, datasets, contacts, bundles, and routing guidance
@@ -43,6 +44,7 @@ Current data layers include:
 - **National authority routing**: Digital Services Coordinators, DPAs, competition authorities, CPC consumer authorities, equality bodies, and web-accessibility bodies
 - **Community escalation routes**: digital-rights groups, journalism-support organisations, women’s-rights and equality routes, EWL member-network references, and issue-specific contact bundles
 - **Institutional routes**: functional mailboxes, secretariats, and access-to-documents surfaces
+- **Template selection data**: registry and selector layers that map use cases to concrete repo templates
 
 ## Documentation Coverage
 
@@ -52,6 +54,7 @@ Current docs now include:
 - digital-issue playbooks
 - campaign packs
 - outreach email templates
+- template-family design notes
 - citizen digital support roadmap
 - MCP install and usage guides
 
@@ -68,6 +71,8 @@ Use `campaigns/` when the issue needs targets, sequencing, escalation, and evide
 
 4. **Choose or assemble the right draft**
 Use `templates/`, `docs/digital-issues/email-templates/`, or `docs/outreach-email-templates/`.
+
+If you need help choosing between them, use the selector data in `data/template-selector/`.
 
 5. **Use the MCP server if you want AI assistance grounded in the repo**
 See `mcp-server/README.md`, `mcp-server/INSTALL.md`, and `mcp-server/USER_GUIDE.md`.
@@ -142,6 +147,7 @@ Community contributions welcomed and credited in [CONTRIBUTORS.md](CONTRIBUTORS.
 - Digital issue playbooks: `docs/digital-issues/`
 - Campaign packs: `campaigns/README.md`
 - Outreach email templates: `docs/outreach-email-templates/`
+- Template families: `docs/template-families/README.md`
 - Data index: `data/README.md`
 - Docs index: `docs/README.md`
 - Local MCP server: `mcp-server/README.md`

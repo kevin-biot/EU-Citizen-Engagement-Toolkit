@@ -1,4 +1,5 @@
 import path from "node:path";
+import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
@@ -11,6 +12,8 @@ import {
   type BundleRow,
   type DatasetSummary,
   type RepoItem,
+  type TemplateRegistryRow,
+  type TemplateSelectorRow,
 } from "./catalog.js";
 import { filterAuthorities, findRelevantContacts, rankIssueMatches } from "./routing.js";
 
@@ -36,6 +39,210 @@ function shortDataset(dataset: DatasetSummary) {
     rows: dataset.rows,
     columns: dataset.columns,
     path: dataset.path,
+  };
+}
+
+type ResolvedTemplate = {
+  template_slug: string;
+  title: string;
+  template_family: string;
+  template_kind: string;
+  primary_target: string;
+  jurisdiction_scope: string;
+  stage: string;
+  tone: string;
+  requires_evidence: string;
+  best_when: string;
+  not_for: string;
+  source_path: string;
+  mcp_slug: string;
+  summary: string;
+  body: string;
+};
+
+function firstParagraph(text: string) {
+  const normalized = text.replace(/\r/g, "");
+  const withoutHeading = normalized.replace(/^#.*$/m, "").trim();
+  const blocks = withoutHeading
+    .split(/\n\s*\n/)
+    .map((block) => block.trim().replace(/\n+/g, " "))
+    .filter(Boolean);
+  return blocks[0] ?? "";
+}
+
+function normalizeSelectorValue(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "_")
+    .replace(/^_+|_+$/g, "");
+}
+
+function normalizeSearchText(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function slugFromSourcePath(sourcePath: string) {
+  return path.basename(sourcePath, path.extname(sourcePath));
+}
+
+function scopeMatches(requestedScope?: string, actualScope?: string) {
+  if (!requestedScope?.trim() || !actualScope?.trim()) {
+    return true;
+  }
+
+  const requested = normalizeSearchText(requestedScope);
+  const actual = normalizeSearchText(actualScope);
+  if (requested === actual) {
+    return true;
+  }
+
+  if (actual.includes(requested) || requested.includes(actual)) {
+    return true;
+  }
+
+  const compatibility: Record<string, string[]> = {
+    eu: ["eu", "mixed", "eu_or_national", "national_or_cross_border", "eu_cross_border"],
+    national: ["national", "mixed", "eu_or_national", "national_or_cross_border"],
+    cross_border: ["mixed", "eu_cross_border", "national_or_cross_border", "eu_or_national"],
+    mixed: ["mixed", "eu_or_national", "national_or_cross_border", "eu_cross_border"],
+  };
+
+  return (compatibility[requested] ?? []).includes(actual);
+}
+
+function selectorScore(
+  row: TemplateSelectorRow,
+  query: string,
+  jurisdictionScope?: string,
+  targetType?: string,
+  stage?: string,
+) {
+  const normalizedQuery = normalizeSearchText(query);
+  const key = normalizeSelectorValue(row.use_case_key ?? "");
+  const label = normalizeSearchText(row.use_case_label ?? "");
+  const note = normalizeSearchText(row.selector_note ?? "");
+  let score = 0;
+
+  if (normalizeSelectorValue(query) === key) {
+    score += 14;
+  }
+  if (label === normalizedQuery) {
+    score += 12;
+  }
+  if (label.includes(normalizedQuery) && normalizedQuery) {
+    score += 8;
+  }
+  if (note.includes(normalizedQuery) && normalizedQuery) {
+    score += 4;
+  }
+
+  for (const token of tokenizeText(query)) {
+    if (token.length < 3) {
+      continue;
+    }
+    if (key.includes(token)) {
+      score += 3;
+    }
+    if (label.includes(token)) {
+      score += 2;
+    }
+    if (note.includes(token)) {
+      score += 1;
+    }
+  }
+
+  if (scopeMatches(jurisdictionScope, row.jurisdiction_scope)) {
+    score += jurisdictionScope ? 2 : 0;
+  } else if (jurisdictionScope) {
+    score -= 2;
+  }
+
+  const noteAndLabel = `${label} ${note}`;
+  if (targetType?.trim() && noteAndLabel.includes(normalizeSearchText(targetType))) {
+    score += 2;
+  }
+  if (stage?.trim() && noteAndLabel.includes(normalizeSearchText(stage))) {
+    score += 1;
+  }
+
+  return score;
+}
+
+function registryRowForSlug(templateSlug: string) {
+  const normalized = normalizeSelectorValue(templateSlug);
+  return catalog.templateRegistry.find(
+    (row) =>
+      normalizeSelectorValue(row.template_slug ?? "") === normalized ||
+      normalizeSelectorValue(slugFromSourcePath(row.source_path ?? "")) === normalized,
+  );
+}
+
+function resolveTemplate(row?: TemplateRegistryRow) {
+  if (!row) {
+    return null;
+  }
+
+  const sourcePath = path.join(repoRoot, row.source_path);
+  const body = readFileSync(sourcePath, "utf8");
+  return {
+    template_slug: row.template_slug,
+    title: row.title,
+    template_family: row.template_family,
+    template_kind: row.template_kind,
+    primary_target: row.primary_target,
+    jurisdiction_scope: row.jurisdiction_scope,
+    stage: row.stage,
+    tone: row.tone,
+    requires_evidence: row.requires_evidence,
+    best_when: row.best_when,
+    not_for: row.not_for,
+    source_path: sourcePath,
+    mcp_slug: slugFromSourcePath(row.source_path),
+    summary: firstParagraph(body),
+    body,
+  } satisfies ResolvedTemplate;
+}
+
+function registeredTemplates() {
+  return catalog.templateRegistry
+    .map((row) => resolveTemplate(row))
+    .filter((item): item is ResolvedTemplate => Boolean(item))
+    .sort((a, b) => a.title.localeCompare(b.title));
+}
+
+function useCaseMatches(row: TemplateSelectorRow, useCase?: string) {
+  if (!useCase?.trim()) {
+    return true;
+  }
+
+  const normalized = normalizeSearchText(useCase);
+  const key = normalizeSelectorValue(row.use_case_key ?? "");
+  const label = normalizeSearchText(row.use_case_label ?? "");
+  return (
+    normalizeSelectorValue(useCase) === key ||
+    label.includes(normalized) ||
+    normalizeSearchText(row.selector_note ?? "").includes(normalized)
+  );
+}
+
+function selectorEntry(row: TemplateSelectorRow) {
+  const primaryTemplate = resolveTemplate(registryRowForSlug(row.primary_template_slug ?? ""));
+  const fallbackTemplate = resolveTemplate(
+    registryRowForSlug(row.fallback_template_slug ?? ""),
+  );
+
+  return {
+    use_case_key: row.use_case_key,
+    use_case_label: row.use_case_label,
+    jurisdiction_scope: row.jurisdiction_scope,
+    selector_note: row.selector_note,
+    not_for: row.not_for,
+    primary_template: primaryTemplate,
+    fallback_template: fallbackTemplate,
   };
 }
 
@@ -307,7 +514,19 @@ server.tool(
   async () =>
     jsonResult({
       ok: true,
-      templates: catalog.templates.map(shortItem),
+      templates: registeredTemplates().map((template) => ({
+        template_slug: template.template_slug,
+        mcp_slug: template.mcp_slug,
+        title: template.title,
+        template_family: template.template_family,
+        template_kind: template.template_kind,
+        primary_target: template.primary_target,
+        jurisdiction_scope: template.jurisdiction_scope,
+        stage: template.stage,
+        tone: template.tone,
+        source_path: template.source_path,
+        summary: template.summary,
+      })),
     }),
 );
 
@@ -320,7 +539,7 @@ server.tool(
       .describe("Template slug, for example foi-request-template"),
   },
   async ({ slug }) => {
-    const item = getItemBySlug(catalog.templates, slug);
+    const item = resolveTemplate(registryRowForSlug(slug));
     return item
       ? jsonResult({ ok: true, item })
       : notFound("template", slug);
@@ -351,6 +570,115 @@ server.tool(
     return item
       ? jsonResult({ ok: true, item })
       : notFound("email template", slug);
+  },
+);
+
+server.tool(
+  "list_templates_by_use_case",
+  "List template recommendations by use case from the metadata-driven selector layer.",
+  {
+    use_case: z
+      .string()
+      .optional()
+      .describe("Optional use-case key or phrase, for example gdpr_rights_request"),
+    jurisdiction_scope: z
+      .string()
+      .optional()
+      .describe("Optional scope such as EU, National, Mixed, or EU_cross_border"),
+  },
+  async ({ use_case, jurisdiction_scope }) => {
+    const rows = catalog.templateSelector
+      .filter((row) => useCaseMatches(row, use_case))
+      .filter((row) => scopeMatches(jurisdiction_scope, row.jurisdiction_scope))
+      .sort((a, b) => a.use_case_label.localeCompare(b.use_case_label));
+
+    return jsonResult({
+      ok: true,
+      use_case: use_case ?? null,
+      jurisdiction_scope: jurisdiction_scope ?? null,
+      matched_use_cases: rows.length,
+      use_cases: rows.map(selectorEntry),
+    });
+  },
+);
+
+server.tool(
+  "recommend_template",
+  "Recommend the strongest template match for a use case or short problem description using the template selector metadata.",
+  {
+    use_case: z
+      .string()
+      .optional()
+      .describe("Short use-case key or label, for example dpa_silence_follow_up"),
+    problem_description: z
+      .string()
+      .optional()
+      .describe("Optional natural-language description when you do not know the use-case key"),
+    jurisdiction_scope: z
+      .string()
+      .optional()
+      .describe("Optional scope such as EU, National, Mixed, or EU_cross_border"),
+    target_type: z
+      .string()
+      .optional()
+      .describe("Optional target hint such as MEP office, journalist, or National DPA"),
+    stage: z
+      .string()
+      .optional()
+      .describe("Optional stage hint such as initial_contact, regulator_follow_up, or media_outreach"),
+  },
+  async ({ use_case, problem_description, jurisdiction_scope, target_type, stage }) => {
+    const query = [use_case, problem_description].filter(Boolean).join(" ").trim();
+    if (!query) {
+      return jsonResult({
+        ok: false,
+        error: "recommend_template needs use_case or problem_description",
+      });
+    }
+
+    const ranked = catalog.templateSelector
+      .map((row) => ({
+        row,
+        score: selectorScore(row, query, jurisdiction_scope, target_type, stage),
+      }))
+      .filter((entry) => entry.score > 0)
+      .sort((a, b) => {
+        if (a.score !== b.score) {
+          return b.score - a.score;
+        }
+        return a.row.use_case_label.localeCompare(b.row.use_case_label);
+      });
+
+    const top = ranked[0];
+    const alternatives = ranked.slice(1, 4).map(({ row, score }) => ({
+      score,
+      ...selectorEntry(row),
+    }));
+
+    return top
+      ? jsonResult({
+          ok: true,
+          query,
+          jurisdiction_scope: jurisdiction_scope ?? null,
+          target_type: target_type ?? null,
+          stage: stage ?? null,
+          recommendation: {
+            score: top.score,
+            ...selectorEntry(top.row),
+          },
+          alternatives,
+        })
+      : jsonResult({
+          ok: true,
+          query,
+          jurisdiction_scope: jurisdiction_scope ?? null,
+          target_type: target_type ?? null,
+          stage: stage ?? null,
+          recommendation: null,
+          alternatives: [],
+          warning:
+            "No template selector row matched strongly enough. Refine the use case or inspect list_templates_by_use_case.",
+        });
   },
 );
 
@@ -650,7 +978,7 @@ server.tool(
       .describe("Optional related playbook slug to include alongside the template"),
   },
   async ({ template_slug, user_facts, issue_slug }) => {
-    const template = getItemBySlug(catalog.templates, template_slug);
+    const template = resolveTemplate(registryRowForSlug(template_slug));
     if (!template) {
       return notFound("template", template_slug);
     }
@@ -659,7 +987,16 @@ server.tool(
     return jsonResult({
       ok: true,
       user_facts,
-      template: shortItem(template),
+      template: {
+        template_slug: template.template_slug,
+        mcp_slug: template.mcp_slug,
+        title: template.title,
+        summary: template.summary,
+        path: template.source_path,
+        template_family: template.template_family,
+        stage: template.stage,
+        jurisdiction_scope: template.jurisdiction_scope,
+      },
       related_playbook: playbook ? shortItem(playbook) : null,
       guidance: [
         "Use the template structure and preserve legal/procedural caveats.",

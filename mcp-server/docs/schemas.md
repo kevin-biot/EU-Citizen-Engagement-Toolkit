@@ -76,6 +76,39 @@ Important fields:
 - `source_url`
 - `why_this_route`
 
+### `TemplateRegistryRow`
+
+Backed by `data/template-selector/template-registry.csv`.
+
+Important fields:
+
+- `template_slug`
+- `title`
+- `template_family`
+- `template_kind`
+- `primary_target`
+- `jurisdiction_scope`
+- `stage`
+- `tone`
+- `requires_evidence`
+- `best_when`
+- `not_for`
+- `source_path`
+
+### `TemplateSelectorRow`
+
+Backed by `data/template-selector/template-selector.csv`.
+
+Important fields:
+
+- `use_case_key`
+- `use_case_label`
+- `primary_template_slug`
+- `fallback_template_slug`
+- `jurisdiction_scope`
+- `selector_note`
+- `not_for`
+
 ### `ContactRow`
 
 `ContactRow` is the shared search surface.
@@ -123,6 +156,7 @@ Examples:
 
 - `list_playbooks`
 - `list_templates`
+- `list_templates_by_use_case`
 - `list_datasets`
 - `list_bundles`
 
@@ -138,6 +172,7 @@ Examples:
 
 - `get_playbook`
 - `get_template`
+- `recommend_template`
 - `get_dataset`
 - `get_bundle`
 
@@ -146,6 +181,21 @@ Pattern:
 - `ok: true`
 - a single named payload object
 - source path or related metadata when relevant
+
+### Selector-style tools
+
+Examples:
+
+- `list_templates_by_use_case`
+- `recommend_template`
+
+Pattern:
+
+- `ok: true`
+- query echo when relevant
+- resolved template metadata from the registry
+- primary template plus optional fallback or alternatives
+- local source paths for provenance
 
 ### Search / routing tools
 
