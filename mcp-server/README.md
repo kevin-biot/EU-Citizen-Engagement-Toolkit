@@ -94,6 +94,17 @@ cd mcp-server
 npm start
 ```
 
+## Test Corpus
+
+The MCP package now includes a canonical regression corpus and a lightweight runner:
+
+```bash
+cd mcp-server
+npm run test:corpus
+```
+
+See [Test Corpus](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/mcp-server/test-corpus/README.md) for the current case families and how to run specific case IDs.
+
 ## Claude Desktop Example
 
 Adjust the absolute path to match your local checkout.

@@ -307,6 +307,9 @@ function campaignStageScore(stage: CampaignStageRow, signals: CampaignSignals) {
       if (!signals.dpa_complaint_filed) {
         score += 1;
       }
+      if (signals.regulator_silent) {
+        score -= 3;
+      }
       break;
     case "systemic_company_abuse":
       if (signals.systemic_pattern) {
@@ -334,11 +337,11 @@ function campaignStageScore(stage: CampaignStageRow, signals: CampaignSignals) {
       break;
     case "regulator_delay_under_enforcement":
       if (signals.regulator_silent) {
-        score += 6;
+        score += 8;
         reasons.push("Regulator silence or under-enforcement is now central.");
       }
       if (signals.dpa_complaint_filed) {
-        score += 2;
+        score += 3;
       }
       if (signals.need_public_pressure) {
         score += 2;

@@ -57,6 +57,20 @@ Next step:
 
 - add a lightweight runner that can read this corpus and check response assertions automatically
 
+That runner now exists:
+
+```bash
+cd /Users/kevinbrown/EU-Citizen-Engagement-Toolkit/mcp-server
+npm run test:corpus
+```
+
+To run only selected cases, pass case IDs after the script:
+
+```bash
+cd /Users/kevinbrown/EU-Citizen-Engagement-Toolkit/mcp-server
+npx tsx test-corpus/run-corpus.ts find-contacts-commission-climate campaign-stage-gdpr-regulator-delay
+```
+
 ## Maintenance Rule
 
 When a real bug is found through user testing, add:
