@@ -15,5 +15,18 @@ Thank you for helping build the EU Citizen Engagement Toolkit. Contributions of 
 - Keep automation scripts small, documented, and idempotent.
 - Follow the Code of Conduct in all interactions.
 
+## MCP changes
+
+If your change touches `mcp-server/` or the MCP-facing selector and corpus data, run the local MCP quality gate before pushing:
+
+```bash
+cd /Users/kevinbrown/EU-Citizen-Engagement-Toolkit
+./scripts/check-mcp.sh
+```
+
+This avoids relying on hosted CI and keeps the local MCP server, the corpus runner, and the documented tool surface in sync.
+
+Optional local git-hook setup is documented in [/.githooks/README.md](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/.githooks/README.md).
+
 ## Review process
 Maintainers review for clarity, completeness, licensing alignment, and fit with the framework levels. Expect feedback; collaborative iteration is encouraged.

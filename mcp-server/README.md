@@ -105,6 +105,23 @@ npm run test:corpus
 
 See [Test Corpus](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/mcp-server/test-corpus/README.md) for the current case families and how to run specific case IDs.
 
+## Local Quality Gate
+
+For local-only validation without hosted CI:
+
+```bash
+cd /Users/kevinbrown/EU-Citizen-Engagement-Toolkit
+./scripts/check-mcp.sh
+```
+
+This runs:
+
+- `npm run build`
+- `npm run check`
+- `npm run test:corpus`
+
+Optional sample hook setup is documented in [/.githooks/README.md](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/.githooks/README.md).
+
 ## Claude Desktop Example
 
 Adjust the absolute path to match your local checkout.

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+
+echo "[pre-push] running local MCP checks"
+"$REPO_ROOT/scripts/check-mcp.sh"
