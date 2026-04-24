@@ -21,6 +21,7 @@ It now covers both:
 - **Campaign Packs:** extended issue playbooks for multi-target, evidence-heavy, time-sequenced advocacy
 - **Outreach Templates:** short emails for MEPs, committee coordinators, journalists, NGOs, and Commission process challenges
 - **Template Selector Layer:** registry and use-case selector data for choosing the right template family and fallback
+- **Campaign Decision Layer:** stage and next-step selector data for deciding how a live campaign should move
 - **Reference Data:** Parliament, Commission, national-authority, and community-contact layers
 - **Issue Bundles:** curated contact bundles with `why_this_route` logic
 - **Local MCP Server:** a repo-native MCP package for Claude/Codex-style local agents to query playbooks, templates, datasets, contacts, bundles, and routing guidance
@@ -45,6 +46,7 @@ Current data layers include:
 - **Community escalation routes**: digital-rights groups, journalism-support organisations, women’s-rights and equality routes, EWL member-network references, and issue-specific contact bundles
 - **Institutional routes**: functional mailboxes, secretariats, and access-to-documents surfaces
 - **Template selection data**: registry and selector layers that map use cases to concrete repo templates
+- **Campaign decision data**: stage and rule layers that map live GDPR campaign signals to the next credible move
 
 ## Documentation Coverage
 

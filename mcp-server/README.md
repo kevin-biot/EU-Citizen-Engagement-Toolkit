@@ -20,6 +20,7 @@ This MCP server turns the repo into a local assistant surface that can:
 - list and retrieve playbooks
 - list and retrieve templates across filing, outreach, and campaign families
 - recommend templates from a metadata-driven selector layer
+- assess campaign stage and recommend next steps from campaign selector data
 - find relevant contact routes
 - return country-level authority data
 - suggest likely issue routes from a short problem description
@@ -46,6 +47,10 @@ This MCP server turns the repo into a local assistant surface that can:
 - `query_dataset`
 - `list_bundles`
 - `get_bundle`
+- `list_campaign_stages`
+- `assess_campaign_stage`
+- `recommend_next_step`
+- `recommend_escalation`
 - `list_commission_project_groups`
 - `get_commission_project_group`
 - `find_contacts`
@@ -66,6 +71,10 @@ This MCP server turns the repo into a local assistant surface that can:
 `recommend_template` and `list_templates_by_use_case` expose the selector layer directly, using:
 - [template-registry.csv](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/data/template-selector/template-registry.csv)
 - [template-selector.csv](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/data/template-selector/template-selector.csv)
+
+`assess_campaign_stage`, `recommend_next_step`, and `recommend_escalation` expose the first campaign decision layer, using:
+- [gdpr-campaign-stages.csv](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/data/campaign-selector/gdpr-campaign-stages.csv)
+- [gdpr-next-step-rules.csv](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/data/campaign-selector/gdpr-next-step-rules.csv)
 
 ## Install
 

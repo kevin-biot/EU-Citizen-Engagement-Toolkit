@@ -113,6 +113,12 @@ Main route:
 - controller-establishment clue layer: [gdpr-controller-establishment-map.md](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/data/national-authorities/gdpr-controller-establishment-map.md:1)
 - use this when a large-platform complaint needs a first evidence-backed guess about the likely lead DPA
 
+## Decision Layer Added In Pass 6
+
+- campaign stages: [gdpr-campaign-stages.md](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/data/campaign-selector/gdpr-campaign-stages.md:1)
+- next-step rules: [gdpr-next-step-rules.md](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/data/campaign-selector/gdpr-next-step-rules.md:1)
+- this is the structured layer used by MCP to assess campaign stage and recommend quieter or wider escalation paths
+
 ## Success Conditions
 
 - the controller answers properly or changes practice

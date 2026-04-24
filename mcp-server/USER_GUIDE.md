@@ -26,6 +26,10 @@ Use these when you already know you want a guide or a draft starting point.
 - `get_template`
 - `list_templates_by_use_case`
 - `recommend_template`
+- `list_campaign_stages`
+- `assess_campaign_stage`
+- `recommend_next_step`
+- `recommend_escalation`
 - `list_email_templates`
 - `get_email_template`
 - `build_draft_packet`
@@ -37,6 +41,8 @@ Good prompts:
 - `Get the template foi-request-template`
 - `List templates for gdpr_rights_request`
 - `Recommend a template for DPA silence after a GDPR complaint`
+- `Assess the GDPR campaign stage for a filed complaint with regulator silence`
+- `Recommend the next GDPR campaign step for a cross-border complaint`
 - `Build a draft packet for ombudsman-complaint-template using these facts: ...`
 
 ### Contact and Routing Search
@@ -186,6 +192,28 @@ The recommendation response includes:
 - the primary template
 - any fallback template
 - source paths and metadata such as scope, stage, tone, and `not_for`
+
+## Campaign Decision Workflow
+
+Use the campaign decision tools when you need to decide what to do next, not just which file to open.
+
+Examples:
+
+- `List campaign stages for gdpr_complaints`
+- `Assess campaign stage for gdpr_complaints with controller_contacted=true and dpa_complaint_filed=true`
+- `Recommend next step for gdpr_complaints with controller_contacted=true, dpa_complaint_filed=true, regulator_silent=true`
+- `Recommend escalation for gdpr_complaints with regulator_silent=true, need_public_pressure=true, want_media_route=true`
+
+These tools are currently backed by:
+
+- [gdpr-campaign-stages.csv](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/data/campaign-selector/gdpr-campaign-stages.csv)
+- [gdpr-next-step-rules.csv](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/data/campaign-selector/gdpr-next-step-rules.csv)
+
+The pattern is:
+
+1. assess the stage
+2. inspect the recommended next step
+3. escalate only when the rule layer says the chronology is ready
 
 ## Drafting Workflow
 

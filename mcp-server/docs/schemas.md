@@ -109,6 +109,43 @@ Important fields:
 - `selector_note`
 - `not_for`
 
+### `CampaignStageRow`
+
+Backed by `data/campaign-selector/gdpr-campaign-stages.csv`.
+
+Important fields:
+
+- `campaign_slug`
+- `stage_key`
+- `stage_label`
+- `description`
+- `entry_signals`
+- `primary_goal`
+- `preferred_templates`
+- `preferred_routes`
+- `exit_signal`
+- `not_for`
+
+### `CampaignRuleRow`
+
+Backed by `data/campaign-selector/gdpr-next-step-rules.csv`.
+
+Important fields:
+
+- `campaign_slug`
+- `rule_key`
+- `stage_key`
+- `required_signals`
+- `excluded_signals`
+- `recommended_next_step`
+- `recommended_template_slug`
+- `recommended_bundle_slug`
+- `recommended_dataset_slug`
+- `recommended_contact_type`
+- `recommended_stage_after`
+- `escalation_level`
+- `note`
+
 ### `ContactRow`
 
 `ContactRow` is the shared search surface.
@@ -159,6 +196,7 @@ Examples:
 - `list_templates_by_use_case`
 - `list_datasets`
 - `list_bundles`
+- `list_campaign_stages`
 
 Pattern:
 
@@ -175,6 +213,9 @@ Examples:
 - `recommend_template`
 - `get_dataset`
 - `get_bundle`
+- `assess_campaign_stage`
+- `recommend_next_step`
+- `recommend_escalation`
 
 Pattern:
 
@@ -196,6 +237,22 @@ Pattern:
 - resolved template metadata from the registry
 - primary template plus optional fallback or alternatives
 - local source paths for provenance
+
+### Campaign decision tools
+
+Examples:
+
+- `list_campaign_stages`
+- `assess_campaign_stage`
+- `recommend_next_step`
+- `recommend_escalation`
+
+Pattern:
+
+- `ok: true`
+- explicit boolean signal echo
+- assessed stage with reasons
+- rule-backed recommendations with template, bundle, and dataset references where available
 
 ### Search / routing tools
 

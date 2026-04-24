@@ -10,3 +10,4 @@ Narrative documentation for the EU Citizen Engagement Toolkit: process overviews
 - `template-families/`: design notes for how the repo's templates are grouped and selected
 - `citizen-digital-needs-roadmap.md`: build direction for citizen-first digital support infrastructure
 - `../campaigns/`: extended issue campaign packs that combine targets, evidence, messaging, timelines, escalation, and missing-data tracking
+- `../data/campaign-selector/`: structured campaign-stage and next-step decision layers for MCP and future operator tooling

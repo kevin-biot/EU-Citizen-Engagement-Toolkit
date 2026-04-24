@@ -10,4 +10,5 @@ Structured reference data used by the toolkit, including contact lists, politica
 - `community-contacts/`: Public-interest digital-rights, journalism-support, and newsroom contact routes for community escalation and media outreach.
 - `national-authorities/`: Country-level digital enforcement directory, DPA complaint-entry routes, GDPR cross-border and controller-establishment references, detailed CPC consumer entries, equality bodies, web-accessibility bodies, Markdown views, and a starter issue router.
 - `template-selector/`: template registry and use-case selector data for choosing the right draft surface.
+- `campaign-selector/`: campaign-stage and next-step decision data, currently seeded for GDPR complaints.
 - `case-studies/`: Example or supporting reference material.

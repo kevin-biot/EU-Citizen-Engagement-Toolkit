@@ -46,6 +46,12 @@ Why it matters:
 Status:
 - missing
 
+- richer campaign-decision variants beyond the first GDPR stage model
+Why it matters:
+- later campaigns will need more than one selector family and finer signal handling
+Status:
+- seeded through `data/campaign-selector/` for GDPR only
+
 ## Slow Harvest Plan
 
 ### Pass 1

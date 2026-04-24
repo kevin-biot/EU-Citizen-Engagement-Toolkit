@@ -19,6 +19,7 @@ Responsibilities:
 - load repo markdown items and CSV datasets
 - normalize repo content into a single in-memory `Catalog`
 - expand source-specific CSVs into a shared `ContactRow` search surface
+- load selector datasets for templates and campaign decision support
 - provide dataset and item lookup helpers
 
 Design intent:

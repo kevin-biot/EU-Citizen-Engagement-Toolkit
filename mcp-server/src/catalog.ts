@@ -39,6 +39,10 @@ export type TemplateRegistryRow = Record<string, string>;
 
 export type TemplateSelectorRow = Record<string, string>;
 
+export type CampaignStageRow = Record<string, string>;
+
+export type CampaignRuleRow = Record<string, string>;
+
 export type Catalog = {
   repoRoot: string;
   playbooks: RepoItem[];
@@ -50,6 +54,8 @@ export type Catalog = {
   issueBundles: BundleRow[];
   templateRegistry: TemplateRegistryRow[];
   templateSelector: TemplateSelectorRow[];
+  campaignStages: CampaignStageRow[];
+  campaignRules: CampaignRuleRow[];
   contactRows: ContactRow[];
 };
 
@@ -305,6 +311,32 @@ function loadTemplateSelector(repoRoot: string): TemplateSelectorRow[] {
         "data",
         "template-selector",
         "template-selector.csv",
+      ),
+    ),
+  );
+}
+
+function loadCampaignStages(repoRoot: string): CampaignStageRow[] {
+  return parseCsv(
+    readText(
+      path.join(
+        repoRoot,
+        "data",
+        "campaign-selector",
+        "gdpr-campaign-stages.csv",
+      ),
+    ),
+  );
+}
+
+function loadCampaignRules(repoRoot: string): CampaignRuleRow[] {
+  return parseCsv(
+    readText(
+      path.join(
+        repoRoot,
+        "data",
+        "campaign-selector",
+        "gdpr-next-step-rules.csv",
       ),
     ),
   );
@@ -678,6 +710,8 @@ export function buildCatalog(repoRoot: string): Catalog {
     issueBundles: loadIssueBundles(repoRoot),
     templateRegistry: loadTemplateRegistry(repoRoot),
     templateSelector: loadTemplateSelector(repoRoot),
+    campaignStages: loadCampaignStages(repoRoot),
+    campaignRules: loadCampaignRules(repoRoot),
     contactRows: loadContactRows(repoRoot),
   };
 }

@@ -10,6 +10,8 @@ import {
   getItemBySlug,
   readCsvFile,
   type BundleRow,
+  type CampaignRuleRow,
+  type CampaignStageRow,
   type DatasetSummary,
   type RepoItem,
   type TemplateRegistryRow,
@@ -244,6 +246,194 @@ function selectorEntry(row: TemplateSelectorRow) {
     primary_template: primaryTemplate,
     fallback_template: fallbackTemplate,
   };
+}
+
+type CampaignSignals = {
+  controller_contacted: boolean;
+  dpa_complaint_filed: boolean;
+  cross_border_dimension: boolean;
+  systemic_pattern: boolean;
+  regulator_silent: boolean;
+  need_public_pressure: boolean;
+  want_media_route: boolean;
+  want_ngo_support: boolean;
+};
+
+function parseSignalList(value: string) {
+  return value
+    .split(";")
+    .map((part) => part.trim())
+    .filter(Boolean);
+}
+
+function campaignStageRows(campaignSlug: string) {
+  return catalog.campaignStages.filter((row) => row.campaign_slug === campaignSlug);
+}
+
+function campaignRuleRows(campaignSlug: string) {
+  return catalog.campaignRules.filter((row) => row.campaign_slug === campaignSlug);
+}
+
+function matchSignals(signals: CampaignSignals, required: string, excluded: string) {
+  const requiredSignals = parseSignalList(required);
+  const excludedSignals = parseSignalList(excluded);
+
+  return (
+    requiredSignals.every((signal) => signals[signal as keyof CampaignSignals]) &&
+    excludedSignals.every((signal) => !signals[signal as keyof CampaignSignals])
+  );
+}
+
+function campaignStageScore(stage: CampaignStageRow, signals: CampaignSignals) {
+  const reasons: string[] = [];
+  let score = 0;
+
+  switch (stage.stage_key) {
+    case "individual_rights_complaint":
+      if (!signals.systemic_pattern) {
+        score += 3;
+        reasons.push("No strong systemic-pattern signal.");
+      }
+      if (!signals.cross_border_dimension) {
+        score += 3;
+        reasons.push("No clear cross-border dimension.");
+      }
+      if (!signals.regulator_silent) {
+        score += 2;
+      }
+      if (!signals.need_public_pressure) {
+        score += 2;
+      }
+      if (!signals.dpa_complaint_filed) {
+        score += 1;
+      }
+      break;
+    case "systemic_company_abuse":
+      if (signals.systemic_pattern) {
+        score += 6;
+        reasons.push("Repeat-pattern or broader company abuse is indicated.");
+      }
+      if (signals.want_ngo_support) {
+        score += 2;
+      }
+      if (signals.need_public_pressure) {
+        score += 1;
+      }
+      break;
+    case "cross_border_enforcement_pressure":
+      if (signals.cross_border_dimension) {
+        score += 6;
+        reasons.push("Cross-border or lead-authority considerations are present.");
+      }
+      if (signals.dpa_complaint_filed) {
+        score += 2;
+      }
+      if (signals.want_ngo_support) {
+        score += 1;
+      }
+      break;
+    case "regulator_delay_under_enforcement":
+      if (signals.regulator_silent) {
+        score += 6;
+        reasons.push("Regulator silence or under-enforcement is now central.");
+      }
+      if (signals.dpa_complaint_filed) {
+        score += 2;
+      }
+      if (signals.need_public_pressure) {
+        score += 2;
+      }
+      if (signals.want_media_route) {
+        score += 1;
+      }
+      break;
+    default:
+      break;
+  }
+
+  return { score, reasons };
+}
+
+function resolveDataset(slug?: string) {
+  if (!slug) {
+    return null;
+  }
+  const dataset = getDatasetBySlug(catalog.datasets, slug);
+  return dataset ? shortDataset(dataset) : null;
+}
+
+function stageEntry(row: CampaignStageRow) {
+  return {
+    campaign_slug: row.campaign_slug,
+    stage_key: row.stage_key,
+    stage_label: row.stage_label,
+    description: row.description,
+    entry_signals: row.entry_signals,
+    primary_goal: row.primary_goal,
+    preferred_templates: parseSignalList(row.preferred_templates).map((slug) =>
+      resolveTemplate(registryRowForSlug(slug)),
+    ),
+    preferred_routes: parseSignalList(row.preferred_routes),
+    exit_signal: row.exit_signal,
+    not_for: row.not_for,
+  };
+}
+
+function assessedCampaignStage(campaignSlug: string, signals: CampaignSignals) {
+  const ranked = campaignStageRows(campaignSlug)
+    .map((row) => {
+      const scored = campaignStageScore(row, signals);
+      return {
+        row,
+        score: scored.score,
+        reasons: scored.reasons,
+      };
+    })
+    .sort((a, b) => {
+      if (a.score !== b.score) {
+        return b.score - a.score;
+      }
+      return a.row.stage_label.localeCompare(b.row.stage_label);
+    });
+
+  return {
+    best: ranked[0] ?? null,
+    ranked,
+  };
+}
+
+function ruleEntry(rule: CampaignRuleRow) {
+  return {
+    campaign_slug: rule.campaign_slug,
+    rule_key: rule.rule_key,
+    stage_key: rule.stage_key,
+    recommended_next_step: rule.recommended_next_step,
+    recommended_template: resolveTemplate(
+      registryRowForSlug(rule.recommended_template_slug ?? ""),
+    ),
+    recommended_bundle_slug: rule.recommended_bundle_slug || null,
+    recommended_dataset: resolveDataset(rule.recommended_dataset_slug || ""),
+    recommended_contact_type: rule.recommended_contact_type,
+    recommended_stage_after: rule.recommended_stage_after,
+    escalation_level: rule.escalation_level,
+    note: rule.note,
+  };
+}
+
+function matchedCampaignRules(
+  campaignSlug: string,
+  stageKey: string,
+  signals: CampaignSignals,
+  minimumEscalation?: "low" | "medium" | "high",
+) {
+  const escalationRank: Record<string, number> = { low: 1, medium: 2, high: 3 };
+  const minimumRank = minimumEscalation ? escalationRank[minimumEscalation] : 0;
+
+  return campaignRuleRows(campaignSlug)
+    .filter((rule) => rule.stage_key === stageKey)
+    .filter((rule) => matchSignals(signals, rule.required_signals ?? "", rule.excluded_signals ?? ""))
+    .filter((rule) => (escalationRank[rule.escalation_level] ?? 0) >= minimumRank)
+    .map(ruleEntry);
 }
 
 type CommissionProjectGroupMember = {
@@ -869,6 +1059,157 @@ server.tool(
           contacts: rows,
         })
       : notFound("bundle", slug);
+  },
+);
+
+server.tool(
+  "list_campaign_stages",
+  "List the configured campaign stages for a campaign selector dataset.",
+  {
+    campaign_slug: z
+      .string()
+      .describe("Campaign slug, currently gdpr_complaints"),
+  },
+  async ({ campaign_slug }) => {
+    const rows = campaignStageRows(campaign_slug);
+    return rows.length > 0
+      ? jsonResult({
+          ok: true,
+          campaign_slug,
+          stages: rows.map(stageEntry),
+        })
+      : notFound("campaign", campaign_slug);
+  },
+);
+
+server.tool(
+  "assess_campaign_stage",
+  "Assess the current campaign stage from explicit signals and return the best stage match.",
+  {
+    campaign_slug: z
+      .string()
+      .describe("Campaign slug, currently gdpr_complaints"),
+    controller_contacted: z.boolean().default(false),
+    dpa_complaint_filed: z.boolean().default(false),
+    cross_border_dimension: z.boolean().default(false),
+    systemic_pattern: z.boolean().default(false),
+    regulator_silent: z.boolean().default(false),
+    need_public_pressure: z.boolean().default(false),
+    want_media_route: z.boolean().default(false),
+    want_ngo_support: z.boolean().default(false),
+  },
+  async ({ campaign_slug, ...signals }) => {
+    const assessed = assessedCampaignStage(campaign_slug, signals);
+    return assessed.best
+      ? jsonResult({
+          ok: true,
+          campaign_slug,
+          signals,
+          current_stage: {
+            score: assessed.best.score,
+            reasons: assessed.best.reasons,
+            ...stageEntry(assessed.best.row),
+          },
+          alternatives: assessed.ranked.slice(1, 4).map((entry) => ({
+            score: entry.score,
+            reasons: entry.reasons,
+            ...stageEntry(entry.row),
+          })),
+        })
+      : notFound("campaign", campaign_slug);
+  },
+);
+
+server.tool(
+  "recommend_next_step",
+  "Recommend the next campaign move for a campaign stage, with templates, bundles, and datasets where available.",
+  {
+    campaign_slug: z
+      .string()
+      .describe("Campaign slug, currently gdpr_complaints"),
+    controller_contacted: z.boolean().default(false),
+    dpa_complaint_filed: z.boolean().default(false),
+    cross_border_dimension: z.boolean().default(false),
+    systemic_pattern: z.boolean().default(false),
+    regulator_silent: z.boolean().default(false),
+    need_public_pressure: z.boolean().default(false),
+    want_media_route: z.boolean().default(false),
+    want_ngo_support: z.boolean().default(false),
+  },
+  async ({ campaign_slug, ...signals }) => {
+    const assessed = assessedCampaignStage(campaign_slug, signals);
+    if (!assessed.best) {
+      return notFound("campaign", campaign_slug);
+    }
+
+    const recommendations = matchedCampaignRules(
+      campaign_slug,
+      assessed.best.row.stage_key ?? "",
+      signals,
+    );
+
+    return jsonResult({
+      ok: true,
+      campaign_slug,
+      signals,
+      assessed_stage: {
+        score: assessed.best.score,
+        reasons: assessed.best.reasons,
+        ...stageEntry(assessed.best.row),
+      },
+      recommendations,
+      warning:
+        recommendations.length === 0
+          ? "No next-step rule matched the current signal set. Inspect the stage directly or refine the signals."
+          : null,
+    });
+  },
+);
+
+server.tool(
+  "recommend_escalation",
+  "Recommend only medium- or high-escalation campaign moves for the current stage and signal set.",
+  {
+    campaign_slug: z
+      .string()
+      .describe("Campaign slug, currently gdpr_complaints"),
+    controller_contacted: z.boolean().default(false),
+    dpa_complaint_filed: z.boolean().default(false),
+    cross_border_dimension: z.boolean().default(false),
+    systemic_pattern: z.boolean().default(false),
+    regulator_silent: z.boolean().default(false),
+    need_public_pressure: z.boolean().default(false),
+    want_media_route: z.boolean().default(false),
+    want_ngo_support: z.boolean().default(false),
+  },
+  async ({ campaign_slug, ...signals }) => {
+    const assessed = assessedCampaignStage(campaign_slug, signals);
+    if (!assessed.best) {
+      return notFound("campaign", campaign_slug);
+    }
+
+    const recommendations = matchedCampaignRules(
+      campaign_slug,
+      assessed.best.row.stage_key ?? "",
+      signals,
+      "medium",
+    );
+
+    return jsonResult({
+      ok: true,
+      campaign_slug,
+      signals,
+      assessed_stage: {
+        score: assessed.best.score,
+        reasons: assessed.best.reasons,
+        ...stageEntry(assessed.best.row),
+      },
+      escalation_options: recommendations,
+      warning:
+        recommendations.length === 0
+          ? "No escalation rule matched the current signal set. That usually means the case is not ready for external pressure yet."
+          : null,
+    });
   },
 );
 
