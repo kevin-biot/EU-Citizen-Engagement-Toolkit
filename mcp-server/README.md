@@ -24,6 +24,11 @@ This MCP server turns the repo into a local assistant surface that can:
 - suggest likely issue routes from a short problem description
 - assemble a drafting packet from a chosen template and user facts
 
+## Guides
+
+- [Installation Guide](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/mcp-server/INSTALL.md)
+- [User Guide](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/mcp-server/USER_GUIDE.md)
+
 ## Current Tools
 
 - `list_playbooks`
@@ -62,6 +67,8 @@ npm install
 npm run build
 ```
 
+For full client setup, troubleshooting, and update instructions, use the [Installation Guide](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/mcp-server/INSTALL.md).
+
 ## Run
 
 ```bash
@@ -85,6 +92,8 @@ Adjust the absolute path to match your local checkout.
   }
 }
 ```
+
+Once the server is connected, use the [User Guide](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/mcp-server/USER_GUIDE.md) for example prompts, query patterns, and result interpretation.
 
 ## Environment
 
