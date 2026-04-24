@@ -22,6 +22,8 @@ Citizens often need to identify:
 - `dpa-complaint-routes.md`: human-readable Markdown view of the DPA complaint-entry layer
 - `gdpr-cross-border-reference.csv`: official-source reference index for one-stop-shop, lead-authority, and cross-border GDPR complaint handling
 - `gdpr-cross-border-reference.md`: human-readable Markdown view of the cross-border reference layer
+- `gdpr-controller-establishment-map.csv`: first-pass map of major controller families to official establishment clues and likely lead DPA routes
+- `gdpr-controller-establishment-map.md`: human-readable Markdown view of the controller-establishment clue layer
 - `national-cpc-authorities.csv`: detailed CPC consumer-protection entries from the official Commission source
 - `national-cpc-authorities.md`: human-readable Markdown view of the CPC layer
 - `national-equality-bodies.csv`: official Commission-listed national equality bodies

@@ -30,7 +30,7 @@ Status:
 Why it matters:
 - large-platform GDPR campaigns often become cross-border quickly
 Status:
-- integrated through `campaigns/gdpr-complaints/one-stop-shop.md` and `data/national-authorities/gdpr-cross-border-reference.{csv,md}`, but still partial for controller-specific establishment mapping
+- integrated through `campaigns/gdpr-complaints/one-stop-shop.md`, `data/national-authorities/gdpr-cross-border-reference.{csv,md}`, and a first-pass `gdpr-controller-establishment-map.{csv,md}` for major controllers, but still partial for the longer tail and for product-specific variants
 
 - more national privacy-rights organisation coverage beyond current bundle countries
 Why it matters:

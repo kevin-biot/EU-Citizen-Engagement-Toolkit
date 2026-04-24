@@ -82,12 +82,14 @@ Use this layer when:
 
 - [DPA complaint-entry routes](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/data/national-authorities/dpa-complaint-routes.md:1)
 - [GDPR cross-border reference](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/data/national-authorities/gdpr-cross-border-reference.md:1)
+- [GDPR controller establishment map](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/data/national-authorities/gdpr-controller-establishment-map.md:1)
 - [EDPB Article 60 final-decision register](https://www.edpb.europa.eu/our-work-tools/consistency-findings/register-for-article-60-final-decisions_en?page=1)
 - [EDPB template complaint form](https://www.edpb.europa.eu/system/files/2024-05/edpb_20230620_templatecomplaintform_en.pdf)
 
 ## What This Does Not Solve
 
 - It does not identify the lead authority for a controller automatically.
+- It does not prove that a controller's consumer-facing entity is always the relevant establishment for the exact processing at issue.
 - It does not replace national procedural law or court remedies.
 - It does not mean every slow case is unlawful delay.
 

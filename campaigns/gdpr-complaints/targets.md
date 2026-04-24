@@ -15,6 +15,7 @@ Desired output:
 - a real answer
 - a documented refusal
 - a traceable timeline
+- where relevant, a usable clue about the controller's likely main EU establishment before cross-border escalation starts
 
 ### Data Protection Authorities
 
@@ -30,6 +31,10 @@ Desired output:
 - case reference
 - visible progression
 - where relevant, clarity on whether the matter is being treated as cross-border or one-stop-shop
+
+Useful source:
+
+- [gdpr-controller-establishment-map.md](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/data/national-authorities/gdpr-controller-establishment-map.md:1) for major-platform establishment clues
 
 ## Secondary Targets
 

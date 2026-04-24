@@ -78,6 +78,7 @@ Main route:
 - national authority summary: [national-digital-authorities.csv](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/data/national-authorities/national-digital-authorities.csv:1)
 - DPA complaint-entry pass: [dpa-complaint-routes.md](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/data/national-authorities/dpa-complaint-routes.md:1)
 - cross-border and one-stop-shop reference: [gdpr-cross-border-reference.md](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/data/national-authorities/gdpr-cross-border-reference.md:1)
+- controller-establishment clue layer: [gdpr-controller-establishment-map.md](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/data/national-authorities/gdpr-controller-establishment-map.md:1)
 
 ## Key Files In This Campaign
 
@@ -106,6 +107,11 @@ Main route:
 
 - practical campaign guide: [one-stop-shop.md](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/campaigns/gdpr-complaints/one-stop-shop.md:1)
 - official-source reference index: [gdpr-cross-border-reference.md](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/data/national-authorities/gdpr-cross-border-reference.md:1)
+
+## Controller Mapping Added In Pass 5
+
+- controller-establishment clue layer: [gdpr-controller-establishment-map.md](/Users/kevinbrown/EU-Citizen-Engagement-Toolkit/data/national-authorities/gdpr-controller-establishment-map.md:1)
+- use this when a large-platform complaint needs a first evidence-backed guess about the likely lead DPA
 
 ## Success Conditions
 
