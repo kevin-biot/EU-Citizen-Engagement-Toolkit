@@ -33,6 +33,8 @@ export type AuthorityRow = Record<string, string>;
 
 export type ContactRow = Record<string, string>;
 
+export type BundleRow = Record<string, string>;
+
 export type Catalog = {
   repoRoot: string;
   playbooks: RepoItem[];
@@ -41,6 +43,7 @@ export type Catalog = {
   datasets: DatasetSummary[];
   issueRoutes: IssueRoute[];
   nationalAuthorities: AuthorityRow[];
+  issueBundles: BundleRow[];
   contactRows: ContactRow[];
 };
 
@@ -171,6 +174,46 @@ function csvTitleFromSlug(slug: string): string {
     .join(" ");
 }
 
+const COMMISSION_SERVICE_KEYWORDS: Record<string, string[]> = {
+  CLIMA: ["climate", "green deal", "emissions", "net zero", "clean growth"],
+  CNECT: [
+    "digital policy",
+    "ai regulation",
+    "artificial intelligence",
+    "platform regulation",
+    "cybersecurity",
+    "connectivity",
+    "data governance",
+  ],
+  COMP: ["competition", "antitrust", "state aid", "merger control", "digital competition"],
+  DIGIT: ["digital government", "public sector IT", "digital infrastructure"],
+  EEAS: ["foreign affairs", "external action", "ukraine", "security policy", "diplomacy"],
+  ENEST: ["enlargement", "western balkans", "ukraine", "eastern neighbourhood"],
+  ENV: ["environment", "water resilience", "circular economy", "biodiversity"],
+  FPI: ["foreign policy instruments", "security policy", "ukraine", "external action"],
+  HOME: ["migration", "asylum", "internal security", "borders"],
+  JUST: ["justice", "rule of law", "fundamental rights", "consumer rights"],
+  MOVE: ["transport", "mobility", "aviation", "rail"],
+  NEAR: ["enlargement", "western balkans", "ukraine", "neighbourhood policy"],
+  SANTE: ["health", "pharmaceuticals", "medicines", "public health", "HERA", "food safety"],
+  TAXUD: ["taxation", "customs", "excise", "green taxation"],
+};
+
+function normalizedServiceCode(value: string): string {
+  return value.replace(/^DG\s+/i, "").trim().toUpperCase();
+}
+
+function expandedCommissionKeywords(services: string): string {
+  const keywords = new Set<string>();
+  for (const rawCode of services.split(/[;,]/).map((part) => part.trim()).filter(Boolean)) {
+    const code = normalizedServiceCode(rawCode);
+    for (const keyword of COMMISSION_SERVICE_KEYWORDS[code] ?? []) {
+      keywords.add(keyword);
+    }
+  }
+  return [...keywords].join("; ");
+}
+
 function loadDatasets(repoRoot: string): DatasetSummary[] {
   const sections = readdirSync(path.join(repoRoot, "data"), {
     withFileTypes: true,
@@ -222,6 +265,19 @@ function loadNationalAuthorities(repoRoot: string): AuthorityRow[] {
   );
 }
 
+function loadIssueBundles(repoRoot: string): BundleRow[] {
+  return parseCsv(
+    readText(
+      path.join(
+        repoRoot,
+        "data",
+        "community-contacts",
+        "issue-specific-contact-bundles.csv",
+      ),
+    ),
+  );
+}
+
 function loadContactRows(repoRoot: string): ContactRow[] {
   const contactFiles = [
     path.join(
@@ -241,24 +297,6 @@ function loadContactRows(repoRoot: string): ContactRow[] {
       "data",
       "community-contacts",
       "womens-rights-and-gender-equality-contacts.csv",
-    ),
-    path.join(
-      repoRoot,
-      "data",
-      "commission-reference",
-      "commission-spp-contacts.csv",
-    ),
-    path.join(
-      repoRoot,
-      "data",
-      "commission-reference",
-      "commission-cabinet-contacts.csv",
-    ),
-    path.join(
-      repoRoot,
-      "data",
-      "institutional-contacts",
-      "institutional-contacts.csv",
     ),
   ];
 
@@ -312,6 +350,48 @@ function loadContactRows(repoRoot: string): ContactRow[] {
     __contact_index: "national_equality_body",
   }));
 
+  const bundlesPath = path.join(
+    repoRoot,
+    "data",
+    "community-contacts",
+    "issue-specific-contact-bundles.csv",
+  );
+  const bundleRows = readCsvFile(bundlesPath).map((row) => ({
+    ...row,
+    organization: row.organization,
+    country: row.org_scope,
+    public_contact_type: row.contact_scope,
+    public_contact: row.public_contact,
+    public_page: row.source_url,
+    audience: "citizens; journalists; civil society",
+    focus: [row.bundle_label, row.bundle_slug, row.why_this_route, row.org_scope]
+      .filter(Boolean)
+      .join("; "),
+    notes: `Bundle: ${row.bundle_label} | Scope: ${row.org_scope} | ${row.why_this_route}`,
+    __source_path: bundlesPath,
+    __contact_index: "issue_bundle",
+  }));
+
+  const institutionalPath = path.join(
+    repoRoot,
+    "data",
+    "institutional-contacts",
+    "institutional-contacts.csv",
+  );
+  const institutionalRows = readCsvFile(institutionalPath).map((row) => ({
+    ...row,
+    organization: row.unit,
+    public_contact_type: row.role,
+    public_contact: row.contact_email || row.contact_phone,
+    public_phone: row.contact_phone,
+    public_page: "",
+    audience: "citizens; journalists; civil society",
+    focus: [row.scope, row.unit, row.role].filter(Boolean).join("; "),
+    notes: [row.institution, row.notes].filter(Boolean).join(" | "),
+    __source_path: institutionalPath,
+    __contact_index: "institutional_route",
+  }));
+
   const mepPath = path.join(
     repoRoot,
     "data",
@@ -347,7 +427,176 @@ function loadContactRows(repoRoot: string): ContactRow[] {
     __contact_index: "mep_political",
   }));
 
-  return [...baseRows, ...ewlRows, ...equalityRows, ...mepRows];
+  const collegePath = path.join(
+    repoRoot,
+    "data",
+    "commission-reference",
+    "commission-college.csv",
+  );
+  const collegeRawRows = readCsvFile(collegePath);
+  const collegeByMember = new Map(
+    collegeRawRows.map((row) => [row.member_name, row] as const),
+  );
+  const collegeRows = collegeRawRows.map((row) => ({
+    ...row,
+    organization: row.member_name,
+    public_contact_type: "official_portfolio_page",
+    public_contact: row.official_college_url,
+    public_page: row.official_college_url,
+    audience: "citizens; journalists; civil society",
+    focus: [
+      row.portfolio,
+      row.lead_supporting_services,
+      expandedCommissionKeywords(row.lead_supporting_services),
+    ]
+      .filter(Boolean)
+      .join("; "),
+    notes: [
+      row.member_role ? `Role: ${row.member_role}` : "",
+      row.portfolio ? `Portfolio: ${row.portfolio}` : "",
+      row.lead_supporting_services
+        ? `Lead services: ${row.lead_supporting_services}`
+        : "",
+      row.official_responsibilities_url
+        ? `Responsibilities: ${row.official_responsibilities_url}`
+        : "",
+    ]
+      .filter(Boolean)
+      .join(" | "),
+    __source_path: collegePath,
+    __contact_index: "commission_college",
+  }));
+
+  const cabinetPath = path.join(
+    repoRoot,
+    "data",
+    "commission-reference",
+    "commission-cabinet-contacts.csv",
+  );
+  const cabinetRows = readCsvFile(cabinetPath).map((row) => {
+    const collegeRow = collegeByMember.get(row.member_name);
+    const serviceKeywords = expandedCommissionKeywords(
+      collegeRow?.lead_supporting_services ?? "",
+    );
+    return {
+      ...row,
+      organization: row.member_name,
+      public_contact_type: row.office_contact_kind,
+      public_contact: row.office_contact,
+      public_page:
+        row.team_page_url ||
+        (row.office_contact.startsWith("http") ? row.office_contact : "") ||
+        collegeRow?.official_college_url ||
+        "",
+      audience: "citizens; journalists; civil society",
+      focus: [
+        collegeRow?.portfolio,
+        collegeRow?.lead_supporting_services,
+        serviceKeywords,
+        row.member_role,
+      ]
+        .filter(Boolean)
+        .join("; "),
+      notes: [
+        collegeRow?.portfolio ? `Portfolio: ${collegeRow.portfolio}` : "",
+        collegeRow?.lead_supporting_services
+          ? `Lead services: ${collegeRow.lead_supporting_services}`
+          : "",
+        row.head_of_cabinet_name ? `Head of cabinet: ${row.head_of_cabinet_name}` : "",
+        row.head_of_cabinet_email
+          ? `Head email: ${row.head_of_cabinet_email}`
+          : "",
+        row.principal_assistant_name
+          ? `Assistant: ${row.principal_assistant_name}`
+          : "",
+        row.notes,
+      ]
+        .filter(Boolean)
+        .join(" | "),
+      __source_path: cabinetPath,
+      __contact_index: "commission_cabinet",
+    };
+  });
+
+  const dgPressPath = path.join(
+    repoRoot,
+    "data",
+    "commission-reference",
+    "commission-dg-press-surfaces.csv",
+  );
+  const dgPressRows = readCsvFile(dgPressPath).map((row) => ({
+    ...row,
+    organization: row.unit_name,
+    public_contact_type: row.public_surface_type,
+    public_contact:
+      row.press_contacts_url ||
+      row.public_question_url ||
+      row.public_email ||
+      row.department_page_url,
+    public_page: row.department_page_url,
+    audience: "citizens; journalists; civil society",
+    focus: [
+      row.unit_code,
+      row.unit_name,
+      expandedCommissionKeywords(row.unit_code),
+      row.notes,
+    ]
+      .filter(Boolean)
+      .join("; "),
+    notes: [
+      row.unit_type ? `Unit type: ${row.unit_type}` : "",
+      row.press_contacts_url ? `Press contacts: ${row.press_contacts_url}` : "",
+      row.public_question_url ? `Public question route: ${row.public_question_url}` : "",
+      row.public_email ? `Public email: ${row.public_email}` : "",
+      row.public_phone ? `Public phone: ${row.public_phone}` : "",
+      row.notes,
+    ]
+      .filter(Boolean)
+      .join(" | "),
+    __source_path: dgPressPath,
+    __contact_index: "commission_dg_press",
+  }));
+
+  const sppPath = path.join(
+    repoRoot,
+    "data",
+    "commission-reference",
+    "commission-spp-contacts.csv",
+  );
+  const sppRows = readCsvFile(sppPath).map((row) => ({
+    ...row,
+    organization: row.name,
+    public_contact_type: "media_contact",
+    public_contact: row.email || row.phone || row.source_url,
+    public_page: row.source_url,
+    audience: "journalists; citizens; civil society",
+    focus: [row.role, row.responsibilities, row.section_name]
+      .filter(Boolean)
+      .join("; "),
+    notes: [
+      row.role,
+      row.phone ? `Phone: ${row.phone}` : "",
+      row.mobile ? `Mobile: ${row.mobile}` : "",
+      row.responsibilities ? `Responsibilities: ${row.responsibilities}` : "",
+    ]
+      .filter(Boolean)
+      .join(" | "),
+    __source_path: sppPath,
+    __contact_index: "commission_spp",
+  }));
+
+  return [
+    ...baseRows,
+    ...ewlRows,
+    ...equalityRows,
+    ...bundleRows,
+    ...institutionalRows,
+    ...collegeRows,
+    ...cabinetRows,
+    ...dgPressRows,
+    ...sppRows,
+    ...mepRows,
+  ];
 }
 
 export function buildCatalog(repoRoot: string): Catalog {
@@ -373,6 +622,7 @@ export function buildCatalog(repoRoot: string): Catalog {
     datasets: loadDatasets(repoRoot),
     issueRoutes: loadIssueRoutes(repoRoot),
     nationalAuthorities: loadNationalAuthorities(repoRoot),
+    issueBundles: loadIssueBundles(repoRoot),
     contactRows: loadContactRows(repoRoot),
   };
 }

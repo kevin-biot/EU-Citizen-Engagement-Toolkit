@@ -8,6 +8,7 @@ import {
   getDatasetBySlug,
   getItemBySlug,
   readCsvFile,
+  type BundleRow,
   type DatasetSummary,
   type RepoItem,
 } from "./catalog.js";
@@ -38,6 +39,130 @@ function shortDataset(dataset: DatasetSummary) {
   };
 }
 
+type CommissionProjectGroupMember = {
+  role: string;
+  name: string;
+  portfolio: string;
+};
+
+type CommissionProjectGroup = {
+  group_name: string;
+  decision_date: string;
+  official_decision_url: string;
+  last_verified: string;
+  chairs: CommissionProjectGroupMember[];
+  members: CommissionProjectGroupMember[];
+  member_count: number;
+};
+
+function tokenizeText(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, " ")
+    .split(/\s+/)
+    .filter(Boolean);
+}
+
+function normalizeCommissionProjectGroupRow(row: Record<string, string>) {
+  let groupName = row.project_group?.trim() ?? "";
+  let groupRole = row.group_role?.trim().toLowerCase() ?? "";
+  let memberName = row.member_name?.trim() ?? "";
+  let memberPortfolio = row.member_portfolio?.trim() ?? "";
+
+  if (!["chair", "member"].includes(groupRole) && ["chair", "member"].includes(memberName.toLowerCase())) {
+    groupName = [groupName, row.group_role?.trim()].filter(Boolean).join(", ");
+    groupRole = memberName.toLowerCase();
+    const splitAt = memberPortfolio.indexOf(", ");
+    if (splitAt > 0) {
+      memberName = memberPortfolio.slice(0, splitAt).trim();
+      memberPortfolio = memberPortfolio.slice(splitAt + 2).trim();
+    }
+  }
+
+  return {
+    group_name: groupName,
+    group_role: groupRole,
+    member_name: memberName,
+    member_portfolio: memberPortfolio,
+    decision_date: row.decision_date ?? "",
+    official_decision_url: row.official_decision_url ?? "",
+    last_verified: row.last_verified ?? "",
+  };
+}
+
+function loadCommissionProjectGroups() {
+  const rows = readCsvFile(
+    path.join(repoRoot, "data", "commission-reference", "commission-project-groups.csv"),
+  ).map(normalizeCommissionProjectGroupRow);
+
+  const grouped = new Map<string, CommissionProjectGroup>();
+  for (const row of rows) {
+    if (!row.group_name) {
+      continue;
+    }
+    const group =
+      grouped.get(row.group_name) ??
+      {
+        group_name: row.group_name,
+        decision_date: row.decision_date,
+        official_decision_url: row.official_decision_url,
+        last_verified: row.last_verified,
+        chairs: [],
+        members: [],
+        member_count: 0,
+      };
+
+    const member = {
+      role: row.group_role,
+      name: row.member_name,
+      portfolio: row.member_portfolio,
+    };
+    if (row.group_role === "chair") {
+      group.chairs.push(member);
+    } else {
+      group.members.push(member);
+    }
+    group.member_count += 1;
+
+    if (!group.decision_date) {
+      group.decision_date = row.decision_date;
+    }
+    if (!group.official_decision_url) {
+      group.official_decision_url = row.official_decision_url;
+    }
+    if (!group.last_verified) {
+      group.last_verified = row.last_verified;
+    }
+
+    grouped.set(row.group_name, group);
+  }
+
+  return [...grouped.values()].sort((a, b) => a.group_name.localeCompare(b.group_name));
+}
+
+function rankCommissionProjectGroup(group: CommissionProjectGroup, topic?: string) {
+  if (!topic?.trim()) {
+    return 0;
+  }
+
+  const normalizedTopic = topic.toLowerCase().trim();
+  const haystack = [
+    group.group_name,
+    ...group.chairs.map((chair) => `${chair.name} ${chair.portfolio}`),
+    ...group.members.map((member) => `${member.name} ${member.portfolio}`),
+  ]
+    .join(" ")
+    .toLowerCase();
+
+  let score = haystack.includes(normalizedTopic) ? 8 : 0;
+  for (const token of tokenizeText(topic)) {
+    if (haystack.includes(token)) {
+      score += token.length >= 6 ? 2 : 1;
+    }
+  }
+  return score;
+}
+
 function jsonResult(payload: unknown) {
   return {
     content: [
@@ -55,6 +180,93 @@ function notFound(kind: string, slug: string) {
     error: `${kind} not found`,
     slug,
   });
+}
+
+function normalizeCountry(value: string) {
+  const normalized = value
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  const aliases: Record<string, string> = {
+    "czech republic": "czechia",
+    "united kingdom": "uk",
+    "great britain": "uk",
+  };
+  return aliases[normalized] ?? normalized;
+}
+
+function bundleScopeRank(scope: string, country?: string) {
+  const normalizedScope = normalizeCountry(scope);
+  if (country && normalizedScope === normalizeCountry(country)) {
+    return 0;
+  }
+  if (normalizedScope === "eu level" || normalizedScope === "eu_level") {
+    return 1;
+  }
+  return 2;
+}
+
+function issueBundleMetadata(rows: BundleRow[]) {
+  const grouped = new Map<
+    string,
+    { bundle_slug: string; bundle_label: string; org_count: number; scopes: Set<string> }
+  >();
+
+  for (const row of rows) {
+    const existing =
+      grouped.get(row.bundle_slug) ??
+      {
+        bundle_slug: row.bundle_slug,
+        bundle_label: row.bundle_label,
+        org_count: 0,
+        scopes: new Set<string>(),
+      };
+    existing.org_count += 1;
+    if (row.org_scope) {
+      existing.scopes.add(row.org_scope);
+    }
+    grouped.set(row.bundle_slug, existing);
+  }
+
+  return [...grouped.values()]
+    .map((item) => ({
+      bundle_slug: item.bundle_slug,
+      bundle_label: item.bundle_label,
+      org_count: item.org_count,
+      scopes: [...item.scopes].sort(),
+    }))
+    .sort((a, b) => a.bundle_label.localeCompare(b.bundle_label));
+}
+
+function packetWarnings(templateSlug: string, userFacts: string, issueSlug?: string) {
+  const warnings: string[] = [];
+  const normalizedFacts = userFacts.toLowerCase();
+  const looksNational =
+    /\bfrance\b|\bgermany\b|\bitaly\b|\bpoland\b|\bspain\b|\bnetherlands\b|\bbelgium\b|\baustria\b|\bcyprus\b|\bbulgaria\b|\bcroatia\b|\bczechia\b|\bczech republic\b|\bministry\b|\btax administration\b|\bmunicipal\b|\bregional\b|\blocal\b|\bnational\b|gouv\.fr|gov\./.test(
+      normalizedFacts,
+    );
+  const looksEuInstitution =
+    /\beuropean commission\b|\beuropean parliament\b|\bcouncil of the european union\b|\beu institution\b|\bdg [a-z]+\b|\bcommissioner\b|\bombudsman eu\b/.test(
+      normalizedFacts,
+    );
+
+  if (
+    templateSlug === "ombudsman-complaint-template" &&
+    looksNational &&
+    !looksEuInstitution
+  ) {
+    warnings.push(
+      "The selected Ombudsman template targets EU institutions. Your facts look national or local, so a national ombudsman, equality body, accessibility body, or sector regulator is likely the primary route.",
+    );
+    if (issueSlug === "digital-accessibility-failure") {
+      warnings.push(
+        "For accessibility failures, start with the service provider's accessibility contact and the relevant national accessibility or equality body before framing an EU-level Ombudsman complaint.",
+      );
+    }
+  }
+
+  return warnings;
 }
 
 const server = new McpServer({
@@ -229,6 +441,110 @@ server.tool(
 );
 
 server.tool(
+  "list_commission_project_groups",
+  "List current European Commission project groups, with optional topic filtering.",
+  {
+    topic: z
+      .string()
+      .optional()
+      .describe("Optional topic or keyword such as AI, climate, housing, or skills"),
+  },
+  async ({ topic }) => {
+    const groups = loadCommissionProjectGroups()
+      .map((group) => ({
+        score: rankCommissionProjectGroup(group, topic),
+        ...group,
+      }))
+      .filter((group) => !topic || group.score > 0)
+      .sort((a, b) => {
+        if (a.score !== b.score) {
+          return b.score - a.score;
+        }
+        return a.group_name.localeCompare(b.group_name);
+      });
+
+    return jsonResult({
+      ok: true,
+      topic: topic ?? null,
+      groups_count: groups.length,
+      groups: groups.map((group) => ({
+        score: group.score,
+        group_name: group.group_name,
+        chairs: group.chairs,
+        member_count: group.member_count,
+        decision_date: group.decision_date,
+        official_decision_url: group.official_decision_url,
+        last_verified: group.last_verified,
+      })),
+    });
+  },
+);
+
+server.tool(
+  "get_commission_project_group",
+  "Return one Commission project group with its chairs, members, and source decision link.",
+  {
+    group_name: z
+      .string()
+      .describe("Exact or case-insensitive project-group name, for example Artificial Intelligence"),
+  },
+  async ({ group_name }) => {
+    const group = loadCommissionProjectGroups().find(
+      (item) => item.group_name.toLowerCase() === group_name.toLowerCase(),
+    );
+    return group
+      ? jsonResult({ ok: true, group })
+      : notFound("Commission project group", group_name);
+  },
+);
+
+server.tool(
+  "list_bundles",
+  "List curated issue-specific contact bundles available in the toolkit.",
+  {},
+  async () =>
+    jsonResult({
+      ok: true,
+      bundles: issueBundleMetadata(catalog.issueBundles),
+    }),
+);
+
+server.tool(
+  "get_bundle",
+  "Return one curated issue-specific contact bundle, optionally ordered for a country.",
+  {
+    slug: z
+      .string()
+      .describe("Bundle slug, for example privacy_data_protection"),
+    country: z
+      .string()
+      .optional()
+      .describe("Optional country to order country-specific rows ahead of EU-level rows"),
+  },
+  async ({ slug, country }) => {
+    const rows = catalog.issueBundles
+      .filter((row) => row.bundle_slug === slug)
+      .sort((a, b) => {
+        const rankDiff = bundleScopeRank(a.org_scope ?? "", country) - bundleScopeRank(b.org_scope ?? "", country);
+        if (rankDiff !== 0) {
+          return rankDiff;
+        }
+        return a.organization.localeCompare(b.organization);
+      });
+
+    return rows.length > 0
+      ? jsonResult({
+          ok: true,
+          slug,
+          country: country ?? null,
+          bundle_label: rows[0].bundle_label,
+          contacts: rows,
+        })
+      : notFound("bundle", slug);
+  },
+);
+
+server.tool(
   "route_issue",
   "Suggest the closest issue-router entries and playbooks for a short problem description.",
   {
@@ -275,8 +591,22 @@ server.tool(
       audience,
       country,
       country_filter_mode: country ? "soft_hint_with_diagnostics" : "none",
+      audience_filter_mode: audience ? "exact_match_when_available" : "none",
       country_matches_found: result.countryMatchesFound,
+      country_matches_total: result.countryMatchesTotal,
+      audience_matches_found: result.audienceMatchesFound,
+      audience_matches_total: result.audienceMatchesTotal,
+      scoped_committee_role_matches_total: result.scopedCommitteeRoleMatchesTotal,
+      result_index_diversity: result.resultIndexDiversity,
+      confidence_band: result.confidenceBand,
+      suggested_action: result.suggestedAction,
+      confidence_reason: result.confidenceReason,
+      scope_message: result.scopeMessage,
+      suppressed_matches: result.suppressedMatches,
       fallback_strategy: result.fallbackStrategy,
+      audience_fallback_strategy: result.audienceFallbackStrategy,
+      search_warning: result.searchWarning,
+      ranking_warning: result.rankingWarning,
       matches: result.matches.map(({ score, row }) => ({
         score,
         row,
@@ -336,6 +666,7 @@ server.tool(
         "Ground the draft in the user facts and avoid inventing dates, references, or legal claims.",
         "Use the local file paths in this packet for analysis and provenance only, not in the final outward-facing draft.",
       ],
+      warnings: packetWarnings(template_slug, user_facts, issue_slug),
       packet: {
         template_body: template.body,
         playbook_body: playbook?.body ?? null,

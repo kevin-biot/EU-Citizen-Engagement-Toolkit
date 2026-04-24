@@ -35,6 +35,10 @@ This MCP server turns the repo into a local assistant surface that can:
 - `list_datasets`
 - `get_dataset`
 - `query_dataset`
+- `list_bundles`
+- `get_bundle`
+- `list_commission_project_groups`
+- `get_commission_project_group`
 - `find_contacts`
 - `get_authorities`
 - `route_issue`
@@ -42,8 +46,13 @@ This MCP server turns the repo into a local assistant surface that can:
 
 `find_contacts` searches across:
 - community contact routes
+- issue-specific contact bundles
 - institutional and Commission-facing contacts
 - the topic-tagged MEP contact database
+
+`list_commission_project_groups` exposes the current Commissioners' Project Groups directly, so MCP clients do not have to infer them from dataset samples.
+
+`get_bundle` exposes the curated issue-bundle layer directly, including the `why_this_route` rationale that explains when each contact is the right escalation path.
 
 ## Install
 
