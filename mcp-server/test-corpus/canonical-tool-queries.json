@@ -1,0 +1,208 @@
+{
+  "version": 1,
+  "updated_at": "2026-04-24",
+  "cases": [
+    {
+      "id": "find-contacts-commission-climate",
+      "tool": "find_contacts",
+      "title": "Commissioner by climate portfolio",
+      "input": {
+        "topic": "climate policy Green Deal Commissioner"
+      },
+      "expected": {
+        "confidence_band": "high",
+        "top_result_contact_index_any_of": [
+          "commission_college",
+          "commission_cabinet",
+          "commission_dg_press"
+        ],
+        "top_result_organization_any_of": [
+          "Wopke Hoekstra"
+        ]
+      },
+      "notes": "Regression guard for the earlier failure where former Commissioners in MEP bios outranked the current portfolio holder."
+    },
+    {
+      "id": "find-contacts-femm-chair",
+      "tool": "find_contacts",
+      "title": "Committee leadership should prefer scoped committee role data",
+      "input": {
+        "topic": "FEMM chair"
+      },
+      "expected": {
+        "top_result_contact_index_any_of": [
+          "mep_political"
+        ],
+        "top_result_organization_any_of": [
+          "Lina GÁLVEZ"
+        ]
+      },
+      "notes": "Regression guard for generic chair tags leaking across unrelated committees."
+    },
+    {
+      "id": "find-contacts-czech-womens-rights",
+      "tool": "find_contacts",
+      "title": "Country-aware women's rights search should not silently widen without diagnostics",
+      "input": {
+        "topic": "women's rights",
+        "audience": "citizens",
+        "country": "Czech Republic"
+      },
+      "expected": {
+        "country_matches_found_min": 1,
+        "top_result_organization_any_of": [
+          "Czech Women’s Lobby",
+          "Veřejný ochránce práv"
+        ]
+      },
+      "notes": "Regression guard for the earlier empty-national-data failure masked by EU-level fallbacks."
+    },
+    {
+      "id": "find-contacts-journalist-surveillance-germany",
+      "tool": "find_contacts",
+      "title": "Conflicting-intent journalist support query should prioritize operational help before broad political contacts",
+      "input": {
+        "topic": "journalism support surveillance Germany",
+        "audience": "journalists",
+        "country": "Germany"
+      },
+      "expected": {
+        "confidence_band": "high",
+        "top_result_contact_index_any_of": [
+          "general",
+          "gdpr_privacy_support",
+          "issue_bundle"
+        ],
+        "top_result_organization_any_of": [
+          "Access Now",
+          "Digitalcourage",
+          "European Centre for Press and Media Freedom (ECPMF)",
+          "Reporters Without Borders (RSF)"
+        ]
+      },
+      "notes": "Regression guard for the earlier all-MEP cluster that hid the actual operational support routes."
+    },
+    {
+      "id": "find-contacts-stock-advice-out-of-scope",
+      "tool": "find_contacts",
+      "title": "Commercial stock-advice query should be rejected as out of scope",
+      "input": {
+        "topic": "buy shares investment financial advice"
+      },
+      "expected": {
+        "confidence_band": "out_of_scope",
+        "suggested_action": "out_of_scope",
+        "matches_count_max": 0
+      },
+      "notes": "Safety guard against plausible but irrelevant institutional or policy matches."
+    },
+    {
+      "id": "find-contacts-doctor-referral-out-of-scope",
+      "tool": "find_contacts",
+      "title": "Medical-referral query should be rejected as out of scope",
+      "input": {
+        "topic": "find me a doctor referral"
+      },
+      "expected": {
+        "confidence_band": "out_of_scope",
+        "suggested_action": "suggest_external_resource",
+        "matches_count_max": 0
+      },
+      "notes": "Safety guard against leaking vulnerable-user support services into unrelated medical-help queries."
+    },
+    {
+      "id": "get-authorities-poland",
+      "tool": "get_authorities",
+      "title": "National authority lookup should return a populated row for a normal country name",
+      "input": {
+        "country": "Poland"
+      },
+      "expected": {
+        "authority_rows_min": 1
+      },
+      "notes": "Regression guard for the earlier broken country-field lookup."
+    },
+    {
+      "id": "recommend-template-dpa-silence",
+      "tool": "recommend_template",
+      "title": "Template selector should route regulator-delay use cases to the DPA follow-up template",
+      "input": {
+        "problem_description": "My GDPR complaint has been sitting with the DPA for months and I need a procedural follow-up",
+        "jurisdiction_scope": "National_or_cross_border",
+        "target_type": "National DPA",
+        "stage": "regulator_follow_up"
+      },
+      "expected": {
+        "recommended_template_slug": "dpa_follow_up_after_silence_email"
+      },
+      "notes": "Core selector regression guard for the new metadata-driven template layer."
+    },
+    {
+      "id": "list-templates-gdpr-rights",
+      "tool": "list_templates_by_use_case",
+      "title": "Use-case selector should expose the primary and fallback GDPR rights templates",
+      "input": {
+        "use_case": "gdpr_rights_request"
+      },
+      "expected": {
+        "matched_use_cases_min": 1,
+        "first_use_case_key": "gdpr_rights_request",
+        "primary_template_slug": "gdpr_data_rights_email"
+      },
+      "notes": "Basic coverage test for the template selector surface."
+    },
+    {
+      "id": "campaign-stage-gdpr-regulator-delay",
+      "tool": "assess_campaign_stage",
+      "title": "Filed GDPR complaint plus regulator silence should assess to regulator-delay stage",
+      "input": {
+        "campaign_slug": "gdpr_complaints",
+        "controller_contacted": true,
+        "dpa_complaint_filed": true,
+        "regulator_silent": true
+      },
+      "expected": {
+        "current_stage_key": "regulator_delay_under_enforcement"
+      },
+      "notes": "First-stage guard for the campaign decision layer."
+    },
+    {
+      "id": "campaign-next-step-gdpr-regulator-follow-up",
+      "tool": "recommend_next_step",
+      "title": "Regulator silence without explicit public-pressure signal should recommend the DPA follow-up first",
+      "input": {
+        "campaign_slug": "gdpr_complaints",
+        "controller_contacted": true,
+        "dpa_complaint_filed": true,
+        "regulator_silent": true
+      },
+      "expected": {
+        "recommendation_template_slug_any_of": [
+          "dpa_follow_up_after_silence_email"
+        ]
+      },
+      "notes": "Regression guard for quiet procedural sequencing before public escalation."
+    },
+    {
+      "id": "campaign-escalation-gdpr-media-route",
+      "tool": "recommend_escalation",
+      "title": "Regulator silence with public-pressure and media intent should expose higher-pressure routes only",
+      "input": {
+        "campaign_slug": "gdpr_complaints",
+        "controller_contacted": true,
+        "dpa_complaint_filed": true,
+        "regulator_silent": true,
+        "need_public_pressure": true,
+        "want_media_route": true
+      },
+      "expected": {
+        "escalation_option_template_slug_any_of": [
+          "journalist_gdpr_enforcement_pitch_email",
+          "mep_gdpr_under_enforcement_email",
+          "privacy_ngo_support_request_email"
+        ]
+      },
+      "notes": "Regression guard for the separate escalation surface rather than generic next-step advice."
+    }
+  ]
+}

@@ -14,3 +14,4 @@ Use these docs if you want to:
 - [Architecture](</Users/kevinbrown/EU-Citizen-Engagement-Toolkit/mcp-server/docs/architecture.md>)
 - [Schemas](</Users/kevinbrown/EU-Citizen-Engagement-Toolkit/mcp-server/docs/schemas.md>)
 - [ADR Index](</Users/kevinbrown/EU-Citizen-Engagement-Toolkit/mcp-server/docs/adr/README.md>)
+- [Test Corpus](</Users/kevinbrown/EU-Citizen-Engagement-Toolkit/mcp-server/test-corpus/README.md>)
