@@ -8,3 +8,4 @@ Narrative documentation for the EU Citizen Engagement Toolkit: process overviews
 - `digital-issues/`: citizen-facing playbooks for common digital harms and complaint routes
 - `outreach-email-templates/`: public-interest outreach emails for MEPs, coordinators, journalists, NGOs, and Commission process challenges
 - `citizen-digital-needs-roadmap.md`: build direction for citizen-first digital support infrastructure
+- `../campaigns/`: extended issue campaign packs that combine targets, evidence, messaging, timelines, escalation, and missing-data tracking

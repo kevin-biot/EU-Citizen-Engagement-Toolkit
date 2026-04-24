@@ -18,6 +18,7 @@ It now covers both:
 - **Templates:** ready-to-use filings, complaint skeletons, and administrative correspondence
 - **Guides:** practical walkthroughs for EU institutional processes
 - **Digital Issue Playbooks:** citizen-facing guides for platform harms, GDPR issues, scams, accessibility failures, AI harms, and cross-border consumer problems
+- **Campaign Packs:** extended issue playbooks for multi-target, evidence-heavy, time-sequenced advocacy
 - **Outreach Templates:** short emails for MEPs, committee coordinators, journalists, NGOs, and Commission process challenges
 - **Reference Data:** Parliament, Commission, national-authority, and community-contact layers
 - **Issue Bundles:** curated contact bundles with `why_this_route` logic
@@ -28,6 +29,7 @@ It now covers both:
 
 - `templates/`: formal drafting templates by escalation level
 - `docs/`: narrative guides, digital issue playbooks, and outreach email templates
+- `campaigns/`: extended campaign packs with targets, evidence, messaging, timelines, escalation, and missing-data queues
 - `data/`: structured reference data and contact layers
 - `mcp-server/`: local MCP package exposing the repo as a structured assistant surface
 - `scripts/`: builders, extractors, validators, and maintenance scripts
@@ -48,6 +50,7 @@ Current docs now include:
 
 - getting-started material
 - digital-issue playbooks
+- campaign packs
 - outreach email templates
 - citizen digital support roadmap
 - MCP install and usage guides
@@ -60,13 +63,16 @@ See `docs/` for playbooks and process guidance.
 2. **Choose the right source layer**
 Use `data/` for contacts, authorities, Commission/Parliament references, and escalation bundles.
 
-3. **Choose or assemble the right draft**
+3. **Choose the right campaign layer if the issue needs repeated pressure**
+Use `campaigns/` when the issue needs targets, sequencing, escalation, and evidence tracking rather than a one-off filing.
+
+4. **Choose or assemble the right draft**
 Use `templates/`, `docs/digital-issues/email-templates/`, or `docs/outreach-email-templates/`.
 
-4. **Use the MCP server if you want AI assistance grounded in the repo**
+5. **Use the MCP server if you want AI assistance grounded in the repo**
 See `mcp-server/README.md`, `mcp-server/INSTALL.md`, and `mcp-server/USER_GUIDE.md`.
 
-5. **Verify before sending**
+6. **Verify before sending**
 This repo helps with routing and drafting, but you still need to check official requirements and current institutional guidance.
 
 ## Current Status
@@ -134,6 +140,7 @@ Community contributions welcomed and credited in [CONTRIBUTORS.md](CONTRIBUTORS.
 - Verticalization guide (fork-and-layer by topic): `docs/topic-verticalization.md`
 - Citizen digital needs roadmap: `docs/citizen-digital-needs-roadmap.md`
 - Digital issue playbooks: `docs/digital-issues/`
+- Campaign packs: `campaigns/README.md`
 - Outreach email templates: `docs/outreach-email-templates/`
 - Data index: `data/README.md`
 - Docs index: `docs/README.md`
