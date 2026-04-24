@@ -1,9 +1,12 @@
 {
-  "version": 1,
+  "version": 2,
   "updated_at": "2026-04-24",
   "cases": [
     {
       "id": "find-contacts-commission-climate",
+      "family": "commission_search",
+      "priority": "high",
+      "risk_level": "correctness",
       "tool": "find_contacts",
       "title": "Commissioner by climate portfolio",
       "input": {
@@ -23,7 +26,33 @@
       "notes": "Regression guard for the earlier failure where former Commissioners in MEP bios outranked the current portfolio holder."
     },
     {
+      "id": "find-contacts-commission-ai",
+      "family": "commission_search",
+      "priority": "high",
+      "risk_level": "correctness",
+      "tool": "find_contacts",
+      "title": "Commissioner by AI and digital portfolio",
+      "input": {
+        "topic": "AI regulation digital policy Commissioner"
+      },
+      "expected": {
+        "confidence_band": "high",
+        "top_result_contact_index_any_of": [
+          "commission_college",
+          "commission_cabinet",
+          "commission_dg_press"
+        ],
+        "top_result_organization_any_of": [
+          "Henna Virkkunen"
+        ]
+      },
+      "notes": "Regression guard for the earlier failure where NGOs outranked the current digital portfolio holder."
+    },
+    {
       "id": "find-contacts-femm-chair",
+      "family": "committee_search",
+      "priority": "high",
+      "risk_level": "correctness",
       "tool": "find_contacts",
       "title": "Committee leadership should prefer scoped committee role data",
       "input": {
@@ -40,7 +69,30 @@
       "notes": "Regression guard for generic chair tags leaking across unrelated committees."
     },
     {
+      "id": "find-contacts-econ-secretariat",
+      "family": "committee_search",
+      "priority": "medium",
+      "risk_level": "correctness",
+      "tool": "find_contacts",
+      "title": "Bare committee acronym should surface the secretariat route cleanly",
+      "input": {
+        "topic": "ECON"
+      },
+      "expected": {
+        "top_result_contact_index_any_of": [
+          "institutional_route"
+        ],
+        "top_result_organization_any_of": [
+          "ECON Secretariat"
+        ]
+      },
+      "notes": "Regression guard for ECON committee-acronym queries collapsing into generic economic-security matches."
+    },
+    {
       "id": "find-contacts-czech-womens-rights",
+      "family": "country_routing",
+      "priority": "high",
+      "risk_level": "correctness",
       "tool": "find_contacts",
       "title": "Country-aware women's rights search should not silently widen without diagnostics",
       "input": {
@@ -59,6 +111,9 @@
     },
     {
       "id": "find-contacts-journalist-surveillance-germany",
+      "family": "mixed_intent_search",
+      "priority": "high",
+      "risk_level": "safety",
       "tool": "find_contacts",
       "title": "Conflicting-intent journalist support query should prioritize operational help before broad political contacts",
       "input": {
@@ -84,6 +139,9 @@
     },
     {
       "id": "find-contacts-stock-advice-out-of-scope",
+      "family": "out_of_scope_safety",
+      "priority": "high",
+      "risk_level": "safety",
       "tool": "find_contacts",
       "title": "Commercial stock-advice query should be rejected as out of scope",
       "input": {
@@ -98,6 +156,9 @@
     },
     {
       "id": "find-contacts-doctor-referral-out-of-scope",
+      "family": "out_of_scope_safety",
+      "priority": "high",
+      "risk_level": "safety",
       "tool": "find_contacts",
       "title": "Medical-referral query should be rejected as out of scope",
       "input": {
@@ -111,7 +172,30 @@
       "notes": "Safety guard against leaking vulnerable-user support services into unrelated medical-help queries."
     },
     {
+      "id": "find-contacts-space-policy",
+      "family": "mep_search",
+      "priority": "medium",
+      "risk_level": "correctness",
+      "tool": "find_contacts",
+      "title": "High-specificity phrase search should not lose the only strong MEP match",
+      "input": {
+        "topic": "space policy"
+      },
+      "expected": {
+        "top_result_contact_index_any_of": [
+          "mep_political"
+        ],
+        "top_result_organization_any_of": [
+          "Christophe GRUDLER"
+        ]
+      },
+      "notes": "Regression guard for token-bag ranking where generic policy rows beat the only actual space-policy match."
+    },
+    {
       "id": "get-authorities-poland",
+      "family": "authority_lookup",
+      "priority": "high",
+      "risk_level": "correctness",
       "tool": "get_authorities",
       "title": "National authority lookup should return a populated row for a normal country name",
       "input": {
@@ -123,7 +207,46 @@
       "notes": "Regression guard for the earlier broken country-field lookup."
     },
     {
+      "id": "get-bundle-privacy-poland",
+      "family": "bundle_access",
+      "priority": "high",
+      "risk_level": "correctness",
+      "tool": "get_bundle",
+      "title": "Privacy bundle should order the requested country ahead of EU-level routes",
+      "input": {
+        "slug": "privacy_data_protection",
+        "country": "Poland"
+      },
+      "expected": {
+        "bundle_label": "Privacy and Data Protection",
+        "contacts_min": 3,
+        "first_contact_organization_any_of": [
+          "Panoptykon Foundation"
+        ]
+      },
+      "notes": "Regression guard for the curated bundle layer and country-specific ordering."
+    },
+    {
+      "id": "get-bundle-gdpr-enforcement",
+      "family": "bundle_access",
+      "priority": "medium",
+      "risk_level": "correctness",
+      "tool": "get_bundle",
+      "title": "GDPR enforcement bundle should remain directly accessible as a curated surface",
+      "input": {
+        "slug": "gdpr_enforcement_pressure"
+      },
+      "expected": {
+        "bundle_label": "GDPR Enforcement Pressure",
+        "contacts_min": 5
+      },
+      "notes": "Regression guard for the editorial bundle layer not disappearing behind generic search."
+    },
+    {
       "id": "recommend-template-dpa-silence",
+      "family": "template_selector",
+      "priority": "high",
+      "risk_level": "correctness",
       "tool": "recommend_template",
       "title": "Template selector should route regulator-delay use cases to the DPA follow-up template",
       "input": {
@@ -135,10 +258,31 @@
       "expected": {
         "recommended_template_slug": "dpa_follow_up_after_silence_email"
       },
-      "notes": "Core selector regression guard for the new metadata-driven template layer."
+      "notes": "Core selector regression guard for the metadata-driven template layer."
+    },
+    {
+      "id": "recommend-template-journalist-gdpr",
+      "family": "template_selector",
+      "priority": "medium",
+      "risk_level": "correctness",
+      "tool": "recommend_template",
+      "title": "Selector should route GDPR under-enforcement stories to the GDPR-specific journalist pitch",
+      "input": {
+        "problem_description": "I need to pitch a journalist on a cross-border GDPR under-enforcement story",
+        "jurisdiction_scope": "EU_or_national",
+        "target_type": "Journalist or newsroom",
+        "stage": "media_outreach"
+      },
+      "expected": {
+        "recommended_template_slug": "journalist_gdpr_enforcement_pitch_email"
+      },
+      "notes": "Regression guard for the selector preferring the domain-specific media template over the generic pitch."
     },
     {
       "id": "list-templates-gdpr-rights",
+      "family": "template_selector",
+      "priority": "medium",
+      "risk_level": "correctness",
       "tool": "list_templates_by_use_case",
       "title": "Use-case selector should expose the primary and fallback GDPR rights templates",
       "input": {
@@ -152,7 +296,48 @@
       "notes": "Basic coverage test for the template selector surface."
     },
     {
+      "id": "list-templates-committee-pressure",
+      "family": "template_selector",
+      "priority": "medium",
+      "risk_level": "correctness",
+      "tool": "list_templates_by_use_case",
+      "title": "Committee process pressure should resolve to the coordinator template first",
+      "input": {
+        "use_case": "committee_process_pressure"
+      },
+      "expected": {
+        "matched_use_cases_min": 1,
+        "first_use_case_key": "committee_process_pressure",
+        "primary_template_slug": "committee_coordinator_procedural_concern_email"
+      },
+      "notes": "Regression guard for the outreach-selector side of the template layer."
+    },
+    {
+      "id": "list-campaign-stages-gdpr",
+      "family": "campaign_decision",
+      "priority": "medium",
+      "risk_level": "correctness",
+      "tool": "list_campaign_stages",
+      "title": "GDPR campaign stage catalog should remain discoverable through MCP",
+      "input": {
+        "campaign_slug": "gdpr_complaints"
+      },
+      "expected": {
+        "stages_min": 4,
+        "first_stage_key_any_of": [
+          "cross_border_enforcement_pressure",
+          "individual_rights_complaint",
+          "regulator_delay_under_enforcement",
+          "systemic_company_abuse"
+        ]
+      },
+      "notes": "Coverage test for the first campaign-decision catalog surface."
+    },
+    {
       "id": "campaign-stage-gdpr-regulator-delay",
+      "family": "campaign_decision",
+      "priority": "high",
+      "risk_level": "correctness",
       "tool": "assess_campaign_stage",
       "title": "Filed GDPR complaint plus regulator silence should assess to regulator-delay stage",
       "input": {
@@ -167,7 +352,27 @@
       "notes": "First-stage guard for the campaign decision layer."
     },
     {
+      "id": "campaign-stage-gdpr-cross-border",
+      "family": "campaign_decision",
+      "priority": "medium",
+      "risk_level": "correctness",
+      "tool": "assess_campaign_stage",
+      "title": "Cross-border signals should shift the campaign into the one-stop-shop pressure stage",
+      "input": {
+        "campaign_slug": "gdpr_complaints",
+        "controller_contacted": true,
+        "cross_border_dimension": true
+      },
+      "expected": {
+        "current_stage_key": "cross_border_enforcement_pressure"
+      },
+      "notes": "Regression guard for cross-border signals not being drowned by the default individual-complaint stage."
+    },
+    {
       "id": "campaign-next-step-gdpr-regulator-follow-up",
+      "family": "campaign_decision",
+      "priority": "high",
+      "risk_level": "correctness",
       "tool": "recommend_next_step",
       "title": "Regulator silence without explicit public-pressure signal should recommend the DPA follow-up first",
       "input": {
@@ -184,7 +389,27 @@
       "notes": "Regression guard for quiet procedural sequencing before public escalation."
     },
     {
+      "id": "campaign-next-step-gdpr-controller-first",
+      "family": "campaign_decision",
+      "priority": "medium",
+      "risk_level": "correctness",
+      "tool": "recommend_next_step",
+      "title": "No controller contact yet should recommend the controller-first GDPR request",
+      "input": {
+        "campaign_slug": "gdpr_complaints"
+      },
+      "expected": {
+        "recommendation_template_slug_any_of": [
+          "gdpr_data_rights_email"
+        ]
+      },
+      "notes": "Regression guard for the first sequencing step in ordinary GDPR complaint work."
+    },
+    {
       "id": "campaign-escalation-gdpr-media-route",
+      "family": "campaign_decision",
+      "priority": "high",
+      "risk_level": "safety",
       "tool": "recommend_escalation",
       "title": "Regulator silence with public-pressure and media intent should expose higher-pressure routes only",
       "input": {

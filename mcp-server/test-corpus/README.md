@@ -18,6 +18,9 @@ The corpus is intentionally assertion-based, not snapshot-based.
 It should capture:
 
 - the tool being exercised
+- a `family` label for grouped reporting
+- a `priority` level
+- a `risk_level` classification such as `correctness` or `safety`
 - the input payload
 - the key expectations that should hold
 - the reason the case exists
@@ -41,6 +44,7 @@ Current starter cases cover:
 - country-aware rights routing
 - conflicting-intent contact search
 - out-of-scope and low-confidence search safety
+- curated bundle access
 - GDPR campaign-stage assessment
 - GDPR next-step and escalation recommendations
 - template selector behavior
@@ -70,6 +74,13 @@ To run only selected cases, pass case IDs after the script:
 cd /Users/kevinbrown/EU-Citizen-Engagement-Toolkit/mcp-server
 npx tsx test-corpus/run-corpus.ts find-contacts-commission-climate campaign-stage-gdpr-regulator-delay
 ```
+
+The runner now reports:
+
+- total pass/fail
+- pass/fail by tool
+- pass/fail by family
+- failed case ids
 
 ## Maintenance Rule
 

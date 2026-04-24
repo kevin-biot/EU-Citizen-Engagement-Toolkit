@@ -6,6 +6,9 @@ import { StdioClientTransport } from "@modelcontextprotocol/sdk/client/stdio.js"
 
 type CorpusCase = {
   id: string;
+  family?: string;
+  priority?: string;
+  risk_level?: string;
   tool: string;
   title: string;
   input: Record<string, unknown>;
@@ -73,6 +76,22 @@ function getRecommendations(payload: Record<string, unknown>, key = "recommendat
   return asArray(payload[key]);
 }
 
+function getContacts(payload: Record<string, unknown>) {
+  return asArray(payload.contacts);
+}
+
+function getFirstContact(payload: Record<string, unknown>) {
+  return asRecord(getContacts(payload)[0]);
+}
+
+function getStages(payload: Record<string, unknown>) {
+  return asArray(payload.stages);
+}
+
+function getFirstStage(payload: Record<string, unknown>) {
+  return asRecord(getStages(payload)[0]);
+}
+
 function getCurrentStage(payload: Record<string, unknown>) {
   return asRecord(payload.current_stage ?? payload.assessed_stage);
 }
@@ -130,6 +149,20 @@ function assertCase(testCase: CorpusCase, payload: Record<string, unknown>) {
         }
         break;
       }
+      case "contacts_min": {
+        const count = getContacts(payload).length;
+        if (count < Number(value)) {
+          failures.push(`expected contacts >= ${value}, got ${count}`);
+        }
+        break;
+      }
+      case "stages_min": {
+        const count = getStages(payload).length;
+        if (count < Number(value)) {
+          failures.push(`expected stages >= ${value}, got ${count}`);
+        }
+        break;
+      }
       case "first_use_case_key": {
         const actual = getFirstUseCase(payload)?.use_case_key;
         if (actual !== value) {
@@ -137,10 +170,26 @@ function assertCase(testCase: CorpusCase, payload: Record<string, unknown>) {
         }
         break;
       }
+      case "first_stage_key_any_of": {
+        const actual = getFirstStage(payload)?.stage_key;
+        const allowed = value as string[];
+        if (!allowed.includes(String(actual))) {
+          failures.push(`expected first stage key in [${allowed.join(", ")}], got ${String(actual)}`);
+        }
+        break;
+      }
       case "primary_template_slug": {
         const actual = asRecord(getFirstUseCase(payload)?.primary_template)?.template_slug;
         if (actual !== value) {
           failures.push(`expected first primary template slug=${String(value)}, got ${String(actual)}`);
+        }
+        break;
+      }
+      case "bundle_label": {
+        const actual = String(payload.bundle_label ?? "").toLowerCase();
+        const expectedLabel = String(value).toLowerCase();
+        if (actual !== expectedLabel) {
+          failures.push(`expected bundle_label=${String(value)}, got ${String(payload.bundle_label)}`);
         }
         break;
       }
@@ -171,6 +220,14 @@ function assertCase(testCase: CorpusCase, payload: Record<string, unknown>) {
         const allowed = value as string[];
         if (!allowed.includes(String(actual))) {
           failures.push(`expected top result organization in [${allowed.join(", ")}], got ${String(actual)}`);
+        }
+        break;
+      }
+      case "first_contact_organization_any_of": {
+        const actual = getFirstContact(payload)?.organization;
+        const allowed = value as string[];
+        if (!allowed.includes(String(actual))) {
+          failures.push(`expected first contact organization in [${allowed.join(", ")}], got ${String(actual)}`);
         }
         break;
       }
@@ -234,6 +291,18 @@ async function main() {
 
   let passed = 0;
   const failures: Array<{ id: string; title: string; failures: string[] }> = [];
+  const countsByTool = new Map<string, { passed: number; failed: number }>();
+  const countsByFamily = new Map<string, { passed: number; failed: number }>();
+
+  const incrementCounter = (
+    map: Map<string, { passed: number; failed: number }>,
+    key: string,
+    outcome: "passed" | "failed",
+  ) => {
+    const current = map.get(key) ?? { passed: 0, failed: 0 };
+    current[outcome] += 1;
+    map.set(key, current);
+  };
 
   try {
     for (const testCase of cases) {
@@ -246,8 +315,12 @@ async function main() {
 
       if (caseFailures.length === 0) {
         passed += 1;
+        incrementCounter(countsByTool, testCase.tool, "passed");
+        incrementCounter(countsByFamily, testCase.family ?? "unclassified", "passed");
         console.log(`PASS ${testCase.id} - ${testCase.title}`);
       } else {
+        incrementCounter(countsByTool, testCase.tool, "failed");
+        incrementCounter(countsByFamily, testCase.family ?? "unclassified", "failed");
         failures.push({
           id: testCase.id,
           title: testCase.title,
@@ -264,7 +337,25 @@ async function main() {
   }
 
   console.log(`\nSummary: ${passed}/${cases.length} passed`);
+  console.log("\nBy tool:");
+  for (const [tool, counts] of [...countsByTool.entries()].sort((a, b) =>
+    a[0].localeCompare(b[0]),
+  )) {
+    console.log(`- ${tool}: ${counts.passed} passed, ${counts.failed} failed`);
+  }
+
+  console.log("\nBy family:");
+  for (const [family, counts] of [...countsByFamily.entries()].sort((a, b) =>
+    a[0].localeCompare(b[0]),
+  )) {
+    console.log(`- ${family}: ${counts.passed} passed, ${counts.failed} failed`);
+  }
+
   if (failures.length > 0) {
+    console.log("\nFailed case ids:");
+    for (const failure of failures) {
+      console.log(`- ${failure.id}`);
+    }
     process.exitCode = 1;
   }
 }

@@ -310,6 +310,9 @@ function campaignStageScore(stage: CampaignStageRow, signals: CampaignSignals) {
       if (signals.regulator_silent) {
         score -= 3;
       }
+      if (signals.cross_border_dimension) {
+        score -= 4;
+      }
       break;
     case "systemic_company_abuse":
       if (signals.systemic_pattern) {
@@ -325,8 +328,11 @@ function campaignStageScore(stage: CampaignStageRow, signals: CampaignSignals) {
       break;
     case "cross_border_enforcement_pressure":
       if (signals.cross_border_dimension) {
-        score += 6;
+        score += 8;
         reasons.push("Cross-border or lead-authority considerations are present.");
+      }
+      if (signals.controller_contacted) {
+        score += 1;
       }
       if (signals.dpa_complaint_filed) {
         score += 2;
