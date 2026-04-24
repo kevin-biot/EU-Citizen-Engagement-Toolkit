@@ -13,7 +13,7 @@ Use it when:
 - you need a first evidence-backed clue about the likely main establishment
 - you want to understand why a DPA may be pointing toward Ireland, the Netherlands, or Sweden
 
-Current coverage in this pass: `10` major controllers.
+Current coverage in this pass: `14` major controllers.
 
 | controller | examples | establishment clue | likely lead DPA | confidence | key caveat |
 | --- | --- | --- | --- | --- | --- |
@@ -27,6 +27,10 @@ Current coverage in this pass: `10` major controllers.
 | Spotify | Spotify streaming, account, personalization, ads | Spotify says `Spotify AB` is the data controller. | [Integritetsskyddsmyndigheten](https://www.imy.se/) (`Sweden`) | `high` | Advertising and partner-data disputes can still involve separate actors. |
 | Booking.com | Booking.com accommodation booking services | Booking.com says `Booking.com B.V.` in Amsterdam is the controller for the processing described in its privacy statement. | [Autoriteit Persoonsgegevens](https://autoriteitpersoonsgegevens.nl/) (`Netherlands`) | `high` | Hotels and other travel partners can be separate controllers for their own processing. |
 | OpenAI | ChatGPT and related consumer services | OpenAI's Rest of World policy identifies `OpenAI Ireland Limited` for EEA, Switzerland, and UK users. | [Data Protection Commission](https://www.dataprotection.ie/) (`Ireland`) | `high` | API, enterprise, and reseller arrangements can allocate roles differently. |
+| Netflix | Netflix streaming service, account, recommendations, ads-supported plan | Netflix identifies `Netflix International B.V.` in Amsterdam as the service provider, and says its main establishment within the European Union is in the Netherlands. | [Autoriteit Persoonsgegevens](https://autoriteitpersoonsgegevens.nl/) (`Netherlands`) | `high` | Netflix also lists multiple joint-controller entities for some local-market functions. |
+| Airbnb | Airbnb bookings, hosting, platform account, experiences | Airbnb's European terms and outside-US privacy supplement identify `Airbnb Ireland UC` and `Airbnb Global Services Limited` in Dublin for core platform activities outside narrower special cases. | [Data Protection Commission](https://www.dataprotection.ie/) (`Ireland`) | `medium` | Airbnb splits roles across platform, payments, insurance, experiences, and some special booking contexts. |
+| PayPal | PayPal consumer account, checkout, peer-to-peer payments | PayPal's EEA user agreement points to `PayPal (Europe) S.à r.l. et Cie, S.C.A.` in Luxembourg as the service provider for EEA users. | [Commission Nationale pour la Protection des Données](http://www.cnpd.lu/) (`Luxembourg`) | `high` | This clue is strongest for core PayPal account and checkout disputes, not every PayPal-adjacent product such as Xoom. |
+| Wise | Wise account, card, send-money product | Wise's EEA customer agreement says EEA services are provided by `Wise Europe SA`, a Belgian entity. | [Autorité de la protection des données - Gegevensbeschermingsautoriteit (APD-GBA)](https://www.autoriteprotectiondonnees.be) (`Belgium`) | `medium` | Wise runs multiple entities and specialized products, so this does not automatically answer every Wise-related controller question. |
 
 ## How To Use This Safely
 
@@ -57,3 +61,7 @@ This file makes those patterns legible without pretending that the answer is aut
 - Spotify: [Spotify Privacy Policy](https://www.spotify.com/ie/legal/privacy-policy/)
 - Booking.com: [Booking.com Privacy Statement](https://www.booking.com/content/privacy.en-gb.html)
 - OpenAI: [OpenAI Rest of World Privacy Policy](https://openai.com/policies/row-privacy-policy/)
+- Netflix: [Netflix Corporate Information](https://help.netflix.com/legal/corpinfo), [Netflix Privacy Statement](https://help.netflix.com/legal/privacy)
+- Airbnb: [Airbnb Outside the United States Privacy Supplement](https://www.airbnb.com/help/article/2860)
+- PayPal: [PayPal User Agreement](https://www.paypal.com/IE/legalhub/paypal/useragreement-full?locale.x=en-IE), [PayPal Mobile Application License Agreement](https://www.paypal.com/ie/legalhub/paypal/merchmobile-full)
+- Wise: [Wise Customer Agreements](https://wise.com/en/legal/terms-and-conditions), [Wise Personal Customer Privacy Notice](https://wise.com/gb/legal/privacy-notice-personal-en)
